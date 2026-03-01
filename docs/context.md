@@ -3,11 +3,17 @@
 ## Architecture VS Code
 ```
 SLR_thesis/
+├── run_deduplication.py     # Script de lancement dédoublonnage
+├── run_fetch_arxiv.py       # Script de lancement collecte arXiv
 ├── src/
-│   ├── scoring.py          # TF-IDF scoring, produit corpus_scored.csv
-│   ├── preclassify.py      # Règles NLP → nlp_suggestion/confidence/tag
-│   ├── screening_app.py    # Interface Streamlit Tri #1
-│   └── run_deduplication.py
+│   ├── deduplication.py      # Fonctions dédoublonnage (DOI + fuzzy)
+│   ├── fetch_arxiv.py        # Collecte API arXiv
+│   ├── normalize.py          # Normalisation champs inter-bases
+│   ├── scoring.py            # TF-IDF scoring, produit corpus_scored.csv
+│   ├── preclassify.py        # Règles NLP → nlp_suggestion/confidence/tag
+│   ├── screening_app.py      # Interface Streamlit Tri #1
+│   ├── validate_bulk.py      # Validation actions en lot screening
+│   └── generate_thesaurus.py # Génération thésaurus VOSviewer
 ├── data/
 │   ├── raw/
 │   │   ├── scopus/         # CSV exports par requête (R1, R2A, R2B, R3)
@@ -20,11 +26,10 @@ SLR_thesis/
 │   └── logs/
 │       └── dedup_log.txt
 ├── results/
-│   ├── screening/          # Exports Tri #1 (inclus, surveys, incertains)
+│   ├── figures/            # Fichiers VOSviewer et figures
 │   ├── qa/                 # Résultats Tri #2
-│   └── extraction/         # Formulaires A.5 remplis
+│   └── tables/             # Tables exportées (VOS, overlap, top auteurs...)
 ├── notebooks/
-│   ├── 01_deduplication.ipynb
 │   └── 02_bibliometrie_phase1.ipynb
 ├── docs/
 │   └── decisions_log.md
@@ -68,5 +73,6 @@ SLR_thesis/
 
 ## Dépendances (requirements.txt)
 
-pandas, scikit-learn, fuzzywuzzy, python-Levenshtein,
-streamlit, arxiv, openpyxl
+- `requirements.txt` est un **freeze complet de l'environnement** (beaucoup plus large que le pipeline minimal).
+- Dépendances coeur pipeline : `pandas`, `scikit-learn`, `fuzzywuzzy`, `python-Levenshtein`, `streamlit`, `arxiv`, `openpyxl`.
+- Pour la reproductibilité stricte : installer tout le `requirements.txt`.

@@ -363,10 +363,11 @@ def render_screening_tab(df):
 
     # ── Décision ──────────────────────────────────────────────────────────────
     with col_decision:
-        st.markdown('### Décision')
+        st.markdown('<p style="font-weight:600;font-size:1rem;margin-bottom:4px">Décision</p>', unsafe_allow_html=True)
 
-        notes = st.text_area('Notes', key=f'notes_{current_idx}', height=80,
-                             placeholder='Ex: pertinent RQ1, dataset OAEI...')
+        notes = st.text_area('Notes', key=f'notes_{current_idx}', height=60,
+                             placeholder='Ex: pertinent RQ1, dataset OAEI...',
+                             label_visibility='collapsed')
 
         if has_nlp and nlp_conf == 'high':
             label_btn = f"{nlp_cfg['icon']} Accepter ({nlp_sug})"
@@ -376,7 +377,6 @@ def render_screening_tab(df):
                                  f'[NLP {nlp_score}/10] {nlp_tag}')
                 _record_decision()
                 _save_and_reload(df)
-            st.markdown('---')
 
         if st.button('✅ Inclure', use_container_width=True, type='primary',
                      key=f'inc_{current_idx}'):
@@ -384,15 +384,11 @@ def render_screening_tab(df):
             _record_decision()
             _save_and_reload(df)
 
-        st.markdown('---')
-
         if st.button('📚 Survey → snowballing', use_container_width=True,
                      key=f'srv_{current_idx}'):
             df = save_decision(df, current_idx, 'survey', 'E5s', notes)
             _record_decision()
             _save_and_reload(df)
-
-        st.markdown('---')
 
         if st.button('❓ Incertain', use_container_width=True,
                      key=f'unc_{current_idx}'):
@@ -400,8 +396,7 @@ def render_screening_tab(df):
             _record_decision()
             _save_and_reload(df)
 
-        st.markdown('---')
-        st.markdown('**❌ Exclure**')
+        st.markdown('<p style="font-weight:600;font-size:0.8rem;margin:4px 0 2px">❌ Exclure</p>', unsafe_allow_html=True)
 
         for code, label in EXCLUSION_REASONS.items():
             short = label.split(' — ')[1]
@@ -570,6 +565,41 @@ def render_dashboard_tab(df):
     total = len(df)
     screened = (df['decision'] != '').sum()
 
+    # ── Inclus par requête (présence, gère les combinaisons R1+R2B) ─────────
+    st.subheader('Inclus par requête')
+    included_df = df[df['decision'] == 'include'].copy()
+    total_included = len(included_df)
+    if total_included > 0 and 'query' in included_df.columns:
+        query_parts = (
+            included_df['query'].astype(str)
+            .str.replace(' ', '', regex=False)
+            .str.split('+')
+            .explode()
+            .str.strip()
+        )
+        query_parts = query_parts[query_parts != '']
+
+        if len(query_parts) > 0:
+            query_stats = (
+                query_parts.value_counts()
+                .rename_axis('Requête')
+                .reset_index(name='N inclus')
+            )
+            query_stats['% des inclus'] = (
+                query_stats['N inclus'] / total_included * 100
+            ).round(2)
+
+            st.dataframe(query_stats, use_container_width=True, hide_index=True)
+            st.caption(
+                f'Total inclus: {total_included}. '
+                'Attribution par présence de requête; la somme des pourcentages peut dépasser 100% '
+                'si un article est tagué avec plusieurs requêtes.'
+            )
+        else:
+            st.caption('Aucune requête exploitable dans les articles inclus.')
+    else:
+        st.caption('Aucun article inclus pour le moment.')
+
     # ── Pré-classification NLP ────────────────────────────────────────────────
     st.subheader('Pré-classification NLP')
 
@@ -711,6 +741,24 @@ def _show_summary(df):
 def main():
     st.set_page_config(page_title='Screening Tri #1', page_icon='📄', layout='wide')
     _init_session()
+
+    # CSS — compacte la colonne Décision
+    st.markdown('''
+    <style>
+    div[data-testid="column"]:last-child .stButton {
+        margin-bottom: -6px;
+    }
+    div[data-testid="column"]:last-child .stButton > button {
+        padding-top: 4px !important;
+        padding-bottom: 4px !important;
+        min-height: 32px !important;
+        font-size: 0.82rem !important;
+    }
+    div[data-testid="column"]:last-child textarea {
+        min-height: 55px !important;
+    }
+    </style>
+    ''', unsafe_allow_html=True)
 
     df = load_corpus()
     render_sidebar(df)

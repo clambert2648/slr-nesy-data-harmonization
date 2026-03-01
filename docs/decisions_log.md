@@ -395,3 +395,15 @@ Validation en 5 passes :
 **Répartition :** E1 aucun signal 36% | E2 hors modalités 34% | E1 KG completion 12% | E1 signaux faibles/forts 9% | E1 classification 4% | E1 retrieval/RAG 3% | E3/E4 2%
 **Limite reconnue :**Revue par patterns regex — nuances sémantiques non captées. Atténué par le triple filtre et les 5 passes de validation.
 **Impact PRISMA :** « 264 articles exclus en lot après validation automatique+manuelle (détail en annexe méthodologique) »
+
+---
+
+## DÉCISIONS — TRI #1 (suite)
+
+### DEC-023 — Exclusion venue prédatrice : ShodhKosh
+**Date :** 1 mars 2026
+**Base :** Scopus
+**Décision :** Exclusion E1 des 2 articles indexés dans *ShodhKosh: Journal of Visual and Performing Arts* (DOI: 10.29121/shodhkosh.v6.i3s.2025.6777 et 10.29121/shodhkosh.v6.i5s.2025.6879). ShodhKosh est identifiée comme revue prédatrice à portée déclarée ultra-large ; les deux articles concernent le tagging sémantique de collections d'art et la documentation de folklore par NLP — aucun lien avec I2 ni I4.
+**Justification :** Capture par les requêtes due à l'utilisation superficielle de termes tendance dans les abstracts. Identification lors de l'analyse bibliométrique des venues (included_by_journal.csv).
+**Limite reconnue :** Autres venues prédatrices potentiellement non détectées dans le corpus.
+**Impact PRISMA :** Exclusion E1 standard. Mentionner dans les limitations : la présence de venues prédatrices dans les bases commerciales illustre la nécessité du screening humain.
