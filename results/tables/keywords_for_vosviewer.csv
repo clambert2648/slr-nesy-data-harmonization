@@ -1,0 +1,3994 @@
+﻿term,occurrences
+knowledge graph,228
+deep learning,90
+ontology,87
+knowledge graphs,85
+large language models,71
+machine learning,59
+natural language processing,54
+large language model,52
+neuro-symbolic ai,52
+entity alignment,51
+explainable ai,43
+ontology matching,39
+artificial intelligence,38
+bert,32
+data integration,29
+semantic web,28
+ontology alignment,27
+graph neural networks,27
+graph neural network,27
+ontologies,26
+attention mechanism,24
+retrieval-augmented generation,24
+knowledge graph embedding,24
+schema matching,23
+neural networks,23
+semantic matching,23
+representation learning,22
+neurosymbolic ai,22
+interpretability,21
+entity linking,21
+semantic integration,19
+knowledge representation,19
+link prediction,19
+knowledge base,18
+interoperability,17
+semantic similarity,17
+llm,17
+large language models (llms),16
+data harmonization,16
+transformer,16
+recommender systems,15
+reinforcement learning,15
+feature fusion,14
+neuro-symbolic,14
+knowledge graph completion,13
+explainable artificial intelligence,12
+ai,12
+knowledge fusion,12
+semantic interoperability,11
+ontology mapping,11
+convolutional neural network,11
+information retrieval,11
+xai,11
+ontology engineering,10
+contrastive learning,10
+reasoning,10
+first-order logic,10
+neuro-symbolic integration,10
+explainability,10
+neural network,10
+knowledge graph reasoning,10
+question answering,10
+relation extraction,10
+language models,9
+machine translation,9
+embeddings,9
+explainable ai (xai),9
+big data,8
+information extraction,8
+semantic enrichment,8
+data mining,8
+knowledge graph fusion,8
+multi-agent systems,8
+knowledge extraction,8
+retrieval-augmented generation (rag),8
+logic tensor networks,8
+named entity recognition,8
+graph attention network,8
+multimodal knowledge graph,7
+iot,7
+harmonization,7
+linked data,7
+prompt engineering,7
+rdf,7
+entity disambiguation,7
+nlp,7
+graph embedding,7
+multi-task learning,7
+deep neural networks,7
+neural-symbolic integration,7
+neurosymbolic,7
+knowledge graph embeddings,7
+neuro-symbolic reasoning,7
+symbolic reasoning,7
+symbolic ai,7
+fault diagnosis,7
+relational learning,7
+recommender system,7
+federated learning,7
+recommendation system,7
+transformer models,6
+clustering,6
+semantic search,6
+natural language processing (nlp),6
+alzheimer’s disease,6
+unsupervised learning,6
+retrieval augmented generation,6
+healthcare,6
+multimodal,6
+fuzzy logic,6
+data interoperability,6
+large language model (llm),6
+deep reinforcement learning,6
+semantic analysis,6
+electronic health records,6
+transfer learning,6
+word embedding,6
+ontological reasoning,6
+neuro-symbolic learning,6
+logical reasoning,6
+neuro-symbolic artificial intelligence,6
+digital twin,6
+scene understanding,6
+trustworthy ai,6
+multi-modal,6
+entity recognition,6
+prediction,6
+collaborative filtering,6
+multi-modal fusion,6
+digital humanities,5
+semantic annotation,5
+ontology construction,5
+image classification,5
+fhir,5
+generative ai,5
+sentence embeddings,5
+semantics,5
+cultural heritage,5
+multimodal fusion,5
+uncertainty,5
+semantic reasoning,5
+transformers,5
+e-learning,5
+knowledge distillation,5
+recommendation,5
+sentiment analysis,5
+wordnet,5
+computer vision,5
+entity resolution,5
+feature selection,5
+neural symbolic reasoning,5
+llms,5
+neurosymbolic integration,5
+visual reasoning,5
+anomaly detection,5
+graph neural networks (gnns),5
+knowledge-infused learning,5
+neural-symbolic,5
+semantic retrieval,5
+knowledge tracing,5
+knowledge enhancement,5
+text classification,5
+information fusion,5
+personalized recommendation,5
+data fusion,5
+optimal transport,4
+bim,4
+semantic,4
+electronic health record,4
+semantic data integration,4
+database,4
+wikidata,4
+multi-source heterogeneous data,4
+ehr,4
+ontology learning,4
+bioinformatics,4
+open data,4
+mapping,4
+data spaces,4
+blockchain,4
+knowledge engineering,4
+remote sensing,4
+heterogeneous graph,4
+feature engineering,4
+integration,4
+owl,4
+hybrid ai,4
+explainable artificial intelligence (xai),4
+neuro-symbolic computing,4
+temporal knowledge graph,4
+rule learning,4
+multi-hop reasoning,4
+zero-shot learning,4
+autonomous driving,4
+neural-symbolic computing,4
+personalized learning,4
+neural-symbolic reasoning,4
+embedding,4
+knowledge representation learning,4
+smart grid,4
+lstm,4
+convolutional neural networks,4
+explainable recommendation,4
+data augmentation,4
+knowledge graph integration,4
+rag,4
+graph convolutional neural network,4
+graph convolutional network,4
+chatgpt,4
+deep neural network,4
+multi-modal knowledge graph,4
+e-commerce,4
+text semantic matching,4
+hl7 fhir,3
+data harmonisation,3
+vision transformer,3
+snomed ct,3
+tabular data,3
+traditional chinese medicine,3
+artificial neural network,3
+knowledge organization,3
+linked open data,3
+chain-of-thought,3
+siamese network,3
+medical image segmentation,3
+evaluation framework,3
+semantic web technologies,3
+graphrag,3
+domain adaptation,3
+data validation,3
+tf-idf,3
+gnn,3
+healthcare system,3
+common data model,3
+knowledge graph (kg),3
+classification,3
+sequential recommendation,3
+knowledge discovery,3
+heterogeneous data,3
+data quality,3
+language model,3
+case-based reasoning,3
+decision support systems,3
+etl,3
+graph convolutional neural networks,3
+metadata,3
+semantic fusion,3
+omop cdm,3
+end-to-end,3
+pre-trained language model,3
+visual analytics,3
+multilingual,3
+ontology design,3
+biomedical ontology matching,3
+medical knowledge,3
+covid-19,3
+ecommerce,3
+pretrained language model,3
+semantic segmentation,3
+string similarity,3
+data science,3
+change detection,3
+recommendation systems,3
+cnn,3
+knowledge management,3
+neo4j,3
+multi-agent system,3
+ontology reasoning,3
+explanation,3
+self-supervised learning,3
+common sense knowledge,3
+scene graph,3
+visual question answering,3
+generative artificial intelligence,3
+ontology embedding,3
+expert knowledge,3
+neuro-symbolic systems,3
+generalization,3
+cybersecurity,3
+interpretable ai,3
+umls,3
+clinical decision support,3
+description logics,3
+multi-agent reinforcement learning,3
+answer set programming,3
+knowledge graphs (kgs),3
+context-awareness,3
+human activity recognition,3
+knowledge infusion,3
+datalog,3
+knowledge transfer,3
+matrix factorization,3
+interpretable machine learning,3
+neural-symbolic learning,3
+digital twins,3
+domain knowledge,3
+graph embeddings,3
+neuromorphic computing,3
+drug repurposing,3
+commonsense reasoning,3
+object detection,3
+visualization,3
+gene expression,3
+educational technology,3
+multimodal alignment,3
+cross-attention mechanism,3
+legal information retrieval,3
+legal technology,3
+multi-omics integration,3
+knowledge base question answering,3
+multimodal entity linking,3
+hybrid clustering,3
+graph convolution network,3
+smart manufacturing,3
+regression,3
+pre-trained model,3
+supervised learning,3
+feature extraction,3
+graph convolutional networks,3
+external knowledge,3
+knowledge integration,3
+cyber threat intelligence,3
+multi-modal learning,3
+machine reading comprehension,3
+random forest,3
+text summarization,3
+search,3
+knowledge graph question answering,3
+time series,3
+text matching,3
+personalized medicine,3
+sentence-bert,3
+image-text retrieval,3
+cosine similarity,3
+english translation,3
+neural machine translation,3
+image captioning,3
+semantic representation,3
+power quality,3
+low-resource languages,3
+multimodal learning,2
+alignment,2
+semantic mapping,2
+dimensionality reduction,2
+clinical trials,2
+pubmed,2
+automatic data harmonization,2
+data stewardship,2
+few-shot learning,2
+health informatics,2
+oncology,2
+semantic data management,2
+automation,2
+controlled vocabulary,2
+controlled vocabularies,2
+tabular data annotation,2
+ifc,2
+genetic programming (gp),2
+column matching,2
+schema mapping,2
+graph transformer,2
+human-in-the-loop (hitl),2
+openrefine,2
+semantic harmonization,2
+fair data,2
+quality control,2
+web 3.0,2
+system of systems,2
+pre-trained language models,2
+oaei,2
+reference dataset,2
+methodology,2
+data analytics,2
+intelligent system,2
+complex ontology matching,2
+biomedical informatics,2
+breast cancer,2
+common data elements,2
+data collection,2
+dynamic environment,2
+incremental data alignment,2
+relational database,2
+cidoc crm,2
+ebucore,2
+ontology-based metadata integration,2
+research data management,2
+semantic embedding,2
+lime,2
+ontology debugging,2
+knowledge base embedding,2
+web ontology language (owl),2
+ontology alignment evaluation initiative,2
+data analysis,2
+network management,2
+geospatial knowledge graphs,2
+data federation,2
+knowledge graph generation,2
+computational pathology,2
+description logic,2
+data curation,2
+medical informatics,2
+complex ontology alignment,2
+named entity recognition (ner),2
+similarity calculation,2
+hypothesis generation,2
+biomedical ontologies,2
+n-gram model,2
+topic model,2
+metadata harmonization,2
+heterogeneity,2
+smart building,2
+logistic regression,2
+health information management,2
+text processing,2
+earth observation,2
+precision agriculture,2
+causal maps,2
+conceptual model,2
+mental model,2
+utility matrix,2
+semantic labeling,2
+standards,2
+context awareness,2
+expert systems,2
+similarity measure,2
+dictionary,2
+negative sampling,2
+mbti,2
+yolo,2
+long short term memory (lstm),2
+urban analytics,2
+smart cities,2
+inductive learning,2
+symbolic constraint validation,2
+symbolic learning,2
+academic recommendation,2
+neuro-symbolic approach,2
+hybrid artificial intelligence,2
+knowledge-based systems,2
+prolog,2
+unification,2
+satellite imagery,2
+large language model agent,2
+attack detection,2
+neurosymbolic learning,2
+threat intelligence,2
+biomedical domain,2
+biomedical entity linking,2
+commonsense qa,2
+knowledge base qa,2
+open-domain qa,2
+ethical ai,2
+hybrid models,2
+transparency,2
+decision support,2
+knowledge graphs (kg),2
+concept learning,2
+benchmark,2
+benchmarking,2
+ontology-based reasoning,2
+machine reasoning,2
+trustworthy artificial intelligence,2
+first order logic,2
+knowledge-aware recommender systems,2
+human-in-the-loop,2
+conversational agents,2
+knowledge acquisition,2
+knowledge management applications,2
+neural-symbolic system,2
+knowledge reasoning,2
+compositionality,2
+image schemas,2
+hybrid intelligent systems,2
+inference mechanisms,2
+computational complexity,2
+building information modelling (bim),2
+fb15k-237,2
+ai for education,2
+learner modelling,2
+knowledge,2
+data sparsity,2
+knowledge representation and reasoning,2
+neurosymbolic reasoning,2
+backward chaining,2
+domain-specific knowledge graph,2
+recurrent neural network,2
+approximate reasoning,2
+root cause analysis,2
+temporal knowledge graphs,2
+neural-symbolic learning and reasoning,2
+neuro-symbolic intelligence,2
+entity prediction,2
+logic,2
+path reasoning,2
+public health,2
+computational biology,2
+question-answering system,2
+hybrid neural network,2
+intelligent transportation systems,2
+human-computer interaction,2
+intelligent question answering system,2
+automated feature engineering,2
+educational data mining,2
+data privacy,2
+meta-learning,2
+computed tomography,2
+knowledge graph construction,2
+multi-source data fusion,2
+transformer architecture,2
+drug combination,2
+t5,2
+recommendation model,2
+challenges,2
+digital transformation,2
+stable diffusion,2
+resource allocation,2
+multi-hop question answering,2
+relation detection,2
+self-attention,2
+multimodal data,2
+external knowledge base,2
+artificial general intelligence,2
+q&a,2
+predictive maintenance,2
+self-attention mechanism,2
+relation classification,2
+long short-term memory,2
+iot time-series,2
+sugarcane irrigation,2
+faq retrieval,2
+persian language processing,2
+code review,2
+dijkstra and ant colony optimization,2
+dynamic neighbor-weighted knn,2
+personalized learning closed loop,2
+spatio-temporal attention,2
+heterogeneous multi-source data,2
+multi-granularity modeling,2
+tp/ap data integration,2
+power dispatch,2
+healthcare informatics,2
+word embeddings,2
+medical image analysis,2
+semantic alignment,2
+cross-modal fusion,2
+malware detection,2
+node classification,2
+column type annotation,2
+text mining,2
+topic modeling,2
+retrieval-enhanced generation,2
+intelligent tutoring systems,2
+recurrent neural networks,2
+mental health,2
+energy efficiency,2
+biomarker,2
+multi-modal data,2
+system design,2
+chatbot,2
+gpt,2
+query rewriting,2
+graph construction,2
+knowledge embedding,2
+dynamic knowledge graphs,2
+graph neural networks (gnn),2
+hybrid modeling,2
+entity description,2
+medical question-answering,2
+question answering system,2
+cross-language,2
+topological structure,2
+transformer model,2
+gcn,2
+multimodal large language models,2
+graph contrastive learning,2
+service discovery,2
+hybrid model,2
+multi-modal entity alignment,2
+attention network,2
+urref,2
+recommendation algorithm,2
+social network,2
+biomedical text mining,2
+joint extraction,2
+natural language understanding,2
+neural architecture search,2
+multi-attention,2
+convolutional network,2
+explainable reasoning and learning,2
+non-monotonic logical reasoning,2
+robotics,2
+particle swarm optimization,2
+forecasting,2
+convolutional neural network (cnn),2
+deepseek algorithm,2
+smart education,2
+human capital management,2
+multilingual nlp,2
+data matching,2
+job matching,2
+attention mechanisms,2
+cross-lingual,2
+abstractive summarization,2
+sentence representation,2
+social media,2
+glam,2
+internet of things,2
+resource description framework,2
+cloud computing,2
+semantic web integration,2
+cross-domain ontology,2
+web technology,2
+industry 4.0,2
+multivariate time series,2
+semantic reliability,2
+semantic communication,2
+memory network,2
+conversational ai,2
+event detection,2
+contextual understanding,2
+neuro-symbolic models,2
+heterogeneous knowledge,2
+biomarker discovery,2
+semantic embeddings,2
+semantic parsing,2
+graph attention network (gat),2
+joint entity and relation extraction,2
+vector search,2
+adversarial training,2
+hybrid,2
+multimodal contrastive learning,2
+sentence transformers,2
+intelligent proofreading,2
+vector embeddings,2
+bertopic,1
+cultural heritage preservation,1
+multilingual corpus,1
+"architecture, engineering and construction (aec)",1
+bim-iot integration,1
+intelligent operation and maintenance (o&m),1
+semantic ontology,1
+generative language models,1
+medical history (anamnesis),1
+medical image management,1
+service-oriented architecture,1
+digital curation,1
+modern art,1
+semantic tagging,1
+denoising,1
+fair,1
+skos thesauri,1
+species traits,1
+corpus-based similarity,1
+hybrid-based similarity,1
+observable properties,1
+pretrained language models (plms),1
+pretrained language models,1
+semantic harmonisation,1
+sentence bert,1
+unsupervised machine learning,1
+bioactive compounds,1
+evidence-based health,1
+parkinson’s disease,1
+port state control inspection,1
+visual prompt tuning,1
+gene expression imputation,1
+multi-slice joint analysis,1
+spatial domain identification,1
+spatial transcriptomics,1
+fine-grained attribute,1
+multi-modal approach,1
+vision–semantics integration,1
+data alignment strategy,1
+data-to-text generation,1
+faithful text generation,1
+task-adaptive pre-training,1
+data conversion,1
+dual-branch network,1
+micro-expression recognition,1
+multi-stage feature fusion,1
+computerized medical record system,1
+data visualization,1
+transcription factors,1
+clinical data elements,1
+metadata standardization,1
+engineering data management framework,1
+multi-source data integration,1
+scenario-driven,1
+data models,1
+saref,1
+data merging,1
+biomedical terminology,1
+electronic medical records,1
+medical ontology,1
+symptom phenotypes,1
+demand response system,1
+energy-flexible production optimization,1
+green electricity index,1
+semantic middleware,1
+behavior-semantic collaboration,1
+generative recommendation,1
+llm-as-recommender,1
+domain analysis,1
+knowledge translation,1
+technology transfer,1
+translational medicine,1
+anchor-based hierarchical partitioning,1
+large-scale biomedical ontology matching,1
+relevance reasoning,1
+task termination prediction,1
+evolutionary,1
+multi-objective,1
+talent,1
+fine-tuning,1
+knowledge of traditional chinese medicine,1
+background knowledge,1
+questionnaires,1
+openehr,1
+graph neural network (gnn),1
+industrial knowledge graph (ikg),1
+zero-shot testing,1
+cardiovascular health study,1
+distribution learning,1
+ensemble learning,1
+gold standard labels,1
+intercohort comparison,1
+intracohort comparison,1
+semantic learning,1
+variable harmonization,1
+relation embedding generation,1
+relational graph transformer,1
+building information modeling (bim),1
+construction knowledge representation,1
+ontology-based attribute mapping,1
+digital cultural heritage,1
+external identifier property,1
+consumer electronics,1
+multimodal image retrieval,1
+region composition,1
+feature similarity computation,1
+multi-scenario,1
+digital system of units (d-si),1
+semantic metrology,1
+humanities,1
+social sciences,1
+sshoc-nl,1
+med2rdf,1
+sparql,1
+tabulae,1
+reranking,1
+job recommendation systems,1
+text parsing,1
+access and usage control,1
+policy conflict resolution,1
+w3c dpv,1
+w3c odrl,1
+asset management,1
+data mesh,1
+engineering systems,1
+identifier management,1
+reference context,1
+software interoperability,1
+declarative mappings,1
+fair principles,1
+mapping annotation,1
+mapping lifecycle,1
+metadata annotation,1
+named graph,1
+rdf-star,1
+usability,1
+field service engineering,1
+fmea,1
+llm graph transformer,1
+powertrain,1
+prescriptive maintenance,1
+rca,1
+cross-modal collaboration,1
+pseudo labeling,1
+database integration,1
+global-local feature fusion,1
+semantic feature integration,1
+transformer-based sr,1
+bioinformatics toolkit,1
+phenotypic data,1
+bleu score,1
+english-hindi translation,1
+support vector machine,1
+word translation probabilities,1
+data migration,1
+data transformation,1
+frameworks,1
+computer science education,1
+constructive alignment,1
+curriculum evaluation,1
+educational standards,1
+cardiovascular research,1
+multi-cohort studies,1
+cemr,1
+graph learning,1
+lexicon,1
+multi-semantic,1
+ner,1
+document recommendation,1
+resource description framework (rdf),1
+city information mode,1
+hierarchical classification,1
+continuity of care,1
+life science domain,1
+neon-gpt,1
+flexible queries,1
+relational databases,1
+user interface,1
+archival data,1
+archives,1
+digital archives,1
+reusability,1
+biological samples,1
+registry data,1
+aspect-based sentiment analysis (absa),1
+chain of thought (cot),1
+dependency relations,1
+explicit opinion,1
+implicit opinion,1
+target-aspect-sentiment (tasd),1
+internet of everything (ioe),1
+sensor knowledge graph (skg) matching,1
+similarity feature (sf) construction,1
+author name disambiguation,1
+ensemble classification,1
+instance matching,1
+event log,1
+iiot,1
+process-mining,1
+sustainable development goals (sdg),1
+data pooling,1
+harmonisation,1
+meta-analysis,1
+retrospective data harmonisation,1
+data management,1
+microplastics,1
+plastic,1
+trash,1
+semantic model,1
+soybean breeding,1
+few-shot image classification,1
+modality alignment,1
+cultural informatics,1
+generative modeling,1
+enhanced transformer,1
+ultra-high resolution image segmentation,1
+binary classification,1
+similarity measures,1
+competency question for alignment,1
+complex alignment,1
+user needs,1
+ai for cyber-physical systems,1
+dynamic interoperability,1
+computer science ontology,1
+bifactor model,1
+factor analysis,1
+p-factor,1
+psychopathology,1
+graph algorithms,1
+graph mining,1
+graph theory,1
+locality-sensitive hashing,1
+semantic mapping network,1
+text-based recommendation,1
+data exchange,1
+master data management,1
+semantic mappings,1
+applied ontology,1
+bridge-concepts,1
+network harmonization,1
+ontology design patterns,1
+ontology reuse,1
+unified foundational ontology,1
+food consumer science,1
+interdisciplinary collaboration,1
+ontology development,1
+ontology-based system,1
+petroleum reservoir analysis,1
+r2rml,1
+teaching design,1
+teaching evaluation system,1
+carbon balance,1
+farm,1
+ghg inventories,1
+global warming,1
+greenhouse gases,1
+net zero,1
+attention,1
+database pattern matching,1
+fair ml,1
+ml metadata,1
+agricultural ontologies,1
+breaches identifying,1
+breaches remedying,1
+matching adaptation,1
+owl-2 ontologies evolution,1
+domain-specific ontologies,1
+data sharing,1
+gpt for sheets,1
+distribution discrepancy,1
+state-of-health (soh) prediction,1
+temporal covariate shift,1
+disparate data source,1
+compact genetic algorithm,1
+heuristic selection (hs),1
+multichromosome,1
+multitasking optimization,1
+ontology matching (om),1
+cross-institutional data exchange,1
+discrepancy analysis,1
+federated data access challenges,1
+fhir profiles,1
+health level 7 fast healthcare interoperability resources,1
+medical informatics initiative,1
+bi-contrastive alignment,1
+incomplete multi-view clustering,1
+semantic guided,1
+metadata interoperability,1
+knownledge graph,1
+humanitarian response,1
+knowledge-oriented model,1
+cohort study,1
+computational time,1
+heterogeneous ontologies,1
+memory consumption,1
+metaheuristic algorithms,1
+ontology integration,1
+population based metaheuristic algorithms,1
+elt,1
+extract-load-transform,1
+extract-transform-load,1
+medical domain,1
+metadata-driven,1
+embedding stability,1
+battery production,1
+battery research,1
+data structures,1
+constrained embedding,1
+controllable variational autoencoder model,1
+data generation,1
+ground penetrating radar,1
+time-varying array,1
+database design patterns,1
+ontology generation,1
+semantic integration of databases,1
+approximate evaluation metric,1
+intelligent sensor system (iss),1
+light genetic programming (l-gp),1
+sensor ontology matching (som),1
+two-stage tournament selection,1
+human mobility,1
+spatial interaction,1
+urban land use,1
+semantic query,1
+alignment plan,1
+maple,1
+matching scenario,1
+ontolex-lemon,1
+vocbench 3,1
+void,1
+multi-source data,1
+ontology evaluation,1
+ontology alignment sentence transformers zero-shot,1
+cross-cohort query,1
+data element mapping,1
+ontology completion,1
+health information interoperability,1
+health research,1
+i2b2,1
+icgc argo,1
+secondary use of health data,1
+adaptive online deep learning,1
+adversarial attacks,1
+hedge backpropagation,1
+photovoltaic installation admittance capacity,1
+terminal measurement data,1
+energy domain,1
+aero-engines,1
+domain adaption,1
+prognostics and health management,1
+remaining useful life prediction,1
+working-condition shift,1
+distinctive features,1
+knowledge unit,1
+attribute semantic type (ast) identification,1
+context-aware,1
+graph evolution,1
+instance construction,1
+mapping reusing,1
+ocean circulation,1
+spatial–temporal ontology,1
+multi-modal optimization,1
+niching multi-objective particle swarm optimization algorithm,1
+sensor ontology matching,1
+dimension reduction,1
+multi-omics data,1
+data preparation,1
+semantic type discovering,1
+semantic typing,1
+web data,1
+netconf,1
+yang model,1
+command and control,1
+multi-layer ontology,1
+semantic data model,1
+geo-enrichment,1
+modular ontology modeling,1
+ex-pertiza,1
+irr,1
+krippendorf's alpha,1
+labeling,1
+pattern,1
+project,1
+reliability,1
+reliable,1
+strategy,1
+taggers,1
+tags,1
+unreliable,1
+4p medicine,1
+data fabric,1
+xml,1
+fair digital objects,1
+metadata analysis,1
+ontology population,1
+histopathology,1
+decentralized knowledge graphs,1
+smart contracts,1
+arabic nlp,1
+fine-grained emotions,1
+ontology augmentation,1
+cancer registration,1
+childhood cancer,1
+cross-lingual aspect-based sentiment analysis,1
+multilingual aspect-based sentiment analysis,1
+randomized controlled trials,1
+real-world evidence,1
+reproducibility,1
+dating,1
+software,1
+temporal expressions,1
+time periods,1
+categorical variables,1
+mappings,1
+numerical variables,1
+autonomous system,1
+compact co-evolutionary brain storm optimization algorithm,1
+hybrid confidence measure,1
+property alignment,1
+international medical informatics association,1
+knowledge representation and management,1
+knowledgeggraph,1
+digital government (e-government),1
+ontology enrichment,1
+ontology-driven conceptual modeling,1
+ontouml,1
+attribute mapping,1
+data heterogeneity,1
+global and local schemas,1
+healthcare domain,1
+ontology based data retrieval,1
+data governance,1
+missing data imputation,1
+semi-supervised learning,1
+anchor-based semantic partitioning,1
+confidence matrix based evolutionary algorithm,1
+large-scale ontology,1
+pattern-based similarity measure,1
+self-attention model,1
+cross-subject,1
+euclidean space data alignment,1
+event-related potential,1
+leave-one-subject-out,1
+low-dimensional subspace embedding,1
+multiple features,1
+rapid serial visual presentation,1
+heet sib song,1
+thai culture,1
+disease,1
+food,1
+microbiome,1
+text-mining,1
+word2vec,1
+aric,1
+cardiovascular disease,1
+cluster analysis,1
+meta-analysis as topic,1
+systems biology,1
+circadian rhythm,1
+informatics,1
+sleep,1
+osteomyelitis,1
+post-traumatic arthritis,1
+surgical biobank,1
+system theory,1
+incoherent ontologies,1
+justification computation,1
+ontology repair,1
+eye movements,1
+generalized additive models,1
+predictability,1
+recurrent neural network model,1
+mamdani inference,1
+common fund,1
+metadata integration,1
+survey alignment,1
+criminology domain,1
+grus,1
+knowledge stores,1
+semantic knowledge graph,1
+weather system,1
+school dropout,1
+smart readiness indicator,1
+instance-based matching,1
+knowledge graphs matching,1
+social media sensing,1
+web sensing,1
+data warehousing,1
+layered schemas,1
+omop,1
+concept equivalence,1
+ontology merging,1
+oral history,1
+domain vocabulary,1
+semantic compatibility,1
+medical databases,1
+medical schema matching,1
+harris’ hawks optimization,1
+semantic similarities,1
+upper ontology,1
+network of ontologies,1
+system integration,1
+metadata matching,1
+self-sovereign identity,1
+ssi,1
+banking sector,1
+cido,1
+covid-19-ibo,1
+iri,1
+database harmonization,1
+natality data,1
+cancer registry,1
+probability distribution,1
+probability metrics,1
+fuzzy rule,1
+opinion,1
+sentiment score,1
+user reviews,1
+de-identification,1
+dicom,1
+glioblastoma,1
+head–neck cancer,1
+longitudinal date changes (ldc),1
+normalization,1
+patient health record (phr),1
+protected health information (phi),1
+radiology,1
+radiomics,1
+application integration,1
+scrum,1
+data table,1
+cognitive automation,1
+cyber-physical systems,1
+data quality management,1
+data mobilization,1
+functional traits,1
+clinical data network,1
+dunhuang murals,1
+entity similarity,1
+multi-granularity,1
+constrained based matching,1
+lexical similarity,1
+semantic enhanced nearest neighbour (senn),1
+similarity matching,1
+threshold-svm,1
+alignment ontology,1
+ethic ai,1
+structural alignment,1
+trustworthiness,1
+clinical studies,1
+observational studies,1
+geometry,1
+geosparql,1
+model unification,1
+space,1
+land cover,1
+ndvi,1
+spatio-temporal,1
+embedding technology,1
+relational data,1
+mathematical equations,1
+plant phenomics,1
+attention over attention,1
+schema-level matching,1
+medical information systems,1
+kl divergence,1
+mini batch k-means,1
+web pmi,1
+annotations-based video retrieval,1
+video mining,1
+adaptive selection pressure,1
+approximate evaluation indicator,1
+evolution algorithm,1
+ontology meta-matching,1
+binary relations,1
+concepts,1
+hierarchy,1
+inheritance,1
+taxonomy,1
+satellite images,1
+final alignment,1
+graph attentional network,1
+cognitive graphs,1
+higher order data,1
+myers-briggs type indicator,1
+self organizing maps,1
+tensor distance metrics,1
+topological error,1
+cardiac ablation,1
+communication protocol,1
+electrophysiology study,1
+hl7 cda,1
+terminology mapping,1
+europeana,1
+object classification,1
+shabtis,1
+conditional random fields crf,1
+moocs,1
+ontology-based analytics,1
+transport sustainability indicators,1
+siamese neural network,1
+framework,1
+linguistic features,1
+ontology matching algorithm,1
+biomedical knowledge,1
+biomedical literature,1
+disease-specific,1
+clinical terminologies,1
+icd-10,1
+multilingual matching,1
+metadata and ontologies,1
+ogc standards,1
+content-based recommender system,1
+"e-learning, ontology, content-based recommender system, knowledge representation, learner",1
+felder-silverman learning style model,1
+learner's profile,1
+learning content,1
+learning style,1
+"s profile, learning content, learning style, felder-silverman learning style model",1
+bigdata,1
+graph visualization,1
+nosql,1
+matching instances,1
+schema alignment,1
+surface water ontologies,1
+heterogeneous information.,1
+biological and biomedical ontologies,1
+cross-references,1
+data linking,1
+obo foundry,1
+obo ontologies,1
+obo-xrefs,1
+geographic information systems (gis),1
+geospatial data,1
+owl ontology,1
+behavior crime data,1
+crime data,1
+mixed data,1
+harmony search,1
+energy saving,1
+semantics integration,1
+benchmarks requirements,1
+ontology authoring,1
+ontology benchmark recommender,1
+ontology tool category,1
+ontology visualization,1
+egyptian food safety ontology (efso),1
+food safety counseling system (fscs),1
+international article number (ean),1
+rule base management system (rbms),1
+semantic web rule language (swrl),1
+information integration,1
+integrating systems,1
+cognitive modeling,1
+concept acquisition,1
+multimodal interaction,1
+partial completeness assumption,1
+arabic narrative generation,1
+cultural evaluation metrics,1
+cultural schema ontology,1
+hybrid architecture,1
+knowledge-driven nlg,1
+owl/swrl reasoning,1
+graph databases,1
+neuro symbolic intelligence,1
+subsymbolic data,1
+symbolic data,1
+multimodal rare disease diagnostics,1
+neuro-symbolic swarm intelligence,1
+privacy-preserving healthcare ai,1
+quantum-entangled federated learning,1
+quantum-secure differential privacy,1
+internet of agents,1
+graph convolutional network (gcn),1
+policy-alignment,1
+symbolic rule reasoning,1
+distributed deep learning,1
+financial shared services,1
+grain enterprises,1
+process optimization,1
+enterprise decision-making,1
+intelligent decision support systems,1
+neural-symbolic systems,1
+computer vision tasks,1
+context-dependent reasoning,1
+em algorithm,1
+markov logic network,1
+probabilistic logic reasoning,1
+legal reasoning,1
+complex logical query answering,1
+first-order logical reasoning,1
+corneal bioengineering,1
+corneal topography,1
+neuro-symbolic techniques,1
+surgical decision support,1
+age-related macular degeneration,1
+multimodal ophthalmic imaging,1
+personalized treatment planning,1
+prognosis,1
+data-driven reasoning,1
+graph routing,1
+3d scene representation,1
+image analysis,1
+military mission simulation,1
+model mining,1
+point cloud analysis,1
+virtual mission areas,1
+data-centric governance,1
+no-stop government,1
+public service provision,1
+adaptive knowledge systems,1
+axiom weakening,1
+ethical ai development,1
+hybrid human-ai intelligence,1
+leveraging hallucinations,1
+numerical learning,1
+copper deposit,1
+mineral prediction,1
+differentiable fuzzy semantics,1
+symbol grounding,1
+causal-aware knowledge distillation,1
+dynamic subgraph pruning,1
+entity and relation prediction,1
+graph kag,1
+hybrid reasoning,1
+crop-yield prediction,1
+self-learning,1
+contextual relevance,1
+interestingness score,1
+personalized explanation,1
+digital repositories,1
+federated search,1
+neural encoding,1
+symbolic logic,1
+latent relational reasoning,1
+neuro-symbolic methods,1
+business process automation,1
+knowledge-intensive processes,1
+fake news detection,1
+human-oriented approach,1
+image representation,1
+unseen relationships,1
+zero-shot retrieval,1
+explainable classification,1
+moral value detection,1
+synthetic data,1
+neural-symbolic method,1
+symbol-manipulation,1
+counterfactual prediction,1
+kg-based applications,1
+valid link prediction,1
+contextual intelligence,1
+rule-based entity extraction,1
+blocking,1
+egocentric activity understanding,1
+open-world learning,1
+vision-language foundation models,1
+ddos attacks,1
+packet flow,1
+software defined network,1
+throughput,1
+adversarial behavior prediction,1
+cognitive threat reasoning,1
+cyber deception,1
+neuro-symbolic fusion,1
+gender equity,1
+wikidata ontology,1
+built environment,1
+extended reality,1
+neural response,1
+neuroarchitecture,1
+urban cognition,1
+formal knowledge,1
+neural symbolic,1
+anticipatory learning classifier systems,1
+neurosymbolic approach,1
+clinical nlp,1
+java api,1
+non-standard reasoner,1
+explanation generation,1
+ontology concept similarity,1
+filter bubbles,1
+knowledge graph adaptation,1
+over-personalization,1
+personalized knowledge graphs,1
+recommendation diversity,1
+user-centric ai,1
+artificial general intelligence (agi),1
+cognitive architectures,1
+diffusion-based language models,1
+instruction tuning,1
+reinforcement learning from human feedback (rlhf),1
+world models,1
+pcb fault detection,1
+neuro-semantic ai data warehouse,1
+meal preparation,1
+recipe analysis,1
+robot manipulation,1
+adaptive reasoning,1
+hierarchical knowledge graphs,1
+semantic understanding,1
+graph kernel,1
+hallucination,1
+dl class expressions,1
+dl-learner,1
+llm's,1
+embedded representations,1
+kge explanability,1
+probabilistic reasoning,1
+multi-agent systems (mas),1
+multimodal lms,1
+neurosymbolic methods,1
+personal service robots,1
+survey,1
+categorical logic,1
+category theory,1
+model theory,1
+monads,1
+neurosymbolic computing,1
+ai in healthcare,1
+bias reduction,1
+edge ai,1
+real-time ai,1
+self-explanatory ai,1
+transparent decision-making,1
+computer architecture,1
+neuro symbolic ai,1
+graph queries,1
+intelligent healthcare,1
+5g smart healthcare networks,1
+context-aware resource management,1
+quality of service,1
+experience transfer between neuro-symbolic agents,1
+knowledge graphs for shared memory representation,1
+ontology for multi-agent experience transfer,1
+semantic memory for multi-agent teams,1
+ai agency,1
+ai-human collaboration,1
+deliberative ai,1
+ergative ai,1
+ergative languages,1
+language alignment,1
+performative simulations,1
+defect detection,1
+effects analysis (fmea),1
+failure mode,1
+root cause analysis (rca),1
+semiconductor manufacturing,1
+zero defect manufacturing (zdm),1
+xair models,1
+ai accountability,1
+ai transparency,1
+answer set programming (asp),1
+hybrid artificial intelligence (ai),1
+object state classification,1
+supply chain risk management,1
+moral values,1
+constrained decoding,1
+controllable text generation,1
+natural logic,1
+textual inference,1
+first-order logic rules,1
+knowledge based question answering system,1
+multi-turn dialogue,1
+deepfake detection,1
+emotion recognition,1
+manipulation detection,1
+evaluation metrics,1
+safe ai,1
+social good,1
+agricultural knowledge graphs,1
+agricultural large model,1
+plant disease detection,1
+smart agriculture,1
+data and knowledge visualization,1
+digital libraries,1
+open research knowledge graph,1
+scientific papers,1
+provenance,1
+differentiable inductive logic programming,1
+neuro-symbolic method,1
+implication bias,1
+lithium battery disassembly,1
+complex logical reasoning,1
+knowledge grpah,1
+advanced artificial intelligence,1
+existential positive first order query,1
+explainable,1
+linear temporal logic,1
+query,1
+hardware-software co-design,1
+knowledge-based reasoning,1
+fuzzy inference,1
+logical query,1
+neural-symbolic model,1
+natural language inference,1
+translation to logic,1
+abductive learning,1
+fluoroscopy,1
+vertebrae localization,1
+neurosymbolic approaches,1
+situated robotics,1
+affordances,1
+autonomous robots,1
+hybrid learning,1
+autonomic systems,1
+cognitive robotics,1
+commonsense knowledge,1
+logic integration,1
+symbolic reasoning systems,1
+collaborative decision support systems,1
+human-ai interaction,1
+service ecosystem,1
+hierarchy of knowledge,1
+theory of learning,1
+inconsistent knowledge bases,1
+probabilistic logic programming,1
+stable model semantics,1
+scalable reasoning,1
+artificial intelligence (ai),1
+digital building twin (dbt),1
+knowledge base question answering (kbqa),1
+backward-chaining,1
+horn logic,1
+tuple generating dependencies,1
+convex cones,1
+temporal description logics,1
+neurosymbolic system,1
+rule compliance,1
+neural-symbolic cycle,1
+interpretable vectors,1
+shap,1
+probing large language models,1
+conceptual spaces,1
+data-frugal ai,1
+embodied intelligent agents,1
+human-ai teaming,1
+knowledge comprehensibility,1
+digital democracy,1
+public deliberation,1
+higher-order reasoning,1
+knowledge hypergraphs,1
+enterprise modeling applications,1
+public sector,1
+knowledge-enabled robot,1
+service robot,1
+task planning,1
+gnns,1
+black-box,1
+concept extraction,1
+explicit feedback,1
+rating prediction,1
+deep belief network (dbn),1
+ship-to-shore cranes (stscs),1
+supply chain,1
+systematic mapping study,1
+rdfs,1
+efficient queries,1
+knowledge bases,1
+meta-reasoning,1
+spatial data mining,1
+query answering,1
+deep representation learning,1
+graph analysis,1
+assertional box,1
+parallel reasoning,1
+cold-start,1
+document representation,1
+entities,1
+neuro-symbolic representation,1
+subgraph search,1
+activity primitive,1
+human activity understanding,1
+knowledge engine,1
+logic rule,1
+large-scale abox reasoning,1
+owl dl,1
+neural symbolic learning,1
+owl 2,1
+reasoner,1
+approximate entailment,1
+ontology reasoner,1
+multi-hop logical query answering,1
+precision public health,1
+collaborative systems,1
+transformer network,1
+reason-able embeddings,1
+knowldge graph embeddings models,1
+medical imaging,1
+inductive kg completion,1
+time intervals,1
+time prediction,1
+causality,1
+ai tools,1
+generalized annotated logic,1
+graphical reasoning,1
+logic programming,1
+neuro symbolic reasoning,1
+open world reasoning,1
+temporal logic,1
+language-endowed intelligent agents (leias),1
+learning through dialogue between dl model and leia,1
+lifelong learning,1
+ir,1
+hybrid systems,1
+compositional models,1
+part-based object classification,1
+spiking neural network,1
+algebraic learning,1
+category,1
+logic reasoning,1
+semigroup,1
+expert knowledge graphs,1
+part-based object detection and classification,1
+computational intelligence,1
+e-governance,1
+inductive logic programming,1
+raw data,1
+preferential description logics,1
+typicality,1
+logical inference,1
+neural reasoning,1
+rpms,1
+visual analogy,1
+activity recognition,1
+ceur-ws,1
+vadalog,1
+closed-world assumption,1
+open-world assumption,1
+practical reasoning,1
+el embeddings,1
+explainable systems,1
+explanations,1
+subsymbolic ai,1
+event processing,1
+event queries,1
+agi,1
+cognitive architecture,1
+general semantics,1
+levels of abstraction,1
+inconsistency checking,1
+relational reasoning,1
+deep deductive reasoners,1
+memory-augmented networks,1
+concept refinement,1
+global explanations,1
+human-understandable explainable ai,1
+learning from constraints,1
+neuro symbolic methods,1
+automl,1
+neural theorem prover,1
+rule schema,1
+energy function,1
+industrial automation,1
+sampling,1
+neural symbolic artificial intelligence,1
+statistical relational artificial intelligence,1
+heuristic search,1
+deductive reasoning,1
+knowledge graph entailment,1
+explainable decision support system,1
+the description logic elh,1
+resolution,1
+tensorization,1
+explainable recommender systems,1
+deep symbolic learning,1
+ethical artificial intelligence,1
+deep networks,1
+markov logic networks,1
+symbolic models,1
+cyber-social threats,1
+disaster resilience,1
+multimedia event processing,1
+spatiotemporal events,1
+video stream processing,1
+idss,1
+inference,1
+environmental science,1
+geospatial ai,1
+decision fusion,1
+laser shock peening,1
+monitoring,1
+digitization of ancient books,1
+multi-modal large language model,1
+traditional chinese medicine knowledge graph,1
+anomalous event tracking,1
+digitization platform,1
+subgraph matching algorithm,1
+deep neuro fuzzy system (dnfs),1
+fact-checking,1
+fuzzy inference system,1
+biological networks,1
+generative adversarial networks (gans),1
+synthetic data generation,1
+dynamic evolution,1
+key hyperparameters,1
+sequence prediction,1
+dynamic optimization,1
+enterprise archives,1
+harris hawks optimizer,1
+course knowledge points,1
+gas well deliquification,1
+plunger lift,1
+real-time fault diagnosis,1
+adaptive geometric modeling,1
+gaussian embedding,1
+novel class discovery,1
+point cloud semantic segmentation,1
+blueprint personas,1
+intelligent agent,1
+trust,1
+automated accident reporting,1
+car damage detection,1
+culpability prediction,1
+swrl rules,1
+cnc machining,1
+progressive modeling,1
+spindle thermal error,1
+chinese named entity recognition,1
+dual stream encoder,1
+dynamic attention mechanism,1
+multimodal named entity recognition,1
+adaptive interaction protocols,1
+topic-based group formation,1
+mixture design,1
+feed efficiency,1
+livestock,1
+omics,1
+graph database,1
+industry-education integration,1
+skill mapping,1
+vocational education,1
+dual-supervisor system,1
+cross-modal retrieval,1
+dynamic contextual modeling,1
+enterprise information governance,1
+low-resource adaptation,1
+automated construction of advanced mathematics,1
+educational application,1
+pre-training,1
+explainable machine learning,1
+datasets rotation,1
+dynamic relative threshold,1
+joint optimization,1
+pseudo-label iteration,1
+community detection,1
+graph-based analysis,1
+social networks,1
+swrl,1
+boundary refinement,1
+diabetic foot ulcer,1
+dual-mode attention mechanism,1
+hierarchical decoder,1
+learnable image preprocessor,1
+multiscale feature fusion,1
+book publishing industry,1
+delphi method,1
+design thinking,1
+generate–retrieve–generate,1
+hybrid-rag,1
+ship welding process,1
+molecular toxicity prediction,1
+tox21,1
+ontology model,1
+deep learning in bioinformatics,1
+protein property prediction,1
+protein representation learning,1
+sequence-structure integration,1
+graph networks,1
+hybrid representation,1
+model interpretation,1
+haptic feedback,1
+intelligent music education,1
+light field display,1
+digital pathology,1
+gastric cancer,1
+treatment response,1
+korean cultural,1
+multi-hop inference mechanism,1
+complex contacting surfaces,1
+extrapolation tasks,1
+knowledge-data hybrid modeling,1
+noisy signal,1
+sparse data,1
+disaster risk detection,1
+vision-language models (vlms),1
+delay-alignment strategy,1
+industrial process monitoring,1
+intelligent manufacturing,1
+temporal convolutional network (tcn),1
+time-series prediction,1
+advanced data analytics,1
+genai,1
+graph-based retrieval-augmented generation,1
+prescriptive analytics,1
+prescriptive platforms,1
+multi-chain reasoning,1
+clinical trial,1
+event knowledge graph,1
+future event prediction,1
+llm temporal reasoning,1
+metacognitive theory,1
+bertt5-kbqa,1
+knowledge-aware networks (kan),1
+online education recommendation,1
+personalised learning,1
+two-tower architecture,1
+intelligent diagnosis and treatment,1
+opportunities,1
+traditional chinese medicine (tcm),1
+elasticsearch,1
+intelligent legal consulting,1
+legal bert,1
+legal-onto,1
+react framework,1
+vietnamese law,1
+activity cliffs,1
+endocrine disrupting chemicals,1
+nuclear hormone receptors,1
+additional key words and phrasesmural,1
+gpt-4v(ision),1
+outpainting,1
+fuzzy cognitive fusion,1
+large-scale e-learning,1
+personalized exercise recommendation,1
+cross-lingual entity alignment,1
+multilingual text summarization extraction,1
+rotate,1
+dynamic subgraph reasoner,1
+knowledge-based question answering,1
+knowledge-enhanced multimodal embedding network,1
+temporal context modeling,1
+graph random walk,1
+multi-relation,1
+ability cultivation,1
+ai empowerment,1
+e-commerce data analysis,1
+teaching model,1
+biological knowledge graph,1
+"deep learning, graph convolutional networks",1
+prostate cancer,1
+scheduling optimization,1
+station operation plan,1
+phenotype-driven,1
+prioritization ranking,1
+rare disease diagnosis,1
+chatgpt-4turbo,1
+deepseek-r1,1
+model evaluation,1
+practical document generation,1
+vector knowledge base,1
+image-text semantic matching,1
+multimodal evidence alignment,1
+multimodal rumor detection,1
+scene graph attention network,1
+accurate identification,1
+durian pests and diseases,1
+industry & innovation and infrastructure,1
+intelligent durian plantation management,1
+pest and disease control,1
+yolo-v8,1
+interpretable framwork,1
+mirna-lncrna interactions,1
+multi-source similarity,1
+multi-view projection fusion,1
+random parallel matrix factorization,1
+catchment basins,1
+mineral prospectivity mapping,1
+xgboost,1
+hybrid human-ai workflows,1
+knowledge graph validation,1
+graph convolution networks(gcn),1
+aquaculture net cage,1
+fish monitoring,1
+hybrid analysis and modelling,1
+salmon behaviour,1
+single-beam echosounder,1
+geographically anchored interactive narratives,1
+walking route recommender systems,1
+academic performance prediction,1
+lstm-transformer hybrid model,1
+geological hazards,1
+loess slope,1
+course recommendation system,1
+modern education,1
+dangling entity detection,1
+statistical learning,1
+human-ai collaboration,1
+bi-directional long short-term memory,1
+residual learning,1
+multimodal knowledge base,1
+vision language models,1
+healthcare ai,1
+llama 3,1
+multimedia information retrieval,1
+construction contract,1
+risk identification,1
+cross-modal text-video retrieval,1
+hierarchical filtering mechanism,1
+video frame enhancement,1
+interpretable ml,1
+spatial-temporal characteristics,1
+synchronize knowledge,1
+transient stability assessment,1
+automatic checking,1
+building information modeling,1
+generative artificial intelligence (gai),1
+graphs,1
+additive manufacturing,1
+design for additive manufacturing,1
+knowledge graph question answering (kgqa),1
+logical programming (prolog),1
+conceptual product design,1
+design knowledge,1
+heuristic product ideation,1
+interpretable knowledge graph,1
+novel product iteration,1
+joint multimodal entity-relation extraction,1
+domain generalization,1
+spall-size estimation,1
+multi-source impulse mixture signal processing,1
+performance degradation assessment,1
+reciprocating machinery,1
+data-driven anomaly detection,1
+knowledge-based diagnosis,1
+message passing neural networks,1
+molecular modeling,1
+railway operational equipment,1
+th-rotate,1
+geometry problem understanding,1
+knowledge-guided entity and relationship extraction,1
+semantic information extraction,1
+biological pathway,1
+random walk,1
+education domain,1
+ims learning tools interoperability (lti),1
+learning assistant,1
+business integration,1
+business processing,1
+intelligent consultation,1
+library,1
+clinical decision support system,1
+fuzzy semantics learning,1
+fuzzy temporal knowledge graph,1
+global structure learning,1
+unsupervised,1
+key parts,1
+military targets,1
+patent infringement analysis,1
+personalized learning system,1
+feature factorization,1
+long-short-term-memory neural network,1
+solar radiation forecast,1
+automated compliance checking,1
+safety management,1
+data-knowledge-driven,1
+medical text,1
+phenotype alignment,1
+pretraining language model,1
+biocontrol agents,1
+contextual,1
+hypreto,1
+mosquito vector,1
+question-answering,1
+knowledge-refined modeling,1
+quality prediction,1
+soft sensor,1
+multimodal signals,1
+obstructive sleep apnea-hypopnea syndrome,1
+personalized healthcare,1
+multimodal information processing,1
+object recognition,1
+in-situ monitoring,1
+laser power bed fusion,1
+prior knowledge,1
+product design,1
+domain ontologies,1
+hybrid ensemble,1
+shado,1
+biological knowledge integration,1
+drug-target interaction,1
+hint-based learning,1
+acupuncture clinical decision-making,1
+brain compensation mechanisms,1
+intelligent agents,1
+knowledge-driven ai,1
+hierarchical transformer,1
+personalized health recommendations,1
+human-in-the-loop systems,1
+hybrid recommender,1
+labor-market analytics,1
+sequence forecasting,1
+knowledge recommendation,1
+path-based embedding,1
+ptranse-cf model,1
+amazon web services (aws),1
+hybrid ai systems,1
+serverless ml,1
+ticket classification,1
+b2b2g data sharing,1
+continuous data integration,1
+enterprise data governance,1
+llm-assisted semantic data modeling,1
+intelligent energy management,1
+syndispatchnet,1
+privacy alignment,1
+privacy testing,1
+static analysis,1
+acoustic pattern analysis,1
+bioacoustics monitoring,1
+cattle vocalizations,1
+multi-modal data fusion,1
+precision livestock farming,1
+comparative analysis,1
+entity matching,1
+lemmatization,1
+computational literature review,1
+concept hierarchy,1
+embedded topic model,1
+mhealth applications,1
+mhealth technology innovation,1
+qualitative methods,1
+radiology report generation,1
+ontology injection,1
+railway engineering,1
+context-aware sarcasm recognition,1
+diffusion-based representation learning,1
+multimodal sarcasm detection,1
+explanability,1
+malware ontology,1
+periodontology,1
+adaptive security solutions,1
+attack path detection,1
+auto mated mitigation,1
+cyber security framework,1
+dynamic policy adjustment,1
+iot threats,1
+network vulnerabilities,1
+proactive defense,1
+real-time response,1
+risk assessment,1
+threat analysis,1
+zero-trust policies,1
+education,1
+emergency preparedness,1
+training,1
+virtual reality,1
+bidirectional short-duration memory neural network,1
+music emotion recognition,1
+cell entity annotation,1
+column property annotation,1
+knowledge graph matching,1
+semantic table understanding,1
+contextual embeddings,1
+figurative language detection,1
+roberta-bigru-attention model,1
+sarcasm classification,1
+cross-domain question answering,1
+retrieval enhancement generation,1
+structured knowledge,1
+gabor filters,1
+image recognition,1
+palmprint recognition,1
+divide-and-conquer,1
+knowledge base construction,1
+lm-kbc,1
+self-rag,1
+clinactnet,1
+clinical knowledge graph,1
+ehr integration,1
+patient activity recognition,1
+multi-head latent attention mechanism,1
+pre-synergistic fusion,1
+bio-chemical,1
+k-bert,1
+knowledge injection,1
+medical ner,1
+news detection,1
+intelligent domain environments,1
+metaheuristics,1
+neural network learning,1
+agentic workflows,1
+event extrapolation,1
+temporal knowledge graphs (tkgs),1
+agricultural modeling,1
+strategic reasoning,1
+symbolic formalization,1
+electric power switchgear,1
+state perception,1
+yolov11,1
+attention-based reasoning,1
+hypergraph knowledge enhanced network,1
+dolce,1
+cucumber knowledge,1
+large language modeling,1
+wind turbine faults,1
+hierarchical attention mechanism,1
+knowledge base system,1
+multimodal information fusion,1
+convmultiview,1
+multiview representation,1
+tokopedia,1
+ai-based poem analysis,1
+educational software,1
+adaptive selection mechanism,1
+dual-path encoding,1
+multi-dimensional convolution,1
+auto ml,1
+cloud-based deployment,1
+multimodal stress indicators,1
+predictive analytics,1
+real-time inference,1
+shap value,1
+temporal data analysis,1
+hypergraph,1
+multi gene synergy,1
+multimodal imbalance,1
+synthetic lethality,1
+ideological education,1
+political course recommendation,1
+multi-feature fusion,1
+stable matching,1
+book recommendation,1
+hulbert index,1
+jiang-conrath similarity,1
+proposed hsib model,1
+rnn,1
+internet recruitment,1
+person-job matching,1
+power standards,1
+data privacy compliance,1
+regulatory compliance automation,1
+wearables,1
+cyber security,1
+intrusion detection system (ids),1
+kolmogorov arnold networks,1
+wireless sensor networks,1
+harmful text detection,1
+joint retrieval framework,1
+multilingual ai,1
+(llms),1
+ahimsa,1
+ai alignment,1
+ancient indian ethics,1
+arthashastra,1
+bhagavad gita,1
+cross-cultural ethics,1
+cultural inclusivity,1
+dharma,1
+ethical validation frameworks,1
+fairness accountability and transparency,1
+indigenous knowledge systems in ai,1
+mahabharata,1
+manusmriti,1
+multicultural ai ethics,1
+ramayana,1
+responsible ai development,1
+tirukkural,1
+upanishads,1
+vasudhaiva kutumbakam,1
+workspace ethics,1
+yoga sutras of patanjali,1
+mcts,1
+sequential planning,1
+design science research methodology (dsrm),1
+information dashboard,1
+information dashboard design method (iddm) canvas,1
+information dashboard design ontology (iddo),1
+information governance (ig),1
+ontological modelling,1
+unified ontological approach (uoa),1
+hybrid strategy,1
+interference channel,1
+spectral efficiency,1
+wireless resource allocation,1
+clinical diagnosis,1
+cross-modal analysis,1
+eeg,1
+hypothesis,1
+mri,1
+intelligent question-answering,1
+kg,1
+cancer care,1
+patient monitoring,1
+black box,1
+deep learning–based model,1
+electronic medical record,1
+hypertensive intracerebral hemorrhage,1
+medical domain knowledge graph,1
+era of integrated media,1
+news,1
+case laws,1
+judicial text,1
+legal domain features,1
+legal knowledge base,1
+rule-based,1
+verdict recommendation,1
+gene ontology,1
+lincs datasets,1
+molecule fingerprint,1
+computational efficiency,1
+predictive business insights,1
+encoder-decoder,1
+joint gradient update,1
+multi-relational graph,1
+relational direction,1
+handling stability,1
+physical dynamic model,1
+vehicle dynamics,1
+cbam,1
+deeplabv3+,1
+mechanical assembly images,1
+mobilenetv2,1
+part error correction,1
+feature joint learning,1
+interpretability analysis,1
+large model feature extraction,1
+phosphate modification site identification,1
+bidirectional encoder representation from transforms (bert) fine-tuning,1
+knowledge graph completion (kgc),1
+cognitive systems,1
+legal technologies,1
+clinical profile prompts,1
+interpretable artificial intelligence,1
+medical intelligent systems,1
+ophthalmic disease detection,1
+bilstm-crf,1
+gat,1
+vekg,1
+vocational education knowledge graph,1
+bm25,1
+knowledge co-creation,1
+multi-head attention mechanism,1
+value identification,1
+rule inference pattern,1
+high-speed train,1
+hybrid dynamic masking,1
+multi-strategy fusion,1
+overlapping triplets,1
+relation attention,1
+rule mining,1
+corporate financial risks,1
+early warning model,1
+method optimization,1
+graph neural network(gnn),1
+carbon flux partitioning,1
+causal effect estimation,1
+double machine learning,1
+knowledge-guided machine learning,1
+temperature sensitivity,1
+unsupervised nlp,1
+vertical domain,1
+disease knowledge graph,1
+ehr coding,1
+graph propagation,1
+hybrid attention,1
+icd,1
+course knowledge graph,1
+long short-term memory (lstm) network,1
+performance prediction,1
+semantic feature,1
+cnn network,1
+crop,1
+diseases and pests,1
+intent detection,1
+slot filling,1
+cultural relics conservation,1
+cultural relics seismic damage,1
+event ontology,1
+multi-source information fusion,1
+fusion techniques,1
+pretraining techniques,1
+common sense question and answering,1
+knowledge base fusion,1
+local feature fusion prediction,1
+whitening of sentence representations,1
+description information,1
+eye tracking,1
+image semantic segmentation,1
+system fault diagnosis,1
+progressive herbal recommendation,1
+real-world clinical decision support,1
+syndrome differentiation,1
+treatment method determination,1
+candidate entity generation,1
+multimodal co-attention fusion,1
+data driven recruitment,1
+intelligent recruitment decision support system,1
+inductive relation prediction,1
+logic transformer,1
+author profiling,1
+authorship analysis,1
+semi-supervised framework,1
+item attribute cooperation signal,1
+mechanism of attention,1
+cluster,1
+filter,1
+gene expression data,1
+microarray,1
+wrapper,1
+gumbel-softmax,1
+temporal logical rule,1
+semanic reinforcement,1
+named entity disambiguation,1
+named entity recog-nition,1
+system of system,1
+embedding fusion,1
+chain-prompting,1
+knowledge-enhanced multimodal models,1
+ophthalmic report generation,1
+evidence based medicine,1
+elderly travel education,1
+memory management,1
+citation graph,1
+hybrid search,1
+vector database,1
+verbalization,1
+domain-specific small models,1
+molecular representation learning,1
+computer-aided diagnosis,1
+medical image processing,1
+multimodal pre-trained large model,1
+semantic enhancement,1
+tensor factorization,1
+可解释性,1
+循环神经网络,1
+推荐系统,1
+注意力机制,1
+知识图谱,1
+resource discovery,1
+digestive endoscopic nursing,1
+questionnaire survey scale,1
+retrieval enhanced generation technology,1
+giacomo leopardi,1
+tei/xml,1
+rule embedding,1
+uncertain knowledge graphs reasoning,1
+weighted triples,1
+compatibility,1
+node-weighted hits,1
+restful api,1
+workflow activity interface parameters,1
+cognitive semantic communications,1
+generative adversarial networks,1
+image semantic communications,1
+cross-language document analysis,1
+self-improving large language models,1
+glove,1
+joint alignment,1
+intelligent education,1
+personalization,1
+diagnostic prediction,1
+explainable multi-omics integration,1
+module identification,1
+subgraph interpretation,1
+enhanced multimodal transformer,1
+image text retrieval,1
+hierarchical directed graph,1
+q&a knowledge reasoning,1
+complex vector space,1
+drug pair representation,1
+drug-drug interaction,1
+chinese short-text matching,1
+intelligent substation,1
+virtual circuit,1
+low-resource language kg,1
+wasserstein distance,1
+heterogeneous propagation,1
+homogeneous propagation,1
+a,1
+integrated energy system (ies),1
+knowledge guide,1
+multivariate load forecasting,1
+spatial-temporal synchronous graph convolutional network,1
+tm714,1
+graph reasoning path,1
+hybrid explanation,1
+review documents,1
+integration framework,1
+prototype,1
+clinical reports,1
+multimodal graph learning,1
+plant disease classification,1
+tomato disease ontology,1
+bertbigru-crf,1
+walnut disease and pest,1
+material flow integration,1
+sustainable development,1
+cellular automata,1
+modelling,1
+petri nets,1
+deep semantic matching,1
+hybrid q&a method,1
+reorder,1
+petroliferous basins,1
+owls,1
+semantic web services,1
+sparql query language,1
+condition assessment,1
+health index (hi),1
+joint inference,1
+measurement analysis,1
+power transformer,1
+joint reasoning,1
+global reasoning,1
+item_by_item reasoning,1
+methodologies and tools,1
+multi-hop kgqa,1
+joint training model,1
+adapters,1
+healthcare data,1
+healthcare institution,1
+healthcare institutions,1
+heterogeneous,1
+physician,1
+physician reasoning,1
+physicians,1
+proprietary information,1
+blocking function,1
+internal and external horizon,1
+sliding window,1
+tree species identification,1
+bilstm,1
+multi-modal consistency,1
+ontoloey enhancement,1
+triple,1
+english sentences,1
+quick retrieval,1
+tf-idf algorithm,1
+diagnostic system,1
+drainage pipeline,1
+knowledge-data collaboratively driven,1
+multiscale long short-term memory (mlstm),1
+silting disease,1
+autoencoder,1
+attribute semantic,1
+relationship matching,1
+additional key words and phraseselectronic health record,1
+data mining with ontologies,1
+predictive data analytics,1
+combination optimization,1
+modality hybrid,1
+emotion state recognition,1
+physiological signal,1
+ubiquitous computing,1
+confidence estimation,1
+fine-grained emotion analysis,1
+online comments,1
+geological map knowledge graph,1
+mineral prospectivity mapping of gold deposits,1
+spatial alignment of knowledge and space,1
+dependency tree,1
+relationship extraction,1
+paired sampling,1
+preference propagation,1
+few-shot knowledge graph completion,1
+type-aware attention,1
+annotation-free,1
+chu nom,1
+document image analysis,1
+hausdorff edit distance,1
+hybrid deep learning,1
+keyword spotting,1
+vietnamese steles,1
+biomarkers,1
+hubs,1
+vulvar cancer,1
+medical report generation,1
+knowledge graph enhanced recommendation,1
+non-sampling strategy,1
+drug combinations,1
+infectious diseases,1
+virtual screening,1
+multi-source knowledge graphs,1
+pre-training and re-training,1
+transferable representation learning,1
+biomedical knowledge fusion,1
+few-shot prompting,1
+large language models for resource-constrained field,1
+retrieve & re-rank,1
+knowledge graph (kg) embedding,1
+von mises-fisher (vmf) distribution,1
+heterogeneous embedding,1
+multi-modal feature fusion,1
+cnn-lstm model,1
+event calculus,1
+pomdp,1
+probabilistic commonsense reasoning,1
+probabilistic planning,1
+adversarial network,1
+multi-focus,1
+pre-processing,1
+learning of attribute character embeddings,1
+learning of structural embeddings,1
+knowledge-based attention mechanism,1
+online health platform,1
+question-answer pair matching,1
+item response theory,1
+semantic projection,1
+multi-modal knowledge,1
+knowledge-aware attention,1
+multi-view gnn,1
+multi-view knowledge graph fusion,1
+graph-based embedding,1
+ontology-based knowledge graph,1
+post-hoc explanations,1
+dpcnn,1
+ernie,1
+text match,1
+noisy data,1
+bert language model,1
+joint extraction of entity and relation,1
+maize breeding,1
+sequence labeling,1
+graph attention networks,1
+graph representation learning,1
+external load,1
+fuzzy model,1
+injury prediction,1
+sport data analysis,1
+knowledge-graph-enhanced recommendation,1
+neural language processing,1
+temporal knowledge graph question answering,1
+joint disambiguation,1
+subgraph,1
+teaching,1
+counterfactual explanations,1
+heterogeneous graph neural network,1
+iterative fusion,1
+kg integration,1
+machine learning applications,1
+neural machine verbalization,1
+case-based-reasoning,1
+diagnosis,1
+relation typing,1
+graph alignment,1
+structure learning,1
+augmented intelligence of things (aiot),1
+machine learning technology on graphs,1
+smart enterprise management systems (ems),1
+bert-based interaction network,1
+bert-based siamese network,1
+kbqa,1
+pointer network,1
+banana,1
+fusarium oxysporum f. sp. cubense race 4,1
+protein–protein interactions,1
+sequence alignment,1
+integer programming (ip),1
+extraction,1
+graph-based algorithms,1
+sentence embedding,1
+short text classification,1
+textrcnn,1
+knowledge graph-based question answering,1
+macro process planning,1
+stacked auto-encoders,1
+biomedical ontology,1
+hyperbolic attention,1
+automated medical learning,1
+distributed learning,1
+beaked sea snake,1
+hydrophis schistosus,1
+proteomics,1
+transcriptomics,1
+venom,1
+collaboratively boosting framework (cbf),1
+deep semantic segmentation network (dssn),1
+remote sensing (rs) imagery,1
+entity converting,1
+horn rules,1
+joint semantics and data-driven,1
+path representation,1
+attention model,1
+video popularity prediction,1
+biomedical entity alignment,1
+biomedical entity resolution,1
+biomedical knowledge base,1
+hin,1
+network embedding,1
+doctor recommendation,1
+interpretable recommendation,1
+online healthcare,1
+data-driven networks,1
+general machine intelligence,1
+real-time,1
+label construction,1
+mass cultural and sports activities,1
+multi-condition query,1
+biomedical pretrained language model,1
+knowledge augmented,1
+entity-relation pair,1
+joint entity and relation linking,1
+knowledge base question answering(kbqa),1
+cypher,1
+kgtk,1
+kypher,1
+similarity,1
+bioprocess engineering,1
+gaussian process models,1
+grey box modelling,1
+mammalian cell cultures,1
+nonlinear system identification,1
+nonparametric methods,1
+time series modelling,1
+adaptive genetic algorithm,1
+attribute reduction,1
+back propagation neural network,1
+classification prediction,1
+knowledge graphs visualization,1
+criminology,1
+bert-bilstm-crf,1
+knowledge triple,1
+semantic roles,1
+winograd schema challenge,1
+language identification,1
+similarity fusion,1
+event assignment,1
+event text classification,1
+government hotline,1
+graph convolution networks,1
+few-shot,1
+learning (artificial intelligence),1
+one-shot,1
+semantic networks,1
+deep video understanding,1
+few shot learning,1
+interaction analysis,1
+relationship analysis,1
+adaptive clustering algorithm,1
+multi-kernel learning,1
+knowledge elicitation,1
+multi-level initiatives,1
+policy context,1
+smart city,1
+axon guidance,1
+connectivity,1
+connectome,1
+micropattern,1
+network,1
+medical data,1
+feature reduction,1
+multi-omics,1
+counterfactuals,1
+multi-modal causability,1
+model fusion,1
+path generation,1
+topic entity recognition,1
+neural network model,1
+combination learning,1
+simple questions,1
+cardiovascular diseases,1
+lexical matching,1
+mental disorders,1
+power metering,1
+inductive logic learning,1
+symbolic methods,1
+cross-language entity alignment,1
+translation model,1
+joint semantic representation,1
+hybrid semantic matching,1
+joint model,1
+entity embedding,1
+spatio-temporal information,1
+property knowledge graph,1
+feature attention mechanism,1
+few-shot link prediction,1
+hybrid matching network,1
+clinical concept normalization,1
+co-attention mechanism,1
+chinese tea text,1
+knowledge representation learning (krl),1
+seed set,1
+translating model,1
+query expansion,1
+term frequency,1
+network analysis,1
+scientific question answering,1
+text entailment analysis,1
+neural network pruning,1
+sensor fusion,1
+joint learning,1
+knowledge base population,1
+entity hierarchical type,1
+bi-directional lstm (bi-lstm),1
+diseases,1
+models,1
+wheat stripe disease forecasting,1
+disease diagnosis,1
+expert experience,1
+multi-channel,1
+embedding models,1
+oceanography,1
+fuzzy integral,1
+information aggregation,1
+linguistic summary,1
+protoform,1
+embedding model,1
+modeling coherence,1
+modeling context,1
+ethnic universities,1
+painting art rendering,1
+exploratory data analysis,1
+metacognitive treatment,1
+clinical data harmonisation,1
+concept mapping,1
+ai-generated digital twins,1
+alzheimer's disease,1
+clinical trial efficiency,1
+anomaly traceability,1
+explainable modeling,1
+industrial processes,1
+knn algorithm,1
+agent,1
+query understanding,1
+recommendations,1
+algorithmic bias,1
+algorithmic fairness,1
+risk prediction,1
+stroke,1
+indicator recommendation,1
+embedding representation,1
+quaternion,1
+entropy awareness,1
+ad classification,1
+labse,1
+multilingual classified ads,1
+ai-driven career guidance,1
+emotion analysis,1
+google cloud speech-to-text,1
+multi-agent architecture,1
+multilingual support,1
+personalized recommendations,1
+rule-based ai,1
+sankalp,1
+sustainable development goals,1
+vader sentiment analysis,1
+voice assistant,1
+clause alignment,1
+deep semantic modeling,1
+interdisciplinary computational sciences,1
+legal text analysis,1
+transformer-based encoders,1
+academic writing translation,1
+complex sentence generation,1
+english-chinese machine translation,1
+optimized bert model,1
+semantic alignment mechanism,1
+syntactic enhancement decoder,1
+esco,1
+multilingual job title matching,1
+job title matching,1
+skill prediction,1
+ocr,1
+real estate,1
+web 3,1
+automatic machine translation algorithms (amtas),1
+cross-cultural communication,1
+film and television media,1
+multi-modal data integration,1
+generate question,1
+matching,1
+quality assessment,1
+ai in recruitment,1
+applicant tracking system (ats),1
+automated resume screening,1
+hr technology,1
+nlp (natural language processing),1
+recruitment automation,1
+resume ranking,1
+rank learning,1
+temporal context,1
+embedding filtering,1
+data lake infrastructure,1
+data retrieval,1
+retrospective cohort studies,1
+secondary use of clinical routine data,1
+beps,1
+bim to bem,1
+fine tuning llm,1
+semantic textual similarity,1
+cross-lingual semantic similarity,1
+kannada monolingual embedding,1
+lexical decomposition,1
+sentence similarity,1
+short-text semantic similarity,1
+advanced intelligence algorithms,1
+verb recognition,1
+conditional optimal transport,1
+table representation,1
+table retrieval,1
+web search,1
+diffusion tensor imaging,1
+hypothermia,1
+hypoxic-ischemic encephalopathy,1
+magnetic resonance imaging,1
+myelination,1
+neonatal brain atlas,1
+neonatal brain injury,1
+neural development,1
+outcome prediction,1
+prognostic prediction,1
+additional key words and phrasescross-lingual,1
+triple reward,1
+residual network,1
+adhd,1
+irt,1
+kernel equating,1
+linear equating,1
+test equating,1
+cross-language image description,1
+multimodal deep learning,1
+reward mechanisms,1
+building matching,1
+completeness assessment,1
+large-scale footprint extraction evaluation,1
+proxy data,1
+semantic evaluation,1
+geometric features,1
+multisource data,1
+one-class classifier,1
+context knowledge,1
+user involvement,1
+agile software industry,1
+crowd documentation,1
+question-answering websites,1
+data verification,1
+r&d data,1
+text similarity,1
+pivot language,1
+cross-domain search,1
+product search,1
+search and ranking,1
+bayesian kriging method,1
+energy monitoring,1
+indonesia,1
+hard matching,1
+semantic information,1
+summarization evaluation,1
+automatic coding,1
+decomposble attention,1
+ancient classics,1
+digital humanity,1
+reference detection,1
+item-related recommendation,1
+dynamic compositional networks,1
+correlation-free prediction analysis,1
+data record sample densities,1
+mineralogical and elastic influences,1
+well-log brittleness index estimates,1
+zoomed-in data interpolation,1
+drug-excipient compatibility,1
+expert system,1
+formulation design,1
+cross-lingual retrieval,1
+dynamic composition,1
+treelstm,1
+5g,1
+active learning,1
+communication,1
+conspiracy,1
+conspiracy theories,1
+coronavirus,1
+health communication,1
+infodemic,1
+infodemiology,1
+misinformation,1
+twitter,1
+vaccine,1
+vaccine hesitancy,1
+cross attention mechanism,1
+super resolution,1
+transition amplification,1
+commonsense modeling,1
+multi-turn dialogue comprehension,1
+response selection,1
+utterance selection,1
+quaternion embedding,1
+belief theory.,1
+intrinsic and extrinsic quality,1
+multi-criteria data matching,1
+openstreetmap,1
+reference data,1
+spatial accuracy,1
+spatial data,1
+graph structure,1
+holographic model,1
+link inference,1
+cross-lingual information retrieval,1
+cross-lingual word embedding,1
+neural clir,1
+translation gap,1
+alignment supervision,1
+bilingual phrase representation,1
+recursive autoencoder (rae),1
+bidl,1
+clada,1
+iconographic subject,1
+iconography,1
+icons,1
+religious icons,1
+virtual encyclopedia of bulgarian icons,1
+expert finding,1
+expertise retrieval,1
+stackoverflow,1
+statistical machine translation,1
+news recommendation,1
+generative news recommendation,1
+diabetes,1
+extractive summarization,1
+medical text summarization,1
+indicator system fusion,1
+adaptive fusion,1
+heterogeneous information fusion,1
+semantic join,1
+materials discovery,1
+semantic role labeling,1
+sembert,1
+data alignment,1
+life data analysis,1
+decision trees,1
+foundation model,1
+multiscale,1
+alignment-embedding mechanism,1
+property graph database,1
+graph model heterogeneity,1
+stix,1
+fine tuning,1
+data fusio,1
+reciprocal rank fusion,1
+residual correction,1
+connecting ontology,1
+knowledge enrichment,1
+term extraction,1
+relation discovery,1
+axiom learning,1
+content-based filtering,1
+smart buildings,1
+intelligent control,1
+news fly spark,1
+digital scene map generation,1
+image cropping,1
+semantic transformation,1
+extended information,1
+time series data,1
+score integration,1
+pose data,1
+dynamic time warping,1
+fast fourier transform,1
+mbse,1
+model-based collaboration,1
+systems engineering,1
+sysml v2,1
+blockchain-enabled linguistic analytics,1
+ideological fidelity,1
+score (ifs),1
+neural machine translation (nmt),1
+semantic and stylistic fidelity,1
+table integration,1
+row matching,1
+hungarian algorithm,1
+latent-variable encoding,1
+deep gaussian processes,1
+spectral regularization,1
+automated disaster dataset generation,1
+multimodal remote sensing datasets,1
+ontology-based data labeling,1
+semantic reasoning for hazard analysis,1
+semantic aggregation,1
+attribute attention,1
+agriculture,1
+digital database,1
+decision making,1
+decision support system (dss),1
+disability employment,1
+vocabulary hub,1
+entity extraction,1
+social science,1
+survey data recycling,1
+visual data query,1
+environmental sensor networks (esns),1
+ontology-based data access,1
+structured query language (sql) databases,1
+virtual knowledge graphs (vkgs),1
+evolutionary algorithm,1
+interpolation model,1
+local search,1
+automated data mapping,1
+schema-based,1
+iliad,1
+ocean information model,1
+nosql databases,1
+schema discovery,1
+sbert transformers,1
+database interoperability,1
+unstructured data processing,1
+university network security,1
+network planning,1
+internet of things (iot),1
+interoperabilit,1
+data sovereignty,1
+material flow,1
+semantic usability,1
+digital image quality assessment,1
+ontology modeling,1
+cultural heritage repositories,1
+json-ld,1
+steel surface defect,1
+yolov8n,1
+deep-learning-based representations,1
+deep learning attention,1
+integrated semantic feature,1
+desmoking,1
+laparoscopic scenes,1
+generative adversarial network,1
+edge-fog computing,1
+digital-twins,1
+jailbreak attack,1
+mask generation,1
+security defense,1
+multi-objective optimization,1
+eo,1
+semantic ai,1
+decision intelligence,1
+sustainable systems,1
+responsible ai,1
+multi-site mri,1
+content-style disentanglement,1
+triplet attention,1
+current source model,1
+harmonic study,1
+solar generation,1
+switch model,1
+cpps,1
+domain-driven design (ddd),1
+information model,1
+frequency-domain analysis,1
+harmonic mitigation,1
+nodal analysis,1
+model-based systems engineering (mbse),1
+multidisciplinary design analysis and optimization (mdao),1
+metamodel,1
+early verification & validation (v&v),1
+sysml,1
+ontology and data portability,1
+weight bipartite graph,1
+data standardization,1
+holistic health records,1
+semantic communications,1
+operated networks,1
+digital elevation model (dem),1
+global–local context,1
+sinkhole detection,1
+swin transformer,1
+collaborative web,1
+security,1
+smart care,1
+semantic assets,1
+sa lifecycle,1
+semantic assets development,1
+point cloud registration,1
+low overlap rate,1
+semantic features,1
+correspondence,1
+unsupervised representation learning,1
+offshore wind farm,1
+harmonics,1
+monitoring data,1
+operation states,1
+association analysis,1
+japanese,1
+bi-lstm,1
+iot device discovery,1
+iot device query,1
+iot device registration,1
+aortic segmentation,1
+geometric constraint,1
+data space access,1
+data architecture,1
+data vocabulary,1
+simulation models,1
+customer-side harmonic impedance,1
+grid-side harmonic voltage,1
+harmonic resonance,1
+middleware,1
+device intelligent registration,1
+d-pmsg wind farm,1
+utility-side harmonic impedance wind-farm-side harmonic impedance,1
+gesture quantization,1
+co-speech gesture generation,1
+discrete encoding,1
+crisp-dm,1
+chat bots,1
+multisensory integration,1
+semantic category,1
+selective attention,1
+pretrain-finetuning,1
+soft prompts,1
+contrast learning,1
+distribution alignment strategy,1
+harmonic source localization,1
+partial least squares (pls),1
+data-driven modeling,1
+distribution network,1
+molecular classifi-cation,1
+densenet-121,1
+global average pooling,1
+noise-contrastive estimation,1
+hybrid text summarization,1
+latent semantic analysis (lsa),1
+longformer,1
+pagerank. computational efficiency,1
+electronic products,1
+clip model,1
+text alignment,1
+lora fine tuning,1
+data source,1
+diffusion models,1
+intra-image self-attention,1
+image variations,1
+semantic preservation,1
+realistic image adaptations,1
+5g and beyond wireless communication systems,1
+end-to-end communication,1
+end-to-end learning,1
+goal-oriented communication,1
+semantic distortion,1
+cross attention,1
+motion style transfer,1
+semantic-aware motion transfer,1
+dual interactive-flow fusion,1
+distributed source coding,1
+generalized concatenation,1
+coset coding,1
+genomic sequencing data,1
+traffic forecasting,1
+instance normalisation,1
+distribution shift,1
+cross-domain migration,1
+graph classification,1
+frequency spectrum,1
+remote sensing visual grounding (rsvg),1
+spatial-frequency fusion,1
+global,1
+efficacy,1
+cross-modal learning,1
+query-poi matching,1
+ai-powered digital twin,1
+cognitive ai interface,1
+disaster management,1
+geospatial foundation models,1
+land use change,1
+machine learning for earth observation,1
+multimodal data fusion,1
+physics-informed neural networks,1
+postdisaster recovery,1
+spatio-temporal analysis,1
+vegetation dynamics,1
+wind power prediction,1
+incremental dynamic time alignment,1
+cosine similarity cross-attention mechanism,1
+renewable energy forecasting,1
+time series forecasting,1
+benchmark data sets,1
+forecast uncertainty,1
+extrapolation,1
+neuro-symbolic hybrid methods,1
+digital forensics,1
+graph,1
+ontology-driven programming,1
+ontology graph,1
+self-supervised learning ontology,1
+instruction following,1
+command verification,1
+hybrid neural-symbolic nlp,1
+arabic semantic query expansion,1
+factual consistency in nlp,1
+automated reasoning,1
+factual verification,1
+symbolic-neural integration,1
+hallucination prevention,1
+rule extraction,1
+ambiguity resolution,1
+6g network slicing,1
+ultra-reliable low-latency communication (urllc),1
+autonomous systems,1
+remote surgery,1
+real-time optimization,1
+ai for network management,1
+intelligent resource allocation,1
+knowledge-based question answering (kbqa),1
+neuro-symbolic.,1
+neuro-symbolic model,1
+it alerts,1
+deep learning classifier,1
+knowledge graph embedding's,1
+dynamic graphs,1
+contextual reasoning,1
+real-time updates,1
+medical natural language inference,1
+distilbert,1
+clinical decision-making,1
+sustainable ai,1
+combinations of intelligent methods,1
+neuro-symbolic approaches,1
+hybrid expert systems,1
+collaborative optimization,1
+hallucination mitigation,1
+probabilistic graphical models,1
+distributed systems,1
+autonomous vehicles,1
+ethical decision making,1
+empathic-av,1
+ethical ontology,1
+stakeholder impact simulation,1
+differentiable inductive logic programming (∂ilp),1
+ilp,1
+meta-interpretive learning (mil),1
+probabilistic ilp (pilp),1
+statistical relational learning (srl),1
+symbolic knowledge bases,1
+gpt-4,1
+spatial graph,1
+ego car,1
+context aware perception,1
+fuzzy answer set programming,1
+gaussian-bernoulli restricted boltzmann machine,1
+confidence rules,1
+multi-modal learning analytics,1
+6g,1
+gender classification,1
+blog posts,1
+word representations,1
+symmetry representation learning,1
+scientific accuracy,1
+climate change,1
+fake news,1
+hybrid homotopy optimization,1
+risk sensitive optimization,1
+hybrid variable learning,1
+poster-level relation extraction,1
+rules learning,1
+hard rules,1
+soft rules,1
+rule consistency loss,1
+layout understanding,1
+copilot,1
+multiagent,1
+transcription factor,1
+protein language model,1
+6g networks,1
+goaloriented communication,1
+edge intelligence,1
+ai-native networks,1
+quantum cognition,1
+predictive resilience,1
+cyber-physical intelligence,1
+adaptive infrastructure,1
+distributed cognition,1
+autonomous evolution,1
+dpn,1
+cem,1
+cansae,1
+fpf,1
+nsre,1
+ecf,1
+dkg,1
+standard operating procedures,1
+chain-of-thought reasoning,1
+network resource management,1
+ai agent,1
+intelligent operations,1
+drug synergy,1
+learnable database,1
+physiological modeling,1
+domain-specific fine-tuning,1
+hybrid knowledge graph,1
+classilication,1
+acoustic models,1
+lora methodology,1
+bridge technical condition evaluation knowledge,1
+concept extraction model,1
+subgraph retrieval,1
+advanced persistent threat,1
+openai,1
+rna sequencing (rna-seq),1
+peline,1
+nextflow,1
+lynx-rna,1
+large language models (llm),1
+extractive qa,1
+low-resource language,1
+kazakh language,1
+retrieval-augmentation,1
+self-organizing map,1
+power grid networks,1
+pre-trained embeddings,1
+contrastive alignment,1
+ai tutoring,1
+english as an additional language,1
+vocabulary acquisition,1
+logic reasoning system,1
+financial regulation field,1
+lexical fusion,1
+financial complaint classification,1
+hybrid nlp framework,1
+false complaint detection,1
+extended reality (xr),1
+immersive environments,1
+power systems,1
+knowledge-augmented reasoning,1
+nl2sql,1
+k-means clustering,1
+schema matching evaluation,1
+instance-based schema matching,1
+rare diseases,1
+elmo,1
+service similarity,1
+web service,1
+natural language possessing,1
+dag,1
+structure-aware attention,1
+test matching,1
+residual connections,1
+text graph,1
+data-scarcity,1
+fertilizer recommendation,1
+coffee farming,1
+intracerebral hemorrhage,1
+entity fusion,1
+chinese question answering,1
+medical knowledge graph,1
+candidate generation,1
+candidate ranking,1
+global features,1
+local features,1
+event extraction,1
+financial documents,1
+financial events,1
+node embeddings,1
+property prediction,1
+edge regression,1
+edge classification,1
+environmental toxins,1
+biomedical knowledge graph,1
+toxin-disease associations,1
+node and link prediction,1
+environmental health analytics,1
+predictive toxicology,1
+aspect based sentiment analysis,1
+semantic web rule language,1
+decision tree,1
+asbestos,1
+network alignment,1
+multi-scale,1
+node embedding,1
+regulation,1
+atomic diagram,1
+logictext,1
+partial model,1
+innovation information mining,1
+integration platform,1
+intelligent knowledge extraction,1
+bridge inspection,1
+cross-kg link prediction,1
+relation prototype graph,1
+path extraction,1
+cross modal knowledge alignment,1
+multifeature fusion,1
+dual-encoder models,1
+biomedical knowledge graphs,1
+orchestration,1
+clinical qa,1
+graph retrieval,1
+q-matrix,1
+indonesian product reviews,1
+hybrid knowledge-enhanced personalized learning,1
+attention-based collaborative filtering,1
+incremental deep learning,1
+cloud-based personalized education,1
+weapon equipment,1
+operation test,1
+evaluation index system,1
+multi-model large language model,1
+discipinary knowledge graph,1
+electrical safet,1
+entity description embedding,1
+kge,1
+dense network,1
+specific sharing,1
+relational awareness,1
+heterogeneous adaptive fusion,1
+graph augmentation,1
+contractive learning,1
+multi-modal alignment,1
+multi-view fusion,1
+entity representation,1
+power equipment state estimation,1
+temporal transformer,1
+smart farming,1
+multi-modal entity resolution,1
+adaptive denoising multi-modal hybrid,1
+domain-specific consultation system,1
+lightweight system,1
+adverse drug event,1
+clinical text analysis,1
+research support system,1
+multi-modal knowledge graphs,1
+coreference resolution,1
+mention detection,1
+component,1
+chinese cross-modal,1
+fuzzy division,1
+model decision tree,1
+oblique decision tree,1
+collaborative learning,1
+joint event extraction,1
+knowledge graph enrichment,1
+korean grapheme-to-phoneme,1
+autoregressive model,1
+phonological knowledge base,1
+syllable constraint,1
+pre-analyzed dictionary,1
+person-job recommendation,1
+intent modeling,1
+efficientnetv2b0,1
+u-net,1
+r-gcn,1
+leaf disease detection,1
+pest recommendation,1
+visual perception technology,1
+yolo model,1
+hydropower maintenance resource scheduling,1
+agent optimization,1
+low-resource,1
+opinion mining,1
+knowledge matching,1
+clinical data mining,1
+precision medicine,1
+scalable pipeline,1
+user modeling,1
+behavior embedding,1
+long/short-term preference,1
+precision-recall accuracy,1
+dfig,1
+relevance,1
+verification,1
+veracity,1
+accountability,1
+unified modeling,1
+knowledge base management,1
+configurable chunking,1
+multimodal rag,1
+image retrieval,1
+short text,1
+capsule networks,1
+multi-query perception model,1
+joint encoding model,1
+automated question generation,1
+bayesian network,1
+body-in-white welding station,1
+fuzzy semantics,1
+lbp algorithm,1
+selection method,1
+knowledge hypergraph,1
+natural language process,1
+flask,1
+autonomous vehicle,1
+spatio-temporal attention for social interaction,1
+intention prediction,1
+medical information extraction,1
+entity-relation extraction,1
+biaffine attention,1
+focal loss,1
+multimodal entity alignment,1
+causal discovery,1
+industrial systems,1
+genetic,1
+fuzzy,1
+arrhythmia,1
+optimization,1
+knowledge based systems,1
+bangla,1
+open-domain,1
+generative,1
+retrieval,1
+bangla conversation corpus,1
+multilayer,1
+api,1
+power grid dispatching,1
+domain knowledge graph,1
+synonym replacement,1
+data lineage,1
+metadata governance,1
+edit distance,1
+process industry,1
+safety and security,1
+teaching resource recommendation,1
+test pass rate,1
+gini coefficient,1
+retrievers,1
+dense index,1
+healthcare management,1
+disease prediction,1
+multitask learning,1
+real-time event summarization (res),1
+avionics,1
+structural health monitoring,1
+visual storytelling,1
+text feature,1
+mobile wireless networks,1
+3 gpp,1
+question-answering systems,1
+retrievers models,1
+prognostic,1
+remaining useful life (rul),1
+c-mapss,1
+breast cancer prognosis,1
+multi-source biological data,1
+dual-layer heterogeneous network,1
+dialogue state tracking,1
+task-oriented dialogue system,1
+vae,1
+probability graph model,1
+slot-filling,1
+multi-source entity fusion,1
+hypernode,1
+cascade dual-decoder,1
+single-cell hi-c,1
+3d genome organization,1
+gene regulation,1
+cell type identification,1
+degradation parameters (dps),1
+hybrid-driven method,1
+induction motors,1
+two stages,1
+joint extraction of entities and relations,1
+decomposition and recombination strategy,1
+overlapping triples,1
+bi-directional prediction,1
+negative samples generation,1
+emoji prediction,1
+urdu language,1
+roberta,1
+ssep,1
+multi-label,1
+turkish,1
+legal document retrieval,1
+legal question answering,1
+software security,1
+vulnerability repair,1
+chain of thought,1
+indian penal code,1
+legal guidance system,1
+official document processing,1
+model fine-tuning,1
+stability analysis,1
+resume shortlisting,1
+legal nlp,1
+legalbert,1
+complaint analysis,1
+fir automation,1
+ai in law enforcement,1
+bharatiya nyaya sanhita (bns),1
+cross-lingual terminology alignment,1
+prompt strategy,1
+autonomous network,1
+intent translation,1
+end-to-end relation extraction,1
+chinese nlp,1
+gemini,1
+llama,1
+performance evaluation,1
+intelligent algorithms,1
+global medical communication,1
+acoustic word embeddings,1
+query-by-example search,1
+terminology translation,1
+real-time recommendation,1
+technical documents,1
+computer-assisted translation,1
+gdpr compliance,1
+privacy policies,1
+semantic similarity analysis,1
+e5 transformer model,1
+domain-specific ai,1
+nomic-em- beddings,1
+legal assistance,1
+hybrid data,1
+structured data,1
+unstructured data,1
+equity markets,1
+financial forecasting,1
+equity forecasting,1
+hybrid retrieval,1
+generativeai,1
+smart-eq,1
+geospatial query system,1
+fuzzy matching algorithm,1
+web application,1
+canonical names,1
+named entity recognition (ner) etc,1
+content-based recommendation,1
+inner-attention mechanism,1
+semantic product searching,1
+service bulletin (sb),1
+aerospace maintenance,1
+prognostics and health management (phm),1
+technical language processing,1
+sequential denoising auto-encoder,1
+artificial intelligence technology,1
+english,1
+complex statements,1
+quick translation,1
+automated text data augmentation,1
+cross-lingual transfer learning,1
+hyperparameter optimisation,1
+intelligent collection,1
+english-chinese corpus,1
+cluster data mining,1
+crowdsourced testing,1
+test report clustering,1
+code security,1
+specification detection,1
+environmental documents,1
+automated system,1
+text extraction,1
+document revision,1
+log understanding,1
+multimodal document embedding,1
+indonesian nlp,1
+lightweight models,1
+ocr-free retrieval,1
+government schemes,1
+faiss,1
+multi-language support,1
+fastapi,1
+et,1
+intelligent,1
+accuracy,1
+transformational method,1
+idioms,1
+database of uzbek idioms,1
+transformational translation model,1
+bnc,1
+structured query language (sql),1
+schema linking,1
+long short-term memory networks,1
+tree-lstm,1
+distributed storage,1
+multilingual corpus retrieval,1
+semantic feature fusion,1
+locality sensitive hashing,1
+retrieval algorithm,1
+llm-based machine translation,1
+zero-shot,1
+power data,1
+event chain,1
+reconstruction and traceability,1
+security operation and maintenance,1
+prefix sequence compression,1
+soft position embedding,1
+patent relevance assessment,1
+international chinese language,1
+core vocabulary,1
+semantic relations,1
+hyperbolic space,1
+hyperboloid model,1
+topic supervision,1
+interactive attention,1
+sparse matching,1
+out-of-vocabulary words,1
+tweet linking,1
+similar case matching,1
+law intelligence,1
+rule reasoning,1
+distributed retrieval,1
+amie+ mining algorithm,1
+pseudonymization,1
+privacy-preserving ai,1
+adaptive fine-tuning,1
+personally identifiable information,1
+analytics,1
+ml for databases,1
+query optimization,1
+hardware-conscious query processing,1
+distributed representations,1
+english terminology,1
+vocabulary retrieval,1
+code clone detection,1
+multilayered framework,1
+semantic clones,1
+adaptive ensemble,1
+cross-language detection,1
+software maintenance,1
+equivalence link matching probability,1
+semantic link matching probability,1
+dyslexia screening,1
+preschool education,1
+webcam-based eye tracking,1
+cognitive assessment,1
+early diagnosis,1
+e-commerce search,1
+uml,1
+transformation,1
+case study,1
+conceptualization,1
+telecom,1
+data construction,1
+knowledge question answering,1
+rotation invariance,1
+suitability analysis,1
+so(2) transformer,1
+terrain evaluation,1
+underwater navigation,1
+harmonic source location,1
+joint approximate diagonalization of eigenmatrices(jade),1
+distributed multiple harmonic sources,1
+correlation analysis,1
+antagonistic learning,1
+markov model,1
+evaluation,1
+multi-agent,1
+ionosphere,1
+catboost,1
+feature reconstruction,1
+vertical total electron content (vtec),1
+continuum computing,1
+event-driven,1
+non-von neumann,1
+microservices,1
+frugal artificial intelligence,1
+software ecosystem,1
+software engineering,1
+territorial monitoring,1
+territorial management,1
+persona-based dashboarding,1
+quality of life metrics,1
+kpi monitoring,1
+employees,1
+position,1
+intelligent matching,1
+unified neural architecture (una),1
+unified vocabulary (uni-vocab),1
+conditional gan,1
+content optimization,1
+distribution matching,1
+diversity,1
+prioritization,1
+text-to-image synthesis,1
+adversarial learning,1
+cycle consistency,1
+cross-domain experiments,1
+fault diagnosis (fd),1
+secure query services,1
+fuzzy searchable encryption,1
+multi-semantic query,1
+parallel search,1
+power-grid equipment,1
+digital operation & maintenance,1
+3-d identification,1
+android testing,1
+cross-app record-and-replay,1
+subgraph matching,1
+streaming graph,1
+multi-query,1
+asymmetric scalar-product-preserving encryp-tion (aspe),1
+fuzzy search,1
+multikeyword,1
+privacy protection,1
+searchable encryption,1
+spatial keyword query,1
+cgan,1
+air-tree,1
+skyline,1
+distribution network engineering cost,1
+indicator library,1
+parameter matching,1
+unified encoding,1
+ticket routing,1
+expert network,1
+fine-grained fusion,1
+gaussian decay,1
+query-adaptive,1
+grasp pose refinement,1
+language-conditioned grasping,1
+pretrained models,1
+referring image segmentation,1
+"domain transfer, geospatial database, multimodal large language models, zero-shot learning",1
+"entity resolution, large language model, ontology matching",1
+"knowledge graph, large language model, prompt technology, qlora, science and technology field",1
+"data integration, generative ai",1
+"fmri, autism spectrum disorder, multi-head attention, multi-context module, residual block, abide",1
+"numismatics, semantic web, linked open data, archaeology, collections management, data analysis, digital humanities",1
+"artificial intelligence, economics knowledge graph, innovation, innovation ecosystem, knowledge graph, science knowledge graph",1
+"data integration, data matching, multi-task learning",1
+"health informatics, ontology engineering, semantic networks",1
+"digital textbook, generative artificial intelligence, metaverse, stem education",1
+"multi-image hallucination, multimodal large language models",1
+"knowledge graph, triple trustworthiness, industrial domain, representation learning",1
+"align with ontology, large language model, self-training",1
+"extended relational model, intelligent user interface, large language model, query processing, structured query language",1
+"data integration, digital engineering, industrial plants, knowledge graphs, ontology, operation and maintenance activities",1
+"incident management, query generation, large language model",1
+"digital identity, european digital wallet, interoperability, mapping, trust over ip, trust services, eidas",1
+"business view, enterprise knowledge graph, schema matching",1
+"nosql, deep learning, knowledge graph, ontology, semantics",1
+"human-in-the-loop, data quality, deep learning",1
+"attention layer, multimodal large language model, over-accumulation",1
+"data spaces, machine learning, semantic interoperability",1
+"information integration, ontology matching, similarity measures",1
+"spatial data mining and knowledge discovery, assessment of critical infrastructure, damage assessment, data curation and management, data reliability and quality, disaster response, geographic information retrieval, geographic information system, machine learning",1
+"apache nifi, bert, intelligent analysis platform, lstm, real-time data integration",1
+"augmentative and alternative communication, colourful semantics, transformer-based language models, bert, communication card prediction, brazilian portuguese",1
+"information generation, information retrieval",1
+"language models, multi-task learning, table understanding",1
+"lstm, ontology schema alignment, ontology schema matching, recursive neural network, unsupervised learning",1
+"deep learning, entity matching, entity resolution, record linkage, data matching",1
+"augmented reality, knowledge graph, optical character recognition, ubiquitous computing, web of things",1
+"open data, data preparation, data quality, action design research, knowledge graph, data sourcing, enterprise data integration",1
+"topic detection and tracking, document clustering, document topic models, temporal clustering, representation learning",1
+"case study, computer science services, data sharing, digital transformation",1
+"wgsl, webassembly, webgpu, program translation, small language models",1
+"entity matching, data integration, deep learning, entity resolution, pre-trained language models",1
+"knowledge graph, mapping generation, rml, spreadsheet",1
+"context-aware poi recommendations, knowledge graphs, ontology-based data integration",1
+"data encyclopedia, full text search, knowledge map, web crawler",1
+"wasserstein distance, procrustes analysis, doubling dimension, network alignment, unsupervised cross-lingual learning, domain adaptation",1
+"co-creation, communication, digital transformation, t-government",1
+"attention mechanism, optical remote sensing images, salient object detection, semantic guidance",1
+"contour detection, deep convolutional neural networks, low-level vision, semantic edge detection",1
+"carbon emissions monitoring, multi-source heterogeneous data fusion, privacy and security protection, vertical federated deep learning",1
+"knowledge base, question answering, semantic parsing",1
+"text-to-image, image synthesis, diffusion models",1
+"continuous software engineering, data integration, ontology",1
+"contrastive learning, evidential deep learning, multimodality, zero-shot learning",1
+"multi-task learning, multimodal learning, neural networks, non-blocking inference",1
+"energy efficiency, latent correlation learning, collaboration sensing, internet of things, temporal convolutional network, attention mechanism, multi-task learning",1
+"activity-centric access control, deep learning based access control, humanoid robots, large language models, neuro-symbolic access control, robot task planning",1
+"formal reasoning, faithful reasoning, model checking, large language models, intelligent qa systems",1
+"code generation, deep learning, frame semantics, knowledge graph, program representation, requirement elicitation, software analytics",1
+"abductive learning, embodied artificial intelligence, imitation learning, neuro-symbolic learning",1
+"gpt, hierarchical task networks, hybrid ai, large language models (llms), neuro-symbolic ai",1
+"smart grids, power electrical systems, neuro-symbolic artificial intelligence, fault diagnosis, convolutional neural networks, artificial neural networks, answer set programming",1
+"programming by demonstration, task automation, task graph, cognitive dependency",1
+"fine-tuning, large language models, military question-answering system, pre-training",1
+"description logics, forgetting, ontologies, uniform interpolation",1
+"graph-massivizer, metaphactory",1
+"neurosymbolic methods, differentiable reasoning",1
+"motion modeling, movement modeling, knowledge representation, labanotation, lma, expert systems",1
+"adaptive learning, deep learning, knowledge graph, learning recommendation system, transformer model",1
+"knowledge graph, query rewriting, ecommerce",1
+"fine-grained entity typing, masked language model prompting, natural language understanding, zero-shot entity typing",1
+"graph link prediction, knowledge graph, multi-task learning, recommender systems, review-based recommendation",1
+"domain fine-tuning, dynamic inference, knowledge graph, large model, tacit knowledge",1
+"conversational recommendation, data management, knowledge integration",1
+"large language model, query enhancement, retrieval augmented generation",1
+"intelligent manufacturing, multi-agent systems, multi-source data, multimodal documents, thinking retrieval-augmented generation",1
+"bayesian networks, grid companies, causal reasoning, financial risk assessment, intelligent decision support, knowledge graph",1
+"large language models, multimodal entity linking, multimodal knowledge base",1
+"named entity recognition, table interpretation",1
+"educational assessment, intelligent tutoring systems, knowledge graphs, large language models, natural language processing",1
+"knowledge graphs, data integration, entity matching, triple matching",1
+"hyperbolic spaces, knowledge graph, recommendation",1
+"hierarchical transformer, multi-modal fusion, multi-modal knowledge graph completion, segmentation similarity, semantic related entity",1
+"entity alignment, knowledge graphs, framework, unsupervised learning",1
+"llm, artificial intelligence (ai), cancer, data management",1
+"relation extraction, named entity recognition, multimodal, knowledge graph completion",1
+"attention weight, enterprise-level rag system, multimodal fusion, dynamic optimization, knowledge update, cross-modal retrieval",1
+"knowledge-aware recommendation, knowledge graph, graph neural networks, online recommendation",1
+"knowlegde embedding, link prediction, multi-modal knowledge graph, multimodal fusion",1
+"knowledge graph, lstm, lstm-kgrec",1
+"knowledge graphs, natural language understanding, sentence representation learning",1
+"coal supply chain, financial credit assessment, lightgbm+cgboost, loan optimization, multivariate fusion data",1
+"knowledge graph, large language models, political science",1
+"large language models, medical reasoning, retrieval augmented generation, visual question answering",1
+"dual-channel fusion, engineering material matching, query enhancement, semantic retrieval",1
+"unified retrieval-augmented generation (urag), multi-source heterogeneous data, accuracy and comprehensiveness in knowledge retrieval",1
+"computer algorithm, critical thinking, discipline construction, higher education, teaching reform",1
+"semantic similarity, network embedding, graph attention-based autoencoder, final alignment, ontology matching",1
+"multi-source information fusion, graph neural networks",1
+"cross-modal generation, medical report generation, multimodal fusion",1
+"four-level qa robot, multimodal query analysis, multiple structures of data storage, multiscale intention identifications",1
+"supply chain prediction, knowledge graph, deep learning",1
+"emotional image content generation, unified emotional understanding and generation framework, visual emotion understanding",1
+"knowledge injection, multimedia retrieval",1
+"explanation generation, product search, prompt learning",1
+"haptic feedback, intelligent music education, light field display, meta-learning, multimodal fusion",1
+"chatgpt, database systems education, foundation models, intro to db, large language models, llm, undergrad databases",1
+"dataset, explainability, user intent",1
+"recommender systems, knowledge graph embedding, knowledge graph, attention mechanism",1
+"open knowledge base linking, open knowledge base canonicalization, factor graph model",1
+"construction safety management, entity recognition, knowledge graph, pose estimation",1
+"knowledge fusion technology, multi-source knowledge integration, sports discipline",1
+"knowledge distillation, knowledge graph, optimal transport",1
+"alternative polyadenylation, feature selection, multimodal clustering, spatial transcriptomics",1
+"euclidean space, hyperbolic space, knowledge graph embedding, optimal transport",1
+"video tagging, multi-modal fusion, knowledge graph embedding",1
+"relation linking, knowledge base, entity linking",1
+"representation learning, large-scale knowledge graph, graph neural networks, entity alignment",1
+"knowledge graph, multi-modal learning, video inference, video understanding",1
+"digital twin, distribution network, model fusion, multi domain ontology, operation method",1
+"recommendation, scalability, self-attention, knowledge graph embedding, end-to-end joint learning",1
+"semantic data integration, iot-healthcare interoperability, graph machine learning, r2rml mapping, sparql queries",1
+"combination bag, distant supervision relation extraction, sentence-level attention",1
+"subgraph matching, graph neural network, dynamic multi-hop attention, composite loss function",1
+"knowledge discovery, knowledge utilization, zero-shot learning, knowledge graph completion, image classification",1
+"deep reinforcement learning, path reasoning, graph embedding",1
+"dataset, mixture-of-experts, optimal transport, unified multimodal relation extraction",1
+"word2vec, lda, information fusion, doctor recommendation",1
+"triple classification., link prediction, knowledge graph embedding",1
+"artificial intelligence, mechanical engineering, visualization",1
+"attention mechanism, concept graph, information retrieval",1
+"common sense knowledge, dialogue systems, emotional intent, empathetic dialogue generation",1
+"linked data, relation extraction, intangible cultural heritage, digital humanity",1
+"conversational recommender system, pre-trained language model, prompt learning",1
+"query generation, keyword extraction, information retrieval, health misinformation",1
+"relationship analysis, knowledge graphs, interaction analysis, intent detection, deep video understanding",1
+"recommendation system, local and global information, knowledge graph, duet representation learning, collaborative signals",1
+"network analysis, node representation, neural topic model, graph neural networks, relation topics",1
+"cross-modal reasoning, multi-modal retrieval, question answering",1
+"graph learning, graph neural networks, heuristic methods, link prediction",1
+"bert, neural networks, relational triple extraction",1
+"dynamic routing, integrated satellite–terrestrial, multi-domain network, transfer learning",1
+"ensemble, graph analysis, model fusion, pre-trained models",1
+"news, natural language processing, misinformation, image-text matching, deep learning, computer vision, cheapfakes",1
+"hypernymy detection, financial nlp, distributional models",1
+"vision-and-language, multimodal pretraining, knowledge-enhanced learning, deep learning",1
+"explainable neural network model, association rules, social media mining, dynamic recommender systems",1
+"distant supervision relation extraction, graph neural network, information extraction, relation extraction",1
+"information extraction, joint extraction, multilingual entity and relation extraction, relational triple extraction",1
+"multimedia event extraction, image representation learning, contrastive learning",1
+"consistency, contrastive learning, cross-lingual cross-modal pretraining, cross-lingual cross-modal retrieval",1
+"chinese-vietnamese, low-resource language, cross-lingual sentence embedding, siamese network, mbert",1
+"code representation, contrastive learning, multilingual",1
+"bert, data privacy, federated learning, information retrieval",1
+"mesh, thesaurus, biomedical indexing, classification, language models, machine learning, semantic matching",1
+"technical debt, artificial intelligence, machine learning, recommender system",1
+"etl, fhir, smart-on-fhir, data interoperability, data repository, pediatric patient care, user interface",1
+low-rank adaptation fine-tuning,1
+"graph neural network, ideological and political education in higher education, knowledge graph, multimodal fusion",1
+"artificial intelligence, big data, encode combination, model hallucinations, query augment",1
+"image retrieval, multi-modal retrieval, intent uncertainty, large language model",1
+"cyber threat intelligence, ml/ai-based cybersecurity, smart threat identification",1
+"machine translation, metamorphic testing, word closure, deep learning testing",1
+"feature interaction, multi-granularity feature convolution, multi-perspective matching, text matching",1
+"fgia framework., fine-grained recognition, generative augmentation, part-joint, part-to-part matching",1
+"cognitive assessment, smart-home, healthcare, location data mining",1
+"information retrieval, interpretability, language models, probing",1
+"crowdsourcing, deception detection, fake news, job scams, liwc, nlp, opinion spam, phishing, political lies, synthetic data",1
+"acoustic sensing, contact force, grip force, wearable",1
+"llm, ocr, qwen2.5-vl, rag, vision-language model",1
+"multimodal retrieval, moment localization, visual comprehension, natural language understanding",1
+"multimodality, weakly supervised visual grounding",1
+"inclusion criteria, usagi, entity extraction, exclusion criteria, terminology expansion",1
+"collaboration, consistency, design space exploration, model-driven engineering, ontologies, parallel engineering, uncertainty",1
+"eye-tracking study, information processing, mixed use of structural particles",1
+"anti-discrimination, data privacy, demographic data, fairness, sensitive data, special category data",1
+"text input system, multi-language support, training-free",1

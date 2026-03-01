@@ -1,0 +1,108 @@
+label	replace by
+ai	artificial intelligence
+biomedical ontology matching	ontology matching
+building information modelling (bim)	bim
+cnn	convolutional neural network
+complex ontology alignment	ontology alignment
+complex ontology matching	ontology matching
+context-awareness	context awareness
+convolutional neural network (cnn)	convolutional neural network
+convolutional neural networks	convolutional neural network
+data harmonisation	data harmonization
+deep neural network	deep learning
+deep neural networks	deep learning
+description logic	description logics
+digital twins	digital twin
+ecommerce	e-commerce
+ehr	electronic health records
+electronic health record	electronic health records
+embeddings	embedding
+explainability	explainable ai
+explainable ai (xai)	explainable ai
+explainable artificial intelligence	explainable ai
+explainable artificial intelligence (xai)	explainable ai
+generative artificial intelligence	generative ai
+gnn	graph neural networks
+graph attention network (gat)	graph attention network
+graph convolution network	graph convolutional network
+graph convolutional networks	graph convolutional network
+graph convolutional neural network	graph convolutional network
+graph convolutional neural networks	graph convolutional network
+graph embeddings	graph embedding
+graph neural network	graph neural networks
+graph neural networks (gnn)	graph neural networks
+graph neural networks (gnns)	graph neural networks
+human-in-the-loop (hitl)	human-in-the-loop
+hybrid artificial intelligence	hybrid ai
+knowledge base embedding	knowledge graph embedding
+knowledge graph (kg)	knowledge graph
+knowledge graph embeddings	knowledge graph embedding
+knowledge graphs	knowledge graph
+knowledge graphs (kg)	knowledge graph
+knowledge graphs (kgs)	knowledge graph
+knowledge representation and reasoning	knowledge representation
+language models	large language models
+large language model	large language models
+large language model (llm)	large language models
+large language model agent	large language models
+large language models (llms)	large language models
+llm	large language models
+llms	large language models
+long short term memory (lstm)	lstm
+long short-term memory	lstm
+multi-agent system	multi-agent systems
+multi-modal	multimodal
+multi-modal data	multimodal
+multi-modal entity alignment	multimodal entity alignment
+multi-modal fusion	multimodal fusion
+multi-modal knowledge graph	multimodal knowledge graph
+multi-modal learning	multimodal learning
+named entity recognition (ner)	named entity recognition
+natural language processing (nlp)	natural language processing
+neural symbolic reasoning	neuro-symbolic ai
+neural-symbolic	neuro-symbolic ai
+neural-symbolic computing	neuro-symbolic ai
+neural-symbolic integration	neuro-symbolic ai
+neural-symbolic learning	neuro-symbolic ai
+neural-symbolic learning and reasoning	neuro-symbolic ai
+neural-symbolic reasoning	neuro-symbolic ai
+neural-symbolic system	neuro-symbolic ai
+neuro-symbolic	neuro-symbolic ai
+neuro-symbolic approach	neuro-symbolic ai
+neuro-symbolic artificial intelligence	neuro-symbolic ai
+neuro-symbolic computing	neuro-symbolic ai
+neuro-symbolic integration	neuro-symbolic ai
+neuro-symbolic intelligence	neuro-symbolic ai
+neuro-symbolic learning	neuro-symbolic ai
+neuro-symbolic models	neuro-symbolic ai
+neuro-symbolic reasoning	neuro-symbolic ai
+neuro-symbolic systems	neuro-symbolic ai
+neurosymbolic	neuro-symbolic ai
+neurosymbolic ai	neuro-symbolic ai
+neurosymbolic integration	neuro-symbolic ai
+neurosymbolic learning	neuro-symbolic ai
+neurosymbolic reasoning	neuro-symbolic ai
+nlp	natural language processing
+ontologies	ontology
+pre-trained language models	pre-trained language model
+pretrained language model	pre-trained language model
+question answering system	question answering
+question-answering system	question answering
+rag	retrieval-augmented generation
+recommendation system	recommender systems
+recommendation systems	recommender systems
+recommender system	recommender systems
+retrieval augmented generation	retrieval-augmented generation
+retrieval-augmented generation (rag)	retrieval-augmented generation
+retrieval-enhanced generation	retrieval-augmented generation
+semantic web integration	semantic web
+semantic web technologies	semantic web
+sentence-bert	bert
+symbolic ai	symbolic ai
+transformer architecture	transformer
+transformer model	transformer
+transformer models	transformer
+transformers	transformer
+trustworthy artificial intelligence	trustworthy ai
+word embeddings	word embedding
+xai	explainable ai

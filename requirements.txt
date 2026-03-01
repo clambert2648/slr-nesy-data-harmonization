@@ -1,0 +1,20 @@
+# ─── Dédoublonnage ────────────────────────────────────────────────────────────
+pandas>=2.0.0
+fuzzywuzzy>=0.18.0
+python-Levenshtein>=0.12.0   # accélère fuzzywuzzy
+
+# ─── Scoring NLP (screening assisté) ─────────────────────────────────────────
+scikit-learn>=1.3.0
+sentence-transformers>=2.2.0  # embeddings multilingues
+
+# ─── Bibliométrie et visualisation ────────────────────────────────────────────
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# ─── Notebooks ────────────────────────────────────────────────────────────────
+jupyter>=1.0.0
+ipykernel>=6.0.0
+
+# ─── Utilitaires ──────────────────────────────────────────────────────────────
+openpyxl>=3.1.0              # lecture/écriture Excel si nécessaire
+tqdm>=4.65.0                 # barres de progression

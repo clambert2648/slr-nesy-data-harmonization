@@ -1,0 +1,255 @@
+═════════════════════════════════════════════════════════════════
+VALIDATION — Échantillon inclusions haute confiance (DEC-021)
+═════════════════════════════════════════════════════════════════
+
+Date de tirage       : 28 février 2026
+Articles en lot      : 119
+Échantillon          : 15 articles (seed=42)
+Seuil validation     : ≥ 90% accord
+Seuil alerte         : 80–90% accord
+
+── CONSIGNES ──
+
+Pour chaque article ci-dessous :
+1. Lire le titre et l'abstract
+2. Décider : aurais-tu inclus cet article manuellement ?
+   - OUI   : I2 ou I3 détecté + I4 détecté → inclusion correcte
+   - NON   : ne satisfait pas I2/I3+I4, ou E1/E2 applicable
+   - DOUTE : impossible de trancher sur titre/abstract seul
+3. Si NON : noter la raison (E1, E2, I2 absent, etc.)
+
+═════════════════════════════════════════════════════════════════
+ÉCHANTILLON
+═════════════════════════════════════════════════════════════════
+
+── Article 1/15 — Rang #81 ──
+
+  Titre    : Integrating Symbol Similarities with Knowledge Graph Embedding for Entity Alignment: An Unsupervised Framework
+  Année    : 2023
+  Base     : Scopus
+  NLP      : 5/10 — [5/10] I2: «entity align» + I4: «knowledge graph.*embed» | I2×1 i2×1 i4×2
+
+  Abstract : Entity alignment refers to discovering identical entity pairs in 2 knowledge graphs, which is a significant task in knowledge fusion. Early automated entity alignment techniques are based mainly on similarity calculation and comparing symbolic features, i.e., entity names, between entities. Neverthe...
+
+  Mots-clés: 
+
+  ➤ Validation : ______  (OUI / NON / DOUTE)
+  ➤ Si NON — raison : ______________________
+
+── Article 2/15 — Rang #131 ──
+
+  Titre    : Comparing Symbolic and Embedding-Based Approaches for Relational Blocking
+  Année    : 2025
+  Base     : Scopus
+  NLP      : 10/10 — [10/10] I2: «entity align» + I4: «neuro.?symbolic» | I2×3 i2×3 I4×1 i4×2
+
+  Abstract : Blocking aims to avoid unnecessary comparisons in a data matching pipeline. The heterogeneous nature of Knowledge Graphs (KG) is challenging for blocking approaches that traditionally were implemented for tabular data. While there is vast research on blocking approaches in general, the domain of KGs...
+
+  Mots-clés: Blocking; Data Integration; Entity Alignment; Entity Resolution; Knowledge Graph Embedding; Knowledge Graphs
+
+  ➤ Validation : ______  (OUI / NON / DOUTE)
+  ➤ Si NON — raison : ______________________
+
+── Article 3/15 — Rang #137 ──
+
+  Titre    : Schema Matching on Graph: Iterative Graph Exploration for Efficient and Explainable Data Integration
+  Année    : 2025
+  Base     : ArXiv
+  NLP      : 10/10 — [10/10] I2: «schema match» + I4: «knowledge.*enhanc.*match» + I3: «explainab» | 
+
+  Abstract : Schema matching is a critical task in data integration, particularly in the medical domain where disparate Electronic Health Record (EHR) systems must be aligned to standard models like OMOP CDM. While Large Language Models (LLMs) have shown promise in schema matching, they suffer from hallucination...
+
+  Mots-clés: 
+
+  ➤ Validation : ______  (OUI / NON / DOUTE)
+  ➤ Si NON — raison : ______________________
+
+── Article 4/15 — Rang #143 ──
+
+  Titre    : OWL2Vec4OA: Tailoring Knowledge Graph Embeddings for Ontology Alignment
+  Année    : 2024
+  Base     : ArXiv
+  NLP      : 7/10 — [7/10] I2: «ontology align» + I4: «knowledge graph.*embed» | I2×1 i2×1 i4×4
+
+  Abstract : Ontology alignment is integral to achieving semantic interoperability as the number of available ontologies covering intersecting domains is increasing. This paper proposes OWL2Vec4OA, an extension of the ontology embedding system OWL2Vec*. While OWL2Vec* has emerged as a powerful technique for onto...
+
+  Mots-clés: 
+
+  ➤ Validation : ______  (OUI / NON / DOUTE)
+  ➤ Si NON — raison : ______________________
+
+── Article 5/15 — Rang #175 ──
+
+  Titre    : Truveta Mapper: A Zero-shot Ontology Alignment Framework
+  Année    : 2023
+  Base     : ArXiv
+  NLP      : 8/10 — [8/10] I2: «ontology match» + I4: «ontology.*transform» | I2×2 i2×1 i4×4 e1×1
+
+  Abstract : In this paper, a new perspective is suggested for unsupervised Ontology Matching (OM) or Ontology Alignment (OA) by treating it as a translation task. Ontologies are represented as graphs, and the translation is performed from a node in the source ontology graph to a path in the target ontology grap...
+
+  Mots-clés: 
+
+  ➤ Validation : ______  (OUI / NON / DOUTE)
+  ➤ Si NON — raison : ______________________
+
+── Article 6/15 — Rang #246 ──
+
+  Titre    : An Entity Alignment Algorithm Based on TransR and Multi-Semantic Feature Fusion
+  Année    : 2025
+  Base     : Scopus
+  NLP      : 7/10 — [7/10] I2: «entity align» + I4: «knowledge graph.*embed» | I2×2 i2×1 i4×2
+
+  Abstract : Entity Alignment (EA) is the key to realize knowledge graph fusion. At present, the mainstream EA methods adopt the knowledge graph embedding technology under one and the same semantic space to obtain the entity and relation embeddings, and then the cost function is employed to measure the similarit...
+
+  Mots-clés: entity alignment; knowledge graph fusion; multi-feature fusion; representation learning; stable matching
+
+  ➤ Validation : ______  (OUI / NON / DOUTE)
+  ➤ Si NON — raison : ______________________
+
+── Article 7/15 — Rang #267 ──
+
+  Titre    : Neural-Symbolic Dual-Indexing Architectures for Scalable Retrieval-Augmented Generation
+  Année    : 2025
+  Base     : Scopus+IEEE
+  NLP      : 6/10 — [6/10] I2: «heterogeneous.*match» + I4: «neuro.?symbolic» | I2×1 i2×1 I4×3 i4×1 
+
+  Abstract : Contemporary retrieval-augmented generation systems face a fundamental trade-off between semantic comprehensiveness and computational tractability when scaling to billion-token corpora. We present a unified framework that reconciles this tension through neural-symbolic dual-indexing, wherein sparse ...
+
+  Mots-clés: information retrieval; knowledge graphs; multi-hop reasoning; Retrieval-augmented generation
+
+  ➤ Validation : ______  (OUI / NON / DOUTE)
+  ➤ Si NON — raison : ______________________
+
+── Article 8/15 — Rang #291 ──
+
+  Titre    : Entity Alignment Method Based on Joint Learning of Entity and Attribute Representations
+  Année    : 2023
+  Base     : Scopus
+  NLP      : 5/10 — [5/10] I2: «entity align» + I4: «knowledge graph.*embed» | I2×1 i2×1 i4×2
+
+  Abstract : Featured Application: In practical application, there are different knowledge graphs in different fields, such as financial graph, commodity graph, medical graph, and so on. Entity alignment technique can be applied to the fusion of multiple knowledge graphs in different domains or even across domai...
+
+  Mots-clés: entity alignment; knowledge graph; learning of attribute character embeddings; learning of structural embeddings
+
+  ➤ Validation : ______  (OUI / NON / DOUTE)
+  ➤ Si NON — raison : ______________________
+
+── Article 9/15 — Rang #357 ──
+
+  Titre    : Medical Schema Matching using Knowledge Graph Embedding
+  Année    : 2022
+  Base     : Scopus
+  NLP      : 6/10 — [6/10] I2: «schema match» + I4: «knowledge graph.*embed» | I2×2 i4×2
+
+  Abstract : Heterogeneous medical schema matching is important to realize the data sharing between medical databases. Traditional medical schema matching algorithms which usually employ hand-crafted features created by medical experts fail to handle increasingly giant data with the continuous development of med...
+
+  Mots-clés: Knowledge Graph Embedding; Medical databases; Medical Knowledge; Medical Schema Matching
+
+  ➤ Validation : ______  (OUI / NON / DOUTE)
+  ➤ Si NON — raison : ______________________
+
+── Article 10/15 — Rang #467 ──
+
+  Titre    : VANILLA: Validated knowledge graph completion—A Normalization-based framework for Integrity, Link prediction, and Logical Accuracy
+  Année    : 2025
+  Base     : Scopus
+  NLP      : 10/10 — [10/10] I2: «heterogeneous.*align» + I4: «neuro.?symbolic» | I2×1 i2×3 I4×2 i4×5
+
+  Abstract : Knowledge graphs (KGs) are expressive data structures for integrating and describing heterogeneous data by unifying factual information and domain knowledge. However, under the Open World Assumption (OWA), the absence of facts does not imply falsity—only incompleteness. Inductive learning methods, p...
+
+  Mots-clés: Knowledge graph completion; Knowledge graphs; Numerical learning; Symbolic constraint validation; Symbolic learning
+
+  ➤ Validation : ______  (OUI / NON / DOUTE)
+  ➤ Si NON — raison : ______________________
+
+── Article 11/15 — Rang #498 ──
+
+  Titre    : CISKGG: A Collective Intelligence Strategy for Heterogeneous Knowledge Graph Generation for Criminology as a Domain of Choice
+  Année    : 2022
+  Base     : Scopus+IEEE
+  NLP      : 7/10 — [7/10] I2: «ontology align» + I4: «ontology.*transform» | I2×2 i2×2 i4×2 e1×1
+
+  Abstract : Knowledge Graph (KG) generation is a promising problem which has to be tackled in the era of Web 3.0 as the web is moving towards a more intelligent and organized semantic web. This paper proposes a framework for KG generation for criminology as a prospective domain of choice. The proposed model use...
+
+  Mots-clés: Criminology domain; GRUs; Knowledge Graphs; Knowledge stores; Ontology alignment; Transformer; Web 3.0
+
+  ➤ Validation : ______  (OUI / NON / DOUTE)
+  ➤ Si NON — raison : ______________________
+
+── Article 12/15 — Rang #565 ──
+
+  Titre    : Towards Machine Learning-Based Ontology Mapping to Bridge O*NET and ESCO Skills
+  Année    : 2025
+  Base     : IEEE
+  NLP      : 6/10 — [6/10] I2: «ontology align» + I4: «ontology.*embed» | I2×2 i4×2
+
+  Abstract : In the field of job ontologies, the interoperability between skill poses a significant challenge in the labor market, affecting job matching and workforce planning. This issue is particularly relevant to employment services for people with disabilities, where accurate matching of skills with job req...
+
+  Mots-clés: Ontology Mapping;Artificial Intelligence;Machine Learning;Decision Support System (DSS);disability employment;job matching
+
+  ➤ Validation : ______  (OUI / NON / DOUTE)
+  ➤ Si NON — raison : ______________________
+
+── Article 13/15 — Rang #659 ──
+
+  Titre    : OntoAligner Meets Knowledge Graph Embedding Aligners
+  Année    : 2025
+  Base     : ArXiv
+  NLP      : 10/10 — [10/10] I2: «ontology align» + I4: «knowledge graph.*embed» | I2×2 i2×3 i4×4
+
+  Abstract : Ontology Alignment (OA) is essential for enabling semantic interoperability across heterogeneous knowledge systems. While recent advances have focused on large language models (LLMs) for capturing contextual semantics, this work revisits the underexplored potential of Knowledge Graph Embedding (KGE)...
+
+  Mots-clés: 
+
+  ➤ Validation : ______  (OUI / NON / DOUTE)
+  ➤ Si NON — raison : ______________________
+
+── Article 14/15 — Rang #714 ──
+
+  Titre    : Transformer Based Semantic Relation Typing for Knowledge Graph Integration
+  Année    : 2023
+  Base     : Scopus
+  NLP      : 6/10 — [6/10] I2: «ontology match» + I4: «ontology.*transform» | I2×2 i4×2
+
+  Abstract : More and more knowledge graphs (KGs) are generated in various domains. Applications using more than one KG require an integrated view of those KGs, which, in the first place, requires a common schema or ontology. Merging schemas requires not only equivalence mappings between classes but also other s...
+
+  Mots-clés: Knowledge Graph Integration; Ontology Matching; Relation Typing; Transformers
+
+  ➤ Validation : ______  (OUI / NON / DOUTE)
+  ➤ Si NON — raison : ______________________
+
+── Article 15/15 — Rang #1388 ──
+
+  Titre    : Disrupting the Dust: Identifier Properties and the Future of Cultural Heritage Metadata in Wikidata
+  Année    : 2025
+  Base     : Scopus
+  NLP      : 6/10 — [6/10] I2: «heterogeneous.*match» + I4: «ontology.*transform» | I2×2 i2×1 i4×1
+
+  Abstract : This discussion paper explores how institutions create and integrate Wikidata identifier properties as a sustainable strategy for enriching cultural heritage metadata, focusing on the experiences of Bildindex der Kunst und Architektur (Germany), and Swedish GLAM projects led by Wikimedia Sweden. It ...
+
+  Mots-clés: database; digital cultural heritage; external identifier property; linked open data; OpenRefine; Wikidata
+
+  ➤ Validation : ______  (OUI / NON / DOUTE)
+  ➤ Si NON — raison : ______________________
+
+═════════════════════════════════════════════════════════════════
+RÉSULTAT
+═════════════════════════════════════════════════════════════════
+
+  OUI    : __/15
+  NON    : __/15
+  DOUTE  : __/15
+
+  Taux d'accord (OUI+DOUTE) : ____ %
+
+  Conclusion :
+  [ ] ≥ 90% — LOT VALIDÉ
+  [ ] 80-89% — VALIDÉ AVEC ALERTE (désaccords révisés individuellement)
+  [ ] < 80% — LOT INVALIDÉ (119 articles remis en screening manuel)
+
+  Notes : 
+  
+
+══════════════════════════════════════════════════════════════════
+Reporter le résultat dans DEC-021 du decisions_log.md
+══════════════════════════════════════════════════════════════════
