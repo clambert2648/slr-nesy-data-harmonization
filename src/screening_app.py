@@ -4,7 +4,7 @@ Interface Streamlit pour le Screening Tri #1 (titre + résumé).
 
 [v3 — Phase 3] Améliorations interface :
   - Onglets Screening / Révision / Dashboard
-  - Barre de filtres (suggestion NLP, confiance, score min, base, abstract)
+    - Barre de filtres (suggestion NLP, confiance, score min/max, base, abstract)
   - Tableau de révision searchable avec modification inline
   - Stats de session (articles/heure, temps restant estimé)
   - Navigation améliorée (filtres appliqués au flux séquentiel)
@@ -232,7 +232,7 @@ def render_screening_tab(df):
 
     # ── Filtres ───────────────────────────────────────────────────────────────
     with st.expander('🔍 Filtres de navigation', expanded=False):
-        fc1, fc2, fc3, fc4 = st.columns(4)
+        fc1, fc2, fc3, fc4, fc5 = st.columns(5)
         with fc1:
             filt_sug = st.multiselect(
                 'Suggestion NLP',
@@ -250,6 +250,10 @@ def render_screening_tab(df):
                 'Score NLP min', 0, 10, 0, key='filt_score_min'
             )
         with fc4:
+            filt_score_max = st.slider(
+                'Score NLP max', 0, 10, 10, key='filt_score_max'
+            )
+        with fc5:
             databases = sorted(df['database'].dropna().unique().tolist()) if 'database' in df.columns else []
             filt_db = st.multiselect('Base', options=databases, default=[], key='filt_db')
 
@@ -265,8 +269,12 @@ def render_screening_tab(df):
         pool = pool[pool['nlp_suggestion'].isin(filt_sug)]
     if filt_conf:
         pool = pool[pool['nlp_confidence'].isin(filt_conf)]
+    if filt_score_min > filt_score_max:
+        filt_score_min, filt_score_max = filt_score_max, filt_score_min
     if filt_score_min > 0:
         pool = pool[pool['nlp_score'] >= filt_score_min]
+    if filt_score_max < 10:
+        pool = pool[pool['nlp_score'] <= filt_score_max]
     if filt_db:
         pool = pool[pool['database'].isin(filt_db)]
     if filt_no_abs:
@@ -275,7 +283,7 @@ def render_screening_tab(df):
     if filt_text.strip():
         pool = pool[pool['title'].str.contains(filt_text.strip(), case=False, na=False)]
 
-    any_filter = bool(filt_sug or filt_conf or filt_score_min > 0 or filt_db
+    any_filter = bool(filt_sug or filt_conf or filt_score_min > 0 or filt_score_max < 10 or filt_db
                        or filt_no_abs or filt_text.strip())
     if any_filter:
         st.caption(f'🔍 Filtre actif — **{len(pool)}** articles correspondent '
