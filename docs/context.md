@@ -63,6 +63,20 @@ SLR_thesis/
 | `nlp_confidence` | str | high / medium / low |
 | `nlp_tag` | str | Explication lisible (ex: "I2: «schema match» | I4: «neuro-symbolic»") |
 
+## Interprétation méthodologique des scores (Tri #1)
+
+Le pipeline distingue explicitement deux niveaux d'évaluation complémentaires.
+
+- **`relevance_score_pct` (TF-IDF, 0–100 %)** : mesure une **proximité lexicale/statistique** entre le texte de l'article (titre×2 + résumé + mots-clés, après normalisation par thesaurus) et la requête PICOC.
+- **`nlp_score` (règles, 0–10)** : mesure une **densité de signaux protocole** (I2/I4/I3) pénalisée par des signaux d'exclusion (E1/E2), pour soutenir la décision de tri.
+
+Conséquence méthodologique :
+- le TF-IDF sert principalement à la **priorisation** (ordre de lecture),
+- le score NLP sert à l'**aide à la décision** (include / uncertain / exclude / survey),
+- l'ensemble reste **semi-automatique** : la décision finale demeure humaine dans `screening_app.py`.
+
+Cette séparation réduit le risque de confusion entre « similarité thématique » et « conformité aux critères d'inclusion/exclusion », ce qui améliore la traçabilité et la validité du protocole.
+
 ## Conventions de code
 
 - Encodage CSV : `utf-8-sig` (BOM pour Excel)

@@ -97,6 +97,21 @@ Collecte (Scopus / IEEE / ACM / arXiv)
    [Tri #3 extraction]   → formulaire A.5
 ```
 
+## Comprendre les scores (TF-IDF vs NLP)
+
+Le pipeline utilise **deux scores complémentaires** pendant le Tri #1.
+
+| Score | Nature théorique | Entrée | Sortie | Usage principal |
+|---|---|---|---|---|
+| **TF-IDF** (`relevance_score_pct`) | Similarité lexicale/statistique (pondération des termes rares) | Texte combiné normalisé (`title` + `abstract` + `keywords`) vs requête PICOC | 0–100 % | **Priorisation** des articles par proximité thématique |
+| **NLP** (`nlp_score`) | Score heuristique à base de règles (signaux I2/I4/I3 et pénalités E1/E2) | Patterns de critères protocole + score TF-IDF (seuil adaptatif) | 0–10 | **Aide à la décision** (`include/uncertain/exclude/survey`) |
+
+En pratique :
+- **TF-IDF** répond à : « le texte ressemble-t-il à la requête ? »
+- **NLP score** répond à : « observe-t-on des indices des critères d'inclusion/exclusion ? »
+
+> Le `nlp_score` n'est pas une probabilité issue d'un modèle profond : c'est un score expert, transparent et interprétable, construit à partir des règles du protocole.
+
 ---
 
 ## Installation

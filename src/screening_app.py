@@ -51,6 +51,18 @@ NLP_CONFIG = {
 }
 CONF_LABEL = {'high': 'haute ●●●', 'medium': 'moyenne ●●○', 'low': 'faible ●○○', '': '—'}
 
+UNCERTAIN_REASON_ORDER = {
+    'I2 seul': 0,
+    'I4+I2_faible': 1,
+    'I4 seul': 2,
+    'i4+i2_faibles': 3,
+    'score élevé': 4,
+    'i2_faible seul': 5,
+    'I3 seul': 6,
+    'no_abstract': 7,
+    'E1?+no_abstract': 7,
+}
+
 
 def _score_bar(score, max_score=10):
     pct = score / max_score * 100
@@ -62,6 +74,40 @@ def _score_bar(score, max_score=10):
         f'<div style="background:#e9ecef;border-radius:4px;height:12px;width:100%;margin:2px 0;">'
         f'<div style="background:{color};border-radius:4px;height:12px;width:{pct}%;"></div></div>'
     )
+
+
+def _sort_screening_pool(pool: pd.DataFrame, sort_mode: str) -> pd.DataFrame:
+    if pool.empty:
+        return pool
+
+    p = pool.copy()
+    p['rank'] = pd.to_numeric(p.get('rank', p.index + 1), errors='coerce').fillna(10**9)
+    p['nlp_score'] = pd.to_numeric(p.get('nlp_score', 0), errors='coerce').fillna(0)
+    p['relevance_score_pct'] = pd.to_numeric(p.get('relevance_score_pct', 0), errors='coerce').fillna(0)
+
+    if sort_mode == 'Priorité incertains':
+        p['is_uncertain'] = (p['nlp_suggestion'] == 'uncertain').astype(int)
+        p['uncertain_reason_rank'] = (
+            p['nlp_reason'].map(UNCERTAIN_REASON_ORDER).fillna(99)
+        )
+        return p.sort_values(
+            by=['is_uncertain', 'uncertain_reason_rank', 'nlp_score', 'relevance_score_pct', 'rank'],
+            ascending=[False, True, False, False, True]
+        )
+
+    if sort_mode == 'NLP décroissant':
+        return p.sort_values(
+            by=['nlp_score', 'relevance_score_pct', 'rank'],
+            ascending=[False, False, True]
+        )
+
+    if sort_mode == 'TF-IDF décroissant':
+        return p.sort_values(
+            by=['relevance_score_pct', 'nlp_score', 'rank'],
+            ascending=[False, False, True]
+        )
+
+    return p.sort_values(by=['rank'], ascending=[True])
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -232,7 +278,7 @@ def render_screening_tab(df):
 
     # ── Filtres ───────────────────────────────────────────────────────────────
     with st.expander('🔍 Filtres de navigation', expanded=False):
-        fc1, fc2, fc3, fc4, fc5 = st.columns(5)
+        fc1, fc2, fc3, fc4, fc5, fc6 = st.columns(6)
         with fc1:
             filt_sug = st.multiselect(
                 'Suggestion NLP',
@@ -256,11 +302,18 @@ def render_screening_tab(df):
         with fc5:
             databases = sorted(df['database'].dropna().unique().tolist()) if 'database' in df.columns else []
             filt_db = st.multiselect('Base', options=databases, default=[], key='filt_db')
-
-        fc5, fc6 = st.columns(2)
-        with fc5:
-            filt_no_abs = st.checkbox('Abstract manquant seulement', key='filt_no_abs')
         with fc6:
+            sort_mode = st.selectbox(
+                'Tri',
+                options=['Rang (défaut)', 'Priorité incertains', 'NLP décroissant', 'TF-IDF décroissant'],
+                index=0,
+                key='filt_sort_mode'
+            )
+
+        fc7, fc8 = st.columns(2)
+        with fc7:
+            filt_no_abs = st.checkbox('Abstract manquant seulement', key='filt_no_abs')
+        with fc8:
             filt_text = st.text_input('Recherche titre', '', key='filt_text')
 
     # Appliquer filtres sur non-screenés
@@ -283,11 +336,18 @@ def render_screening_tab(df):
     if filt_text.strip():
         pool = pool[pool['title'].str.contains(filt_text.strip(), case=False, na=False)]
 
+    pool = _sort_screening_pool(pool, sort_mode)
+
     any_filter = bool(filt_sug or filt_conf or filt_score_min > 0 or filt_score_max < 10 or filt_db
                        or filt_no_abs or filt_text.strip())
-    if any_filter:
-        st.caption(f'🔍 Filtre actif — **{len(pool)}** articles correspondent '
-                   f'(sur {remaining} restants)')
+    sort_active = sort_mode != 'Rang (défaut)'
+    if any_filter or sort_active:
+        parts = []
+        if any_filter:
+            parts.append(f'🔍 Filtre actif — **{len(pool)}** articles (sur {remaining} restants)')
+        if sort_active:
+            parts.append(f'🔢 Tri : **{sort_mode}**')
+        st.caption(' &nbsp;|&nbsp; '.join(parts))
 
     # ── Vérifier s'il reste des articles ──────────────────────────────────────
     if pool.empty:
@@ -316,23 +376,27 @@ def render_screening_tab(df):
     has_nlp = nlp_sug != ''
     if has_nlp:
         bar_html = _score_bar(nlp_score)
-        st.markdown(
-            f"""<div style="background:{nlp_cfg['color']};padding:10px 16px;border-radius:6px;
-            margin-bottom:12px;border-left:4px solid #666;">
-            <strong>Suggestion :</strong> {nlp_cfg['icon']} {nlp_cfg['label']} &nbsp;|&nbsp;
-            Confiance : {CONF_LABEL.get(nlp_conf, nlp_conf)} &nbsp;|&nbsp;
-            <strong>Score : {nlp_score}/10</strong>
-            {bar_html}
-            <em style="font-size:0.85em;">{nlp_tag}</em>
-            </div>""",
-            unsafe_allow_html=True
+        triage_hint = ''
+        if nlp_sug == 'uncertain' and sort_mode == 'Priorité incertains':
+            ord_rank = int(UNCERTAIN_REASON_ORDER.get(str(row.get('nlp_reason', '')), 99)) + 1
+            triage_hint = f' &nbsp;|&nbsp; <strong>Priorité incertain : P{ord_rank}</strong>'
+        nlp_html = (
+            f'<div style="background:{nlp_cfg["color"]};padding:10px 16px;border-radius:6px;'
+            f'margin-bottom:12px;border-left:4px solid #666;">'
+            f'<strong>Suggestion :</strong> {nlp_cfg["icon"]} {nlp_cfg["label"]} &nbsp;|&nbsp;'
+            f'Confiance : {CONF_LABEL.get(nlp_conf, nlp_conf)} &nbsp;|&nbsp;'
+            f'<strong>Score : {nlp_score}/10</strong>{triage_hint}'
+            f'{bar_html}'
+            f'<em style="font-size:0.85em;">{nlp_tag}</em>'
+            f'</div>'
         )
+        st.markdown(nlp_html, unsafe_allow_html=True)
 
     col_article, col_decision = st.columns([3, 1])
 
     # ── Article ───────────────────────────────────────────────────────────────
     with col_article:
-        pos_in_pool = f' (#{list(pool.index).index(current_idx)+1}/{len(pool)} filtrés)' if any_filter else ''
+        pos_in_pool = f' (#{list(pool.index).index(current_idx)+1}/{len(pool)} filtrés)' if (any_filter or sort_active) else ''
         st.markdown(f'### Article #{rank} / {total}{pos_in_pool} &nbsp; {score_icon} TF-IDF : {tfidf_score:.1f}%')
         st.markdown(f'## {row["title"]}')
 

@@ -400,6 +400,24 @@ Validation en 5 passes :
 
 ## DÉCISIONS — TRI #1 (suite)
 
+### DEC-024 — Stratégie de triage des articles incertains (Tri #1)
+**Date :** 2 mars 2026
+**Outil :** screening_app.py
+**Décision :** Intégration d'un sélecteur de tri dans les filtres de navigation de l'interface Streamlit. Quatre modes disponibles : Rang (défaut), Priorité incertains, NLP décroissant, TF-IDF décroissant.
+
+Le mode « Priorité incertains » ordonne le pool d'articles non screenés selon la hiérarchie suivante :
+1. Articles `uncertain` en premier (par rapport aux autres suggestions)
+2. Au sein des incertains, ordre par `nlp_reason` : I2 seul → I4+I2_faible → I4 seul → i4+i2_faibles → score élevé → i2_faible seul → I3 seul → no_abstract
+3. Tri secondaire : nlp_score décroissant, puis relevance_score_pct décroissant
+
+**Justification :** À l'issue de 1 179 articles screenés, 711 restants dont une majorité d'incertains (I2 seul=415, I3 seul=245, I4 seul=154). La principale source d'ambiguïté est la frontière I4 : un article peut mentionner un KG sans impliquer de raisonnement symbolique explicite. Le tri par `nlp_reason` permet de regrouper les cas de même nature et de maximiser le rendement en traitant d'abord les incertains à fort signal I2 (les plus susceptibles de basculer en inclusion après lecture de l'abstract).
+
+**Limite reconnue :** Le tri ne modifie pas les décisions — il priorise simplement l'ordre de lecture. La décision finale reste humaine. Les articles `I3 seul` (XAI sans tâche d'appariement explicite) sont traités en dernier car leur probabilité d'inclusion est plus faible sans signal I2/I4.
+
+**Impact PRISMA :** Aucun impact direct sur les chiffres PRISMA. Mentionner dans la section méthodologique : « Un outil de triage automatique a priorisé la lecture des articles incertains par densité de signaux protocole (I2 > I4 > I3), réduisant la charge de décision pour les cas les plus ambigus. »
+
+---
+
 ### DEC-023 — Exclusion venue prédatrice : ShodhKosh
 **Date :** 1 mars 2026
 **Base :** Scopus
