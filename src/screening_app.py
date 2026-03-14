@@ -19,6 +19,8 @@ Prérequis :
 
 import streamlit as st
 import pandas as pd
+import numpy as np
+import plotly.graph_objects as go
 import os
 from datetime import datetime
 
@@ -108,6 +110,101 @@ def _sort_screening_pool(pool: pd.DataFrame, sort_mode: str) -> pd.DataFrame:
         )
 
     return p.sort_values(by=['rank'], ascending=[True])
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# MÉTRIQUES DE PERFORMANCE NLP
+# ══════════════════════════════════════════════════════════════════════════════
+
+def compute_nlp_metrics(df, score_threshold=5):
+    """Calcule les métriques de performance du système NLP par rapport aux
+    décisions humaines. Ne considère que les articles screenés avec une
+    suggestion NLP non vide."""
+    ev = df[(df['decision'] != '') & (df['nlp_suggestion'] != '')].copy()
+    m = {}  # dict de résultats
+
+    m['n_evaluated'] = len(ev)
+    if m['n_evaluated'] == 0:
+        return m
+
+    human_inc = ev['decision'] == 'include'
+    nlp_inc   = ev['nlp_suggestion'] == 'include'
+    nlp_exc   = ev['nlp_suggestion'] == 'exclude'
+    nlp_unc   = ev['nlp_suggestion'] == 'uncertain'
+
+    tp = (human_inc & nlp_inc).sum()
+    fn_strict = (human_inc & ~nlp_inc).sum()
+    fp = (~human_inc & nlp_inc).sum()
+
+    # 1. Recall strict
+    n_human_inc = int(human_inc.sum())
+    m['n_human_inc'] = n_human_inc
+    m['recall_strict'] = tp / n_human_inc if n_human_inc else None
+    m['tp'] = int(tp)
+
+    # 1b. Recall opérationnel (inclure OU incertain avec score >= seuil)
+    nlp_operational = nlp_inc | (nlp_unc & (ev['nlp_score'] >= score_threshold))
+    tp_op = (human_inc & nlp_operational).sum()
+    m['recall_operational'] = tp_op / n_human_inc if n_human_inc else None
+    m['tp_operational'] = int(tp_op)
+
+    # 2. Precision sur "inclure"
+    n_nlp_inc = int(nlp_inc.sum())
+    m['n_nlp_inc'] = n_nlp_inc
+    m['precision'] = tp / n_nlp_inc if n_nlp_inc else None
+
+    # 3. Faux négatifs critiques
+    fn_crit = (human_inc & nlp_exc).sum()
+    m['fn_critical'] = int(fn_crit)
+    m['fn_critical_pct'] = fn_crit / n_human_inc * 100 if n_human_inc else 0
+
+    # 4. Couverture par score
+    m['coverage'] = {}
+    inc_scores = ev.loc[human_inc, 'nlp_score']
+    for thr in [5, 6, 7, 8]:
+        above = (inc_scores >= thr).sum()
+        m['coverage'][thr] = above / n_human_inc * 100 if n_human_inc else 0
+
+    # Top X% coverage
+    all_scores_sorted = ev['nlp_score'].sort_values(ascending=False)
+    for pct in [10, 20, 30]:
+        cutoff_idx = max(1, int(len(all_scores_sorted) * pct / 100))
+        top_scores = set(all_scores_sorted.index[:cutoff_idx])
+        inc_in_top = human_inc.loc[human_inc.index.isin(top_scores)].sum()
+        m['coverage'][f'top{pct}'] = inc_in_top / n_human_inc * 100 if n_human_inc else 0
+
+    # 5. Taux d'incertitude
+    m['uncertainty_rate'] = nlp_unc.sum() / m['n_evaluated'] * 100
+
+    # 6. Matrice de confusion
+    dec_labels = ['include', 'exclude', 'survey', 'uncertain']
+    nlp_labels = ['include', 'exclude', 'survey', 'uncertain']
+    present_dec = [l for l in dec_labels if (ev['decision'] == l).any()]
+    present_nlp = [l for l in nlp_labels if (ev['nlp_suggestion'] == l).any()]
+    confusion = pd.crosstab(
+        ev['decision'], ev['nlp_suggestion'],
+        rownames=['Décision humaine'], colnames=['Suggestion NLP']
+    )
+    for col in present_nlp:
+        if col not in confusion.columns:
+            confusion[col] = 0
+    for row in present_dec:
+        if row not in confusion.index:
+            confusion.loc[row] = 0
+    cols_order = [c for c in nlp_labels if c in confusion.columns]
+    rows_order = [r for r in dec_labels if r in confusion.index]
+    m['confusion'] = confusion.loc[rows_order, cols_order] if rows_order and cols_order else confusion
+
+    # 7. Scores par décision humaine (pour box/violin)
+    m['scores_by_decision'] = {
+        dec: ev.loc[ev['decision'] == dec, 'nlp_score'].tolist()
+        for dec in present_dec
+    }
+
+    # Accord global (secondaire)
+    m['accord_global'] = (ev['decision'] == ev['nlp_suggestion']).sum() / m['n_evaluated'] * 100
+
+    return m
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -220,6 +317,11 @@ def render_sidebar(df):
                 if n > 0:
                     avg_s = df[df['nlp_suggestion'] == key]['nlp_score'].mean()
                     st.caption(f"{cfg['icon']} {cfg['label']} : **{n}** (moy. {avg_s:.1f})")
+
+        # ── Seuils dashboard ──────────────────────────────────────────────
+        with st.expander('⚙️ Seuils performance NLP', expanded=False):
+            st.session_state['dash_score_threshold'] = st.slider(
+                'Score min. recall opérationnel', 3, 8, 5, key='cfg_score_thr')
 
         # ── Actions en lot ────────────────────────────────────────────────────
         if df['nlp_suggestion'].any():
@@ -437,11 +539,11 @@ def render_screening_tab(df):
     with col_decision:
         st.markdown('<p style="font-weight:600;font-size:1rem;margin-bottom:4px">Décision</p>', unsafe_allow_html=True)
 
-        notes = st.text_area('Notes', key=f'notes_{current_idx}', height=60,
+        notes = st.text_area('Notes', key=f'notes_{current_idx}', height=68,
                              placeholder='Ex: pertinent RQ1, dataset OAEI...',
                              label_visibility='collapsed')
 
-        if has_nlp and nlp_conf == 'high':
+        if has_nlp and nlp_conf == 'hEnigh':
             label_btn = f"{nlp_cfg['icon']} Accepter ({nlp_sug})"
             if st.button(label_btn, use_container_width=True, key=f'accept_nlp_{current_idx}'):
                 reason = '' if nlp_sug == 'include' else 'E5s' if nlp_sug == 'survey' else str(row.get('nlp_reason', 'E1'))
@@ -636,125 +738,325 @@ def render_review_tab(df):
 def render_dashboard_tab(df):
     total = len(df)
     screened = (df['decision'] != '').sum()
+    inc_n = (df['decision'] == 'include').sum()
+    exc_n = (df['decision'] == 'exclude').sum()
+    srv_n = (df['decision'] == 'survey').sum()
+    unc_n = (df['decision'] == 'uncertain').sum()
+    pct = screened / total * 100 if total else 0
 
-    # ── Inclus par requête (présence, gère les combinaisons R1+R2B) ─────────
-    st.subheader('Inclus par requête')
-    included_df = df[df['decision'] == 'include'].copy()
-    total_included = len(included_df)
-    if total_included > 0 and 'query' in included_df.columns:
-        query_parts = (
-            included_df['query'].astype(str)
-            .str.replace(' ', '', regex=False)
-            .str.split('+')
-            .explode()
-            .str.strip()
-        )
-        query_parts = query_parts[query_parts != '']
+    score_thr = st.session_state.get('dash_score_threshold', 5)
+    m = compute_nlp_metrics(df, score_threshold=score_thr)
+    hi_unscreened = len(df[(df['nlp_confidence'] == 'high') & (df['decision'] == '')])
 
-        if len(query_parts) > 0:
-            query_stats = (
-                query_parts.value_counts()
-                .rename_axis('Requête')
-                .reset_index(name='N inclus')
-            )
-            query_stats['% des inclus'] = (
-                query_stats['N inclus'] / total_included * 100
-            ).round(2)
+    # ══════════════════════════════════════════════════════════════════════════
+    # A. BANDEAU KPI  (lecture en 5 s)
+    # ══════════════════════════════════════════════════════════════════════════
+    k1, k2, k3, k4, k5, k6 = st.columns(6)
+    k1.metric('Screenés', f'{screened} / {total}')
+    k2.metric('Progression', f'{pct:.1f} %')
+    k3.metric('Restants', total - screened)
 
-            st.dataframe(query_stats, use_container_width=True, hide_index=True)
-            st.caption(
-                f'Total inclus: {total_included}. '
-                'Attribution par présence de requête; la somme des pourcentages peut dépasser 100% '
-                'si un article est tagué avec plusieurs requêtes.'
-            )
-        else:
-            st.caption('Aucune requête exploitable dans les articles inclus.')
+    if m.get('recall_strict') is not None:
+        k4.metric('Rappel inclus', f"{m['recall_strict']*100:.0f} %")
     else:
-        st.caption('Aucun article inclus pour le moment.')
+        k4.metric('Rappel inclus', '—')
 
-    # ── Pré-classification NLP ────────────────────────────────────────────────
-    st.subheader('Pré-classification NLP')
+    if m.get('fn_critical') is not None:
+        k5.metric('⚠ Faux négatifs', m['fn_critical'])
+    else:
+        k5.metric('Faux négatifs', '—')
 
-    s1, s2, s3, s4 = st.columns(4)
-    s1.metric('🟢 Inclure',  (df['nlp_suggestion'] == 'include').sum())
-    s2.metric('🟡 Incertain', (df['nlp_suggestion'] == 'uncertain').sum())
-    s3.metric('📚 Survey',   (df['nlp_suggestion'] == 'survey').sum())
-    s4.metric('🔴 Exclure',  (df['nlp_suggestion'] == 'exclude').sum())
+    if hi_unscreened > 0:
+        k6.metric('⚠ Haute conf. restante', hi_unscreened)
+    else:
+        k6.metric('Inclus', inc_n)
 
-    # Tableau croisé confiance × suggestion
-    conf_data = []
-    for sug in ['include', 'uncertain', 'survey', 'exclude']:
-        for lvl in ['high', 'medium', 'low']:
-            n = ((df['nlp_suggestion'] == sug) & (df['nlp_confidence'] == lvl)).sum()
-            if n > 0:
-                avg = df[(df['nlp_suggestion'] == sug) &
-                         (df['nlp_confidence'] == lvl)]['nlp_score'].mean()
-                conf_data.append({'Suggestion': sug, 'Confiance': lvl,
-                                  'N': n, 'Score moy.': round(avg, 1)})
-    if conf_data:
-        cdf = pd.DataFrame(conf_data)
-        pivot_n = cdf.pivot_table(index='Suggestion', columns='Confiance',
-                                  values='N', fill_value=0, aggfunc='sum')
-        for col in ['high', 'medium', 'low']:
-            if col not in pivot_n.columns:
-                pivot_n[col] = 0
-        st.dataframe(pivot_n[['high', 'medium', 'low']], use_container_width=True)
+    # ══════════════════════════════════════════════════════════════════════════
+    # B. DÉCISIONS DE SCREENING
+    # ══════════════════════════════════════════════════════════════════════════
+    st.markdown('#### Décisions de screening')
 
-    # ── Distribution score NLP ────────────────────────────────────────────────
-    st.subheader('Distribution score NLP (0–10)')
-    chart_data = pd.DataFrame({
-        'Score NLP': range(11),
-        'Articles': [int((df['nlp_score'] == s).sum()) for s in range(11)]
-    })
-    st.bar_chart(chart_data, x='Score NLP', y='Articles', height=200)
+    col_dec, col_detail = st.columns([3, 2])
 
-    # ── Raisons exclusion NLP ─────────────────────────────────────────────────
-    st.subheader('Raisons d\'exclusion suggérées')
-    excl_nlp = df[df['nlp_suggestion'] == 'exclude']
-    if len(excl_nlp) > 0:
-        reason_counts = excl_nlp['nlp_reason'].value_counts()
-        st.bar_chart(reason_counts, height=200)
+    with col_dec:
+        if screened > 0:
+            dec_counts = df[df['decision'] != '']['decision'].value_counts()
+            st.bar_chart(dec_counts, height=180)
+        else:
+            st.caption('Aucun article screené.')
 
-    # ── Progression ───────────────────────────────────────────────────────────
-    if screened > 0:
-        st.subheader('Progression du screening')
+        if exc_n > 0:
+            st.markdown('**Raisons d\'exclusion**')
+            reasons = df[df['decision'] == 'exclude']['exclusion_reason'].value_counts()
+            for code, count in reasons.items():
+                label = EXCLUSION_REASONS.get(code, code)
+                parts = label.split(' — ')
+                desc = parts[1][:50] if len(parts) > 1 else label[:50]
+                st.caption(f'**{code}** ({count}) — {desc}')
 
-        p1, p2, p3 = st.columns(3)
-        p1.metric('Screenés', f'{screened}/{total}')
-        p2.metric('Progression', f'{screened/total*100:.1f}%')
-        p3.metric('Restants', total - screened)
+    with col_detail:
+        st.markdown('**Inclus par requête**')
+        included_df = df[df['decision'] == 'include'].copy()
+        total_included = len(included_df)
+        if total_included > 0 and 'query' in included_df.columns:
+            query_parts = (
+                included_df['query'].astype(str)
+                .str.replace(' ', '', regex=False)
+                .str.split('+')
+                .explode()
+                .str.strip()
+            )
+            query_parts = query_parts[query_parts != '']
+            if len(query_parts) > 0:
+                query_stats = (
+                    query_parts.value_counts()
+                    .rename_axis('Requête')
+                    .reset_index(name='N')
+                )
+                query_stats['%'] = (
+                    query_stats['N'] / total_included * 100
+                ).round(1)
+                st.dataframe(query_stats, hide_index=True, use_container_width=True,
+                             height=min(35 * len(query_stats) + 38, 200))
+                st.caption(f'{total_included} inclus. Somme > 100 % si multi-requêtes.')
+            else:
+                st.caption('Aucune requête exploitable.')
+        else:
+            st.caption('Aucun article inclus.')
 
-        dec_with_nlp = df[(df['decision'] != '') & (df['nlp_suggestion'] != '')]
-        if len(dec_with_nlp) > 0:
-            accord = (dec_with_nlp['decision'] == dec_with_nlp['nlp_suggestion']).sum()
-            st.metric('Accord NLP/humain', f'{accord/len(dec_with_nlp)*100:.1f}%')
+    # ══════════════════════════════════════════════════════════════════════════
+    # C. PERFORMANCE NLP
+    # ══════════════════════════════════════════════════════════════════════════
+    if m.get('n_evaluated', 0) == 0:
+        st.markdown('#### Performance NLP')
+        st.caption('Pas assez de données (screenez des articles avec suggestion NLP).')
+    else:
+        st.markdown('#### Performance NLP')
 
-        st.subheader('Répartition des décisions')
-        dec_counts = df[df['decision'] != '']['decision'].value_counts()
-        st.bar_chart(dec_counts, height=200)
+        # ── C1. KPI de performance (2 lignes) ────────────────────────────────
+        m1, m2, m3, m4 = st.columns(4)
 
-    # ── Exports ───────────────────────────────────────────────────────────────
-    st.subheader('Exports')
-    col_e1, col_e2, col_e3, col_e4 = st.columns(4)
-    with col_e1:
-        inc_df = df[df['decision'] == 'include']
-        st.download_button(f'⬇️ Inclus ({len(inc_df)})',
-            inc_df.to_csv(index=False, encoding='utf-8-sig'),
-            'corpus_tri1_inclus.csv', 'text/csv', use_container_width=True)
-    with col_e2:
-        srv_df = df[df['decision'] == 'survey']
-        st.download_button(f'⬇️ Surveys ({len(srv_df)})',
-            srv_df.to_csv(index=False, encoding='utf-8-sig'),
-            'corpus_tri1_surveys.csv', 'text/csv', use_container_width=True)
-    with col_e3:
-        unc_df = df[df['decision'] == 'uncertain']
-        st.download_button(f'⬇️ Incertains ({len(unc_df)})',
-            unc_df.to_csv(index=False, encoding='utf-8-sig'),
-            'corpus_tri1_incertains.csv', 'text/csv', use_container_width=True)
-    with col_e4:
-        st.download_button(f'⬇️ Corpus complet ({total})',
-            df.to_csv(index=False, encoding='utf-8-sig'),
-            'corpus_complet.csv', 'text/csv', use_container_width=True)
+        recall_s = m.get('recall_strict')
+        m1.metric(
+            'Rappel strict « inclure »',
+            f'{recall_s*100:.1f} %' if recall_s is not None else '—',
+            help='Parmi les inclus humains, % détectés comme « inclure » par le NLP'
+        )
+        if recall_s is not None:
+            if recall_s >= 0.8:
+                m1.caption('✅ Le système détecte bien les articles pertinents.')
+            elif recall_s >= 0.5:
+                m1.caption('🟡 Détection partielle — vérifier les manqués.')
+            else:
+                m1.caption('🔴 Le système manque beaucoup d\'inclus.')
+
+        recall_op = m.get('recall_operational')
+        m2.metric(
+            f'Rappel opérationnel (≥ {score_thr})',
+            f'{recall_op*100:.1f} %' if recall_op is not None else '—',
+            help=f'Inclure OU incertain avec score ≥ {score_thr}'
+        )
+        if recall_op is not None:
+            m2.caption(f"{m['tp_operational']} / {m['n_human_inc']} retrouvés.")
+
+        prec = m.get('precision')
+        m3.metric(
+            'Précision « inclure »',
+            f'{prec*100:.1f} %' if prec is not None else '—',
+            help='Parmi les suggestions « inclure » NLP, % réellement inclus'
+        )
+        if prec is not None:
+            if prec >= 0.7:
+                m3.caption('✅ Les suggestions d\'inclusion sont fiables.')
+            elif prec >= 0.4:
+                m3.caption('🟡 Bruit modéré dans les suggestions.')
+            else:
+                m3.caption('🔴 Beaucoup de fausses suggestions d\'inclusion.')
+
+        m4.metric(
+            'Taux d\'incertitude',
+            f"{m['uncertainty_rate']:.1f} %",
+            help='Part des articles renvoyés à la revue humaine'
+        )
+        if m['uncertainty_rate'] > 30:
+            m4.caption('🟡 Le modèle hésite souvent — charge de travail élevée.')
+        else:
+            m4.caption(f"Part déléguée à la revue humaine.")
+
+        # Accord global (secondaire)
+        st.caption(
+            f"Accord global NLP/humain : **{m['accord_global']:.1f} %** "
+            f"(sur {m['n_evaluated']} articles comparés)"
+        )
+
+        # ── C2. Risques — faux négatifs critiques ────────────────────────────
+        st.markdown('**⚠ Risques — faux négatifs critiques**')
+        fn = m.get('fn_critical', 0)
+        fn_pct = m.get('fn_critical_pct', 0)
+        n_hi = m.get('n_human_inc', 0)
+
+        if fn == 0:
+            st.caption('✅ Aucun article inclus n\'a été suggéré « exclure » par le NLP.')
+        else:
+            st.warning(
+                f'**{fn}** article(s) inclus par l\'humain ont été suggérés « exclure » '
+                f'par le NLP ({fn_pct:.1f} % des {n_hi} inclus). '
+                f'Ces articles auraient été perdus en mode automatique.'
+            )
+            # List the actual false negatives
+            fn_df = df[
+                (df['decision'] == 'include') &
+                (df['nlp_suggestion'] == 'exclude')
+            ][['rank', 'title', 'nlp_score', 'nlp_reason']].copy()
+            if len(fn_df) > 0:
+                fn_df['title'] = fn_df['title'].str[:70]
+                fn_df.columns = ['#', 'Titre', 'Score NLP', 'Raison NLP']
+                st.dataframe(fn_df, hide_index=True, use_container_width=True,
+                             height=min(35 * len(fn_df) + 38, 180))
+
+        # ── C3. Valeur opérationnelle — couverture par score ─────────────────
+        col_cov, col_box = st.columns(2)
+
+        with col_cov:
+            st.markdown('**Valeur opérationnelle — couverture des inclus**')
+            cov = m.get('coverage', {})
+
+            cov_data = []
+            for thr in [5, 6, 7, 8]:
+                if thr in cov:
+                    cov_data.append({
+                        'Seuil': f'Score ≥ {thr}',
+                        '% inclus retrouvés': f"{cov[thr]:.1f} %"
+                    })
+            for p in [10, 20, 30]:
+                key = f'top{p}'
+                if key in cov:
+                    cov_data.append({
+                        'Seuil': f'Top {p} % des scores',
+                        '% inclus retrouvés': f"{cov[key]:.1f} %"
+                    })
+
+            if cov_data:
+                st.dataframe(pd.DataFrame(cov_data), hide_index=True,
+                             use_container_width=True,
+                             height=min(35 * len(cov_data) + 38, 300))
+                best_thr = max((cov.get(t, 0), t) for t in [5, 6, 7, 8])
+                st.caption(
+                    f'Au seuil ≥ {best_thr[1]}, {best_thr[0]:.0f} % des inclus '
+                    f'sont retrouvés. Le score NLP peut guider la priorisation.'
+                )
+
+        # ── C4. Distribution des scores par décision (box plot) ──────────────
+        with col_box:
+            st.markdown('**Scores NLP par décision humaine**')
+            scores_by_dec = m.get('scores_by_decision', {})
+            if scores_by_dec:
+                fig = go.Figure()
+                colors = {
+                    'include': '#28a745', 'exclude': '#dc3545',
+                    'survey': '#007bff', 'uncertain': '#ffc107'
+                }
+                labels = {
+                    'include': 'Inclus', 'exclude': 'Exclus',
+                    'survey': 'Survey', 'uncertain': 'Incertain'
+                }
+                for dec in ['include', 'exclude', 'survey', 'uncertain']:
+                    vals = scores_by_dec.get(dec, [])
+                    if vals:
+                        fig.add_trace(go.Box(
+                            y=vals, name=labels.get(dec, dec),
+                            marker_color=colors.get(dec, '#888'),
+                            boxmean=True
+                        ))
+                fig.update_layout(
+                    height=280, margin=dict(l=0, r=0, t=10, b=0),
+                    yaxis_title='Score NLP', showlegend=False,
+                    paper_bgcolor='rgba(0,0,0,0)',
+                    plot_bgcolor='rgba(0,0,0,0)',
+                )
+                fig.update_yaxes(range=[-0.5, 10.5], dtick=2, gridcolor='#eee')
+                st.plotly_chart(fig, use_container_width=True)
+
+                # Interprétation
+                inc_scores = scores_by_dec.get('include', [])
+                exc_scores = scores_by_dec.get('exclude', [])
+                if inc_scores and exc_scores:
+                    inc_med = float(np.median(inc_scores))
+                    exc_med = float(np.median(exc_scores))
+                    gap = inc_med - exc_med
+                    if gap >= 3:
+                        st.caption(
+                            f'✅ Bonne séparation (méd. inclus={inc_med:.0f}, '
+                            f'exclus={exc_med:.0f}). Le score discrimine bien.'
+                        )
+                    elif gap >= 1:
+                        st.caption(
+                            f'🟡 Séparation partielle (méd. inclus={inc_med:.0f}, '
+                            f'exclus={exc_med:.0f}).'
+                        )
+                    else:
+                        st.caption(
+                            f'🔴 Faible séparation (méd. inclus={inc_med:.0f}, '
+                            f'exclus={exc_med:.0f}). Le score seul ne suffit pas.'
+                        )
+
+        # ── C5. Matrice de confusion ─────────────────────────────────────────
+        confusion = m.get('confusion')
+        if confusion is not None and not confusion.empty:
+            col_mat, col_nlp_dist = st.columns(2)
+            with col_mat:
+                st.markdown('**Matrice de confusion**')
+                label_map = {'include': '✅ Inclus', 'exclude': '❌ Exclus',
+                             'survey': '📚 Survey', 'uncertain': '❓ Incertain'}
+                disp = confusion.copy()
+                disp.index = [label_map.get(i, i) for i in disp.index]
+                disp.columns = [label_map.get(c, c) for c in disp.columns]
+                st.dataframe(disp, use_container_width=True)
+                st.caption('Lignes = décision humaine, colonnes = suggestion NLP.')
+
+            with col_nlp_dist:
+                st.markdown('**Confiance × Suggestion NLP**')
+                ev_full = df[df['nlp_suggestion'] != '']
+                conf_data = []
+                for sug in ['include', 'uncertain', 'survey', 'exclude']:
+                    for lvl in ['high', 'medium', 'low']:
+                        n = ((ev_full['nlp_suggestion'] == sug) & (ev_full['nlp_confidence'] == lvl)).sum()
+                        if n > 0:
+                            conf_data.append({'Suggestion': sug, 'Confiance': lvl, 'N': n})
+                if conf_data:
+                    cdf = pd.DataFrame(conf_data)
+                    pivot_n = cdf.pivot_table(index='Suggestion', columns='Confiance',
+                                              values='N', fill_value=0, aggfunc='sum')
+                    for c in ['high', 'medium', 'low']:
+                        if c not in pivot_n.columns:
+                            pivot_n[c] = 0
+                    st.dataframe(pivot_n[['high', 'medium', 'low']], use_container_width=True)
+
+    # ══════════════════════════════════════════════════════════════════════════
+    # D. ACTIONS & EXPORTS (compact)
+    # ══════════════════════════════════════════════════════════════════════════
+    st.markdown('---')
+    with st.expander('⬇️ Exports', expanded=False):
+        ce1, ce2, ce3, ce4 = st.columns(4)
+        with ce1:
+            inc_df = df[df['decision'] == 'include']
+            st.download_button(f'Inclus ({len(inc_df)})',
+                inc_df.to_csv(index=False, encoding='utf-8-sig'),
+                'corpus_tri1_inclus.csv', 'text/csv', use_container_width=True)
+        with ce2:
+            srv_df = df[df['decision'] == 'survey']
+            st.download_button(f'Surveys ({len(srv_df)})',
+                srv_df.to_csv(index=False, encoding='utf-8-sig'),
+                'corpus_tri1_surveys.csv', 'text/csv', use_container_width=True)
+        with ce3:
+            unc_df = df[df['decision'] == 'uncertain']
+            st.download_button(f'Incertains ({len(unc_df)})',
+                unc_df.to_csv(index=False, encoding='utf-8-sig'),
+                'corpus_tri1_incertains.csv', 'text/csv', use_container_width=True)
+        with ce4:
+            st.download_button(f'Complet ({total})',
+                df.to_csv(index=False, encoding='utf-8-sig'),
+                'corpus_complet.csv', 'text/csv', use_container_width=True)
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -794,16 +1096,14 @@ def _show_summary(df):
                 st.markdown(f'- **{code}** ({count}) — {desc}')
 
     if df['nlp_suggestion'].any():
-        dec_map = df[df['nlp_suggestion'] != ''].copy()
-        accord = (dec_map['decision'] == dec_map['nlp_suggestion']).sum()
-        total_nlp = len(dec_map[dec_map['decision'] != ''])
-        if total_nlp > 0:
+        m = compute_nlp_metrics(df)
+        if m.get('n_evaluated', 0) > 0:
             st.divider()
-            ca1, ca2 = st.columns(2)
-            ca1.metric('Accord NLP/humain', f'{accord/total_nlp*100:.1f}%')
-            ca2.metric('Score NLP moyen (inclus)',
-                      f"{df[df['decision']=='include']['nlp_score'].mean():.1f}/10"
-                      if inc > 0 else '—')
+            ca1, ca2, ca3 = st.columns(3)
+            ca1.metric('Rappel inclus',
+                       f"{m['recall_strict']*100:.1f}%" if m.get('recall_strict') is not None else '—')
+            ca2.metric('Faux négatifs critiques', m.get('fn_critical', 0))
+            ca3.metric('Accord global', f"{m['accord_global']:.1f}%")
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -814,9 +1114,10 @@ def main():
     st.set_page_config(page_title='Screening Tri #1', page_icon='📄', layout='wide')
     _init_session()
 
-    # CSS — compacte la colonne Décision
+    # CSS — compact layout
     st.markdown('''
     <style>
+    /* Screening tab — boutons compacts */
     div[data-testid="column"]:last-child .stButton {
         margin-bottom: -6px;
     }
@@ -829,6 +1130,12 @@ def main():
     div[data-testid="column"]:last-child textarea {
         min-height: 55px !important;
     }
+    /* Dashboard — réduction espacement vertical */
+    [data-testid="stMetric"] {
+        padding: 8px 12px;
+    }
+    h4 { margin-top: 0.8rem !important; margin-bottom: 0.3rem !important; }
+    hr { margin: 0.5rem 0 !important; }
     </style>
     ''', unsafe_allow_html=True)
 
