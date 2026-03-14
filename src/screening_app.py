@@ -650,13 +650,20 @@ def render_review_tab(df):
 
     # ── Tableau ───────────────────────────────────────────────────────────────
     display_cols = ['rank', 'decision', 'nlp_suggestion', 'nlp_score',
-                    'exclusion_reason', 'title', 'year', 'database']
+                    'exclusion_reason', 'accessible', 'title', 'year', 'database']
     avail_cols = [c for c in display_cols if c in view.columns]
     display_df = view[avail_cols].copy()
+
+    # Lien DOI
+    if 'doi' in view.columns:
+        display_df['Lien'] = view['doi'].apply(
+            lambda d: f"https://doi.org/{d}" if pd.notna(d) and str(d).strip() not in ('', 'nan') else '')
+
     col_map = {'rank': '#', 'decision': 'Décision', 'nlp_suggestion': 'NLP',
                'nlp_score': 'Score', 'exclusion_reason': 'Raison',
-               'title': 'Titre', 'year': 'Année', 'database': 'Base'}
-    display_df.columns = [col_map.get(c, c) for c in avail_cols]
+               'accessible': 'Accès', 'title': 'Titre', 'year': 'Année',
+               'database': 'Base'}
+    display_df.columns = [col_map.get(c, c) for c in display_df.columns]
     if 'Titre' in display_df.columns:
         display_df['Titre'] = display_df['Titre'].str[:80]
 
@@ -666,7 +673,10 @@ def render_review_tab(df):
         display_df['Décision'] = display_df['Décision'].map(
             lambda d: f"{dec_icons.get(d, '')} {d}")
 
-    st.dataframe(display_df, use_container_width=True, height=400, hide_index=True)
+    st.dataframe(
+        display_df, use_container_width=True, height=400, hide_index=True,
+        column_config={'Lien': st.column_config.LinkColumn('Lien', display_text='🔗')}
+    )
 
     # ── Révision individuelle ─────────────────────────────────────────────────
     st.markdown('---')
@@ -722,11 +732,21 @@ def render_review_tab(df):
         new_notes = st.text_input('Nouvelles notes', value=str(sel_row['screener_notes']),
                                   key='new_notes')
 
+        cur_access = str(sel_row.get('accessible', ''))
+        new_accessible = st.selectbox(
+            'Source accessible ?',
+            ['', 'oui', 'non'],
+            index=['', 'oui', 'non'].index(cur_access) if cur_access in ('', 'oui', 'non') else 0,
+            key='new_accessible'
+        )
+
         if st.button('💾 Enregistrer la modification', key='save_rev'):
             if new_dec == '— remettre en attente —':
                 df = save_decision(df, sel_idx, '', '', '')
             else:
                 df = save_decision(df, sel_idx, new_dec, new_reason, new_notes)
+            df.loc[sel_idx, 'accessible'] = new_accessible
+            df.to_csv(CORPUS_PATH, index=False, encoding='utf-8-sig', na_rep='')
             st.success(f'Article #{selected_rank} mis à jour.')
             _save_and_reload(df)
 
