@@ -425,3 +425,36 @@ Le mode « Priorité incertains » ordonne le pool d'articles non screenés selo
 **Justification :** Capture par les requêtes due à l'utilisation superficielle de termes tendance dans les abstracts. Identification lors de l'analyse bibliométrique des venues (included_by_journal.csv).
 **Limite reconnue :** Autres venues prédatrices potentiellement non détectées dans le corpus.
 **Impact PRISMA :** Exclusion E1 standard. Mentionner dans les limitations : la présence de venues prédatrices dans les bases commerciales illustre la nécessité du screening humain.
+
+---
+
+### DEC-024 — Dédoublonnage tardif full-text : #86 Wu 2020
+**Date :** 14 mars 2026
+**Base :** ArXiv / Scopus
+**Décision :** Exclusion de l'article #86 (« Ontology Matching by Jointly Encoding Terminological Description and Neighbourhood Structure », Wu et al., 2020) au profit de #79 (« DAEOM: A deep attentional embedding approach for biomedical ontology matching », Wu et al., 2020). Le #86 est la version conférence préliminaire ; le #79 est la version étendue.
+**Justification :** Dédoublonnage tardif détecté lors de la revue full-text (Tri #2). Les deux articles partagent la même méthode (DAEOM) et les mêmes auteurs. La version étendue (#79) est plus complète. Pratique standard en SLR : conserver la version la plus aboutie.
+**Limite reconnue :** Le dédoublonnage automatique (titre/DOI) n'avait pas détecté ce cas car les titres diffèrent substantiellement.
+**Impact PRISMA :** +1 article exclu après full-text review, raison : doublon (version préliminaire). Compteur `fulltext_exclu_doublon` ajouté dans prisma_counts.csv.
+
+---
+
+### DEC-025 — Dédoublonnage tardif Tri #1 : #1188 Cao 2025
+**Date :** 14 mars 2026
+**Base :** IEEE
+**Décision :** Correction de la raison d'exclusion de l'article #1188 (« Personalized learning recommendation system based on DeepSeek algorithm », Cao, 2025) de `E6` à `E_doublon`. Identifié comme doublon lors du Tri #1.
+**Justification :** La note de screening mentionnait « Doublon » mais la raison codée était `E6`. Correction pour cohérence avec le code `E_doublon` utilisé pour les dédoublonnages tardifs.
+**Limite reconnue :** Le dédoublonnage automatique n'avait pas détecté ce cas.
+**Impact PRISMA :** Compteur `fulltext_exclu_doublon` passe de 1 à 2 dans prisma_counts.csv. Le total d'exclusions Tri #1 reste inchangé (l'article était déjà exclu).
+
+---
+
+### DEC-026 — Exclusion pour langue non exploitable (E6) : articles en chinois
+**Date :** 15 mars 2026
+**Base :** Scopus
+**Décision :** Trois articles dont le texte intégral est rédigé en chinois sont exclus avec le motif E6 (langue non exploitable) :
+- #216 Tang 2023 — « Entity Alignment Method Combining Iterative Relationship Graph Matching and Attribute Semantic Embedding » (*Computer Science*, 30.9 % sinogrammes)
+- #493 Wang 2025 — « Institution Name Alignment Integrating Prompt Engineering and Graph Convolutional Network » (*Data Analysis and Knowledge Discovery*, 51.2 % sinogrammes sur les 2 premières pages)
+- #541 Wang 2024 — « Knowledge Fusion Method of High-Speed Train Based on Knowledge Graph » (*Journal of Southwest Jiaotong University*, 37.2 % sinogrammes)
+**Justification :** Conformément aux bonnes pratiques PRISMA 2020 (item 6 — critères d'éligibilité), les articles dans une langue non maîtrisée par la chercheuse sont exclus et documentés comme limitation (biais linguistique). Les titres bilingues dans les bases de données masquaient le fait que le contenu intégral est en chinois. Vérification faite par extraction du texte PDF via PyPDF2 et mesure du ratio de sinogrammes.
+**Limite reconnue :** Biais linguistique potentiel — trois études pertinentes sont exclues faute de pouvoir en exploiter le contenu. À mentionner dans la section Limitations du mémoire.
+**Impact PRISMA :** Nouveau compteur `fulltext_exclu_E6_langue` = 3. Inclus Tri #2 passe de 94 à 91. QA PASS passe de 79 à 76. Total exclusions passe de 11 à 14.

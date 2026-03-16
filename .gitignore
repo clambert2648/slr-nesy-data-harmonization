@@ -13,3 +13,6 @@ __pycache__/
 
 # Streamlit secrets
 .streamlit/secrets.toml
+
+# PDFs (copyright — stockés localement, pas sur GitHub)
+data/fulltext/

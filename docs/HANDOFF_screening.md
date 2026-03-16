@@ -146,23 +146,52 @@ Colonnes critiques pour le code :
 
 ---
 
-## Ce qui est à faire dans le prochain chat
+## État actuel — Tri #2 (QA full-text) terminé (15 mars 2026)
 
-**Objectif principal : améliorer screening_app.py avant de lancer le Tri #1**
+### Résumé PRISMA Tri #2
 
-Pistes prioritaires à discuter/implémenter :
-1. **Vue de révision** — pouvoir revenir sur un article déjà décidé et changer la décision
-2. **Aperçu NLP pré-screening** — afficher la distribution estimée avant de commencer (pour planifier)
-3. **Filtre par base ou requête** — screener d'abord les arXiv, ou d'abord les R2A, etc.
-4. **Mode batch assisté** — revoir les exclus/inclus NLP haute confiance par page avant d'accepter en lot
-5. Toute autre amélioration suggérée après analyse du code
+| Étape | N |
+|---|---:|
+| Tri #1 include | 105 |
+| → Exclusions full-text | 14 |
+|   dont E1 (inaccessible) | 9 |
+|   dont E6 (langue non exploitable) | 3 |
+|   dont hors scope | 1 |
+|   dont doublon | 1 |
+| **Inclus Tri #2** | **91** |
+| QA évalués | 91 |
+| QA PASS (≥ 3/5) | 76 |
+| QA FAIL (< 3/5) | 15 |
+| En attente | 0 |
 
-**Fichiers à coller au début du chat :**
-- `screening_app.py` (code complet)
-- `preclassify.py` (code complet)
-- Ce fichier HANDOFF comme contexte initial
+### Fichiers de données
+
+| Fichier | Contenu |
+|---|---|
+| `data/processed/articles_inclus.csv` | 105 articles, 91 inclus, 14 exclus. Source de vérité pour le QA. |
+| `data/processed/corpus_scored.csv` | 1 888 articles. Source de vérité pour le Tri #1. **Stale pour QA** (103 includes vs 94 dans articles_inclus). |
+| `data/processed/prisma_counts.csv` | Compteurs PRISMA mis à jour incluant Tri #2. |
+| `data/fulltext/extraction/` | 76 PDFs — QA PASS, prêts pour la phase d'extraction. |
+| `data/fulltext/tri2_excluded/` | 15 PDFs — QA FAIL (< 3/5). |
+| `data/fulltext/archive/` | 11 PDFs — exclus (E1, E6 langue, hors scope, doublon). |
+| `data/fulltext/surveys/` | 7 PDFs — surveys de référence. |
+
+### Articles manquants / cas spéciaux
+
+- **363 Wu 2025** — PDF re-uploadé et évalué QA (PASS 4.0/5). Borderline I4.
+- **238 Zhang 2020, 340 Li 2023, 413 Wu 2024** — E1 inaccessibles.
+- **616 Ayala 2021** — Doublon de 679 (LEAPME).
+- **543 Qiang 2023** — Exclu hors scope (sentence matching chinois, aucun lien à ontology matching).
+- **216 Tang 2023, 493 Wang 2025, 541 Wang 2024** — E6 langue non exploitable (articles rédigés en chinois).
+- **754 Ayala 2020** — Doublon de 679 (preprint vs journal).
+
+### Ce qui reste à faire
+
+1. **Synchroniser corpus_scored.csv** : 2 articles inclus dans articles_inclus mais exclus dans corpus_scored (238 ajouté puis E1, 971 ajouté manuellement). Décider si corpus_scored doit refléter les changements.
+2. **Tri #3 (extraction A.5)** : extraire les données des 76 articles PASS QA
+3. **Analyse post-QA** : distribution I4/non-NeSy/borderline, ventilation par type de publication, RQ coverage
 
 ---
 
-## Décisions log — dernière entrée : DEC-017
-Les DEC-001 à DEC-017 sont documentées. La prochaine décision sera DEC-018.
+## Décisions log — dernière entrée : DEC-026
+Les DEC-001 à DEC-026 sont documentées. La prochaine décision sera DEC-027.

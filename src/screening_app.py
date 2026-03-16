@@ -25,6 +25,7 @@ import os
 from datetime import datetime
 
 CORPUS_PATH = 'data/processed/corpus_scored.csv'
+INCLUS_PATH = 'data/processed/articles_inclus.csv'
 
 INCLUSION_CRITERIA = {
     'I1': 'Article de revue (ar) ou acte de conférence (cp), évalué par les pairs. Période : 2020–2025.',
@@ -64,6 +65,85 @@ UNCERTAIN_REASON_ORDER = {
     'no_abstract': 7,
     'E1?+no_abstract': 7,
 }
+
+FULLTEXT_DIR = 'data/fulltext'
+
+def _find_pdf(rank):
+    """Retourne le nom du PDF correspondant au rank, ou None."""
+    r = int(rank)
+    prefix = f"{r:04d}_" if r >= 1000 else f"{r:03d}_"
+    if os.path.isdir(FULLTEXT_DIR):
+        for f in os.listdir(FULLTEXT_DIR):
+            if f.startswith(prefix) and f.endswith('.pdf'):
+                return f
+    return None
+
+# ══════════════════════════════════════════════════════════════════════════════
+# QUALITY ASSESSMENT — Tri #2
+# ══════════════════════════════════════════════════════════════════════════════
+
+QA_CRITERIA = {
+    'Q1': {
+        'label': 'Objectifs & tâche',
+        'question': "Les objectifs de recherche et la tâche d'appariement/harmonisation sont-ils clairement définis ?",
+        'scored': True,
+    },
+    'Q2': {
+        'label': 'Architecture reproductible',
+        'question': "L'architecture neuro-symbolique proposée est-elle décrite avec suffisamment de détail pour être reproduite ?",
+        'scored': True,
+    },
+    'Q3': {
+        'label': 'Dataset & métriques',
+        'question': "L'évaluation utilise-t-elle un dataset identifié (nom+taille) et au moins une métrique standard ?",
+        'scored': True,
+    },
+    'Q4': {
+        'label': 'Explicabilité / HITL',
+        'question': "L'article fournit-il des explications ou justifications sur les décisions d'appariement ?",
+        'scored': True,
+    },
+    'Q5': {
+        'label': 'Comparaison baseline',
+        'question': "Les résultats sont-ils comparés à au moins une baseline externe sur le même dataset ?",
+        'scored': True,
+    },
+    'Q6': {
+        'label': 'Limites (bonus)',
+        'question': "Les limites de l'approche ou menaces à la validité sont-elles discutées ?",
+        'scored': False,
+    },
+}
+QA_THRESHOLD = 3.0
+QA_MAX_SCORE = 5.0  # Q1-Q5 only
+QA_OPTIONS = {0.0: 'Non (0)', 0.5: 'Partiellement (0.5)', 1.0: 'Oui (1)'}
+QA_COLS = [f'qa_q{i}' for i in range(1, 7)]
+QA_NOTE_COLS = [f'qa_notes_q{i}' for i in range(1, 7)]
+QA_ALL_COLS = QA_COLS + QA_NOTE_COLS + ['qa_total', 'qa_pass']
+
+
+def _ensure_qa_columns(df):
+    """Ajoute les colonnes QA au DataFrame si absentes."""
+    for col in QA_COLS:
+        if col not in df.columns:
+            df[col] = ''
+    for col in QA_NOTE_COLS:
+        if col not in df.columns:
+            df[col] = ''
+    if 'qa_total' not in df.columns:
+        df['qa_total'] = ''
+    if 'qa_pass' not in df.columns:
+        df['qa_pass'] = ''
+    return df
+
+
+def _qa_score_color(score, threshold=QA_THRESHOLD):
+    if score >= threshold + 1:
+        return '#28a745'  # vert
+    elif score >= threshold:
+        return '#ffc107'  # jaune — juste au seuil
+    else:
+        return '#dc3545'  # rouge
 
 
 def _score_bar(score, max_score=10):
@@ -212,6 +292,16 @@ def compute_nlp_metrics(df, score_threshold=5):
 # ══════════════════════════════════════════════════════════════════════════════
 
 @st.cache_data(ttl=0)
+def load_inclus():
+    """Charge articles_inclus.csv (source QA à jour)."""
+    if not os.path.exists(INCLUS_PATH):
+        return None
+    df = pd.read_csv(INCLUS_PATH, encoding='utf-8-sig', keep_default_na=False)
+    df = _ensure_qa_columns(df)
+    return df
+
+
+@st.cache_data(ttl=0)
 def load_corpus():
     if not os.path.exists(CORPUS_PATH):
         st.error(f"Fichier introuvable : {CORPUS_PATH}\nLance d'abord : python src/scoring.py")
@@ -227,6 +317,7 @@ def load_corpus():
         df['nlp_score'] = pd.to_numeric(df['nlp_score'], errors='coerce').fillna(0).astype(int)
     else:
         df['nlp_score'] = 0
+    df = _ensure_qa_columns(df)
     return df
 
 
@@ -455,7 +546,6 @@ def render_screening_tab(df):
     if pool.empty:
         if remaining == 0:
             st.success('🎉 Screening Tri #1 terminé !')
-            st.balloons()
             _show_summary(df)
         elif any_filter:
             st.info('Aucun article restant ne correspond aux filtres.')
@@ -1080,6 +1170,345 @@ def render_dashboard_tab(df):
 
 
 # ══════════════════════════════════════════════════════════════════════════════
+# ONGLET 4 — TRI #2 / QUALITY ASSESSMENT
+# ══════════════════════════════════════════════════════════════════════════════
+
+def _save_qa(df, idx, scores, notes):
+    """Sauvegarde les scores QA pour un article."""
+    for i, qid in enumerate(QA_COLS):
+        df.loc[idx, qid] = scores[i]
+    for i, nid in enumerate(QA_NOTE_COLS):
+        df.loc[idx, nid] = notes[i]
+    # Total = Q1-Q5 only (Q6 bonus)
+    scored_vals = [float(s) for s in scores[:5] if s != '']
+    total = sum(scored_vals) if scored_vals else ''
+    df.loc[idx, 'qa_total'] = total
+    df.loc[idx, 'qa_pass'] = ('oui' if total >= QA_THRESHOLD else 'non') if total != '' else ''
+    df.to_csv(INCLUS_PATH, index=False, encoding='utf-8-sig', na_rep='')
+    return df
+
+
+def render_qa_tab(_corpus_df):
+    # Charger depuis articles_inclus.csv (source QA à jour)
+    df = load_inclus()
+    if df is None or len(df) == 0:
+        st.info('Fichier articles_inclus.csv introuvable. Complète le screening d\'abord.')
+        return
+
+    included = df[df['decision'] == 'include'].copy()
+
+    if len(included) == 0:
+        st.info('Aucun article inclus au Tri #1. Complète le screening d\'abord.')
+        return
+
+    # ── Statistiques résumées ─────────────────────────────────────────────────
+    n_included = len(included)
+    n_evaluated = len(included[included['qa_total'] != ''])
+    n_remaining = n_included - n_evaluated
+
+    evaluated_df = included[included['qa_total'] != ''].copy()
+    if len(evaluated_df) > 0:
+        evaluated_df['qa_total'] = pd.to_numeric(evaluated_df['qa_total'], errors='coerce')
+        n_pass = (evaluated_df['qa_total'] >= QA_THRESHOLD).sum()
+        n_fail = (evaluated_df['qa_total'] < QA_THRESHOLD).sum()
+    else:
+        n_pass = n_fail = 0
+
+    progress = n_evaluated / n_included if n_included > 0 else 0
+    st.progress(progress, text=f'{n_evaluated}/{n_included} évalués ({progress*100:.1f}%)')
+
+    k1, k2, k3, k4, k5 = st.columns(5)
+    k1.metric('Inclus Tri #1', n_included)
+    k2.metric('Évalués QA', n_evaluated)
+    k3.metric('Restants', n_remaining)
+    k4.metric('✅ Passent (≥3/5)', n_pass)
+    k5.metric('❌ Échouent (<3/5)', n_fail)
+
+    # ── Sous-onglets : Évaluation | Dashboard ────────────────────────────────
+    qa_eval, qa_dash = st.tabs(['🔬 Évaluation', '📊 Tableau de bord QA'])
+
+    # ══════════════════════════════════════════════════════════════════════════
+    # ÉVALUATION
+    # ══════════════════════════════════════════════════════════════════════════
+    with qa_eval:
+        # ── Mode de navigation ────────────────────────────────────────────────
+        nav_mode = st.radio(
+            'Navigation',
+            ['Séquentiel (non évalués)', 'Sélection manuelle'],
+            horizontal=True, key='qa_nav_mode'
+        )
+
+        if nav_mode == 'Séquentiel (non évalués)':
+            unevaluated = included[included['qa_total'] == ''].sort_values(
+                by='rank', ascending=True
+            )
+            if unevaluated.empty:
+                st.success('🎉 Tous les articles inclus ont été évalués !')
+                return
+            current_idx = unevaluated.index[0]
+            pos_label = f"#{list(unevaluated.index).index(current_idx)+1}/{len(unevaluated)} restants"
+        else:
+            rank_options = sorted(included['rank'].astype(int).tolist())
+            if not rank_options:
+                st.info('Aucun article inclus.')
+                return
+
+            def _format_qa_rank(r):
+                row_t = df[df['rank'] == r]
+                if row_t.empty:
+                    return f"#{r}"
+                title = row_t['title'].values[0][:55]
+                qa_val = row_t['qa_total'].values[0]
+                status = ''
+                if qa_val != '' and qa_val != '':
+                    try:
+                        status = f' — QA {float(qa_val):.1f}/5'
+                    except (ValueError, TypeError):
+                        pass
+                else:
+                    status = ' — ⏳'
+                return f"#{r}{status} — {title}"
+
+            selected_rank = st.selectbox(
+                'Article', options=rank_options,
+                format_func=_format_qa_rank, key='qa_select_rank'
+            )
+            current_idx = df[df['rank'] == selected_rank].index[0]
+            pos_label = ''
+
+        row = df.loc[current_idx]
+        rank = int(row.get('rank', current_idx + 1))
+
+        # ── Affichage article ─────────────────────────────────────────────────
+        st.markdown(f'### Article #{rank} {pos_label}')
+        st.markdown(f'## {row["title"]}')
+
+        m1, m2, m3, m4 = st.columns(4)
+        m1.metric('Année', str(row.get('year', '—')))
+        m2.metric('Base', str(row.get('database', '—')))
+        m3.metric('Score NLP', f"{int(row.get('nlp_score', 0))}/10")
+        m4.metric('TF-IDF', f"{float(row.get('relevance_score_pct', 0)):.1f}%")
+
+        doi = str(row.get('doi', ''))
+        if doi and doi not in ('', 'nan'):
+            st.caption(f'[Voir article complet →](https://doi.org/{doi})')
+
+        # Lien vers le PDF local
+        pdf_file = _find_pdf(rank)
+        if pdf_file:
+            st.caption(f'📂 PDF local : **{pdf_file}**')
+        else:
+            st.caption('📂 PDF local : _non disponible_')
+
+        with st.expander('📄 Abstract & mots-clés', expanded=False):
+            abstract = str(row.get('abstract', ''))
+            if abstract and abstract not in ('', 'nan'):
+                st.markdown(abstract)
+            else:
+                st.warning('Abstract manquant.')
+            keywords = str(row.get('keywords', ''))
+            if keywords and keywords not in ('', 'nan'):
+                st.caption(f'Mots-clés : {keywords}')
+
+        screener_notes = str(row.get('screener_notes', ''))
+        if screener_notes and screener_notes not in ('', 'nan'):
+            st.caption(f'📝 Notes Tri #1 : {screener_notes}')
+
+        st.divider()
+
+        # ── Grille QA ─────────────────────────────────────────────────────────
+        st.markdown('#### Grille Quality Assessment')
+
+        # Charger valeurs existantes
+        existing_scores = []
+        existing_notes = []
+        for i in range(6):
+            val = row.get(QA_COLS[i], '')
+            if val != '' and val is not None:
+                try:
+                    existing_scores.append(float(val))
+                except (ValueError, TypeError):
+                    existing_scores.append(None)
+            else:
+                existing_scores.append(None)
+            existing_notes.append(str(row.get(QA_NOTE_COLS[i], '') or ''))
+
+        scores = []
+        notes = []
+        running_total = 0.0
+
+        for i, (qid, qinfo) in enumerate(QA_CRITERIA.items()):
+            bonus_tag = ' 🏷️ *bonus*' if not qinfo['scored'] else ''
+            st.markdown(f"**{qid} — {qinfo['label']}**{bonus_tag}")
+            st.caption(qinfo['question'])
+
+            col_score, col_note = st.columns([1, 2])
+
+            with col_score:
+                options_list = list(QA_OPTIONS.keys())
+                if existing_scores[i] is not None and existing_scores[i] in options_list:
+                    default_idx = options_list.index(existing_scores[i])
+                else:
+                    default_idx = 0  # Non (0) par défaut
+
+                score_val = st.radio(
+                    f'{qid}', options=options_list,
+                    format_func=lambda x: QA_OPTIONS[x],
+                    index=default_idx,
+                    horizontal=True, key=f'qa_score_{qid}_{current_idx}',
+                    label_visibility='collapsed'
+                )
+                scores.append(score_val)
+                if qinfo['scored']:
+                    running_total += score_val
+
+            with col_note:
+                note_val = st.text_input(
+                    f'Note {qid}', value=existing_notes[i],
+                    placeholder=f'Justification {qid}...',
+                    key=f'qa_note_{qid}_{current_idx}',
+                    label_visibility='collapsed'
+                )
+                notes.append(note_val)
+
+        # ── Score total temps réel ────────────────────────────────────────────
+        st.divider()
+        color = _qa_score_color(running_total)
+        pass_label = '✅ PASSE' if running_total >= QA_THRESHOLD else '❌ ÉCHOUE'
+        q6_val = scores[5] if len(scores) > 5 else 0
+
+        score_html = (
+            f'<div style="background:{color};color:white;padding:16px 20px;'
+            f'border-radius:8px;text-align:center;margin:8px 0;">'
+            f'<span style="font-size:2rem;font-weight:700;">{running_total:.1f} / {QA_MAX_SCORE:.0f}</span>'
+            f'&nbsp;&nbsp;<span style="font-size:1.4rem;">{pass_label}</span>'
+            f'<br/><span style="font-size:0.85rem;opacity:0.9;">Seuil : {QA_THRESHOLD:.0f}/{QA_MAX_SCORE:.0f}'
+            f' &nbsp;|&nbsp; Q6 bonus : {q6_val:.1f}</span>'
+            f'</div>'
+        )
+        st.markdown(score_html, unsafe_allow_html=True)
+
+        # ── Boutons d'action ──────────────────────────────────────────────────
+        btn1, btn2, btn3 = st.columns(3)
+        with btn1:
+            if st.button('💾 Sauvegarder', use_container_width=True, key=f'qa_save_{current_idx}'):
+                df = _save_qa(df, current_idx, scores, notes)
+                st.success(f'Article #{rank} — QA enregistré ({running_total:.1f}/5).')
+                _save_and_reload(df)
+
+        with btn2:
+            if st.button('💾 Sauvegarder et suivant →', use_container_width=True,
+                        type='primary', key=f'qa_next_{current_idx}'):
+                df = _save_qa(df, current_idx, scores, notes)
+                _record_decision()
+                _save_and_reload(df)
+
+        with btn3:
+            if st.button('⏭️ Passer', use_container_width=True, key=f'qa_skip_{current_idx}'):
+                _save_and_reload(df)
+
+    # ══════════════════════════════════════════════════════════════════════════
+    # TABLEAU DE BORD QA
+    # ══════════════════════════════════════════════════════════════════════════
+    with qa_dash:
+        if n_evaluated == 0:
+            st.info('Aucun article évalué. Commence l\'évaluation QA.')
+            return
+
+        st.markdown('#### Distribution des scores QA')
+
+        # ── Histogramme des scores ────────────────────────────────────────────
+        eval_scores = pd.to_numeric(evaluated_df['qa_total'], errors='coerce').dropna()
+
+        col_hist, col_by_q = st.columns(2)
+
+        with col_hist:
+            bins = [0, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5]
+            fig_hist = go.Figure()
+            fig_hist.add_trace(go.Histogram(
+                x=eval_scores, xbins=dict(start=0, end=5.5, size=0.5),
+                marker_color=['#dc3545' if b < QA_THRESHOLD else '#28a745'
+                              for b in bins],
+                marker_line_color='white', marker_line_width=1,
+            ))
+            fig_hist.add_vline(x=QA_THRESHOLD, line_dash='dash', line_color='#333',
+                              annotation_text=f'Seuil {QA_THRESHOLD:.0f}/5')
+            fig_hist.update_layout(
+                height=280, margin=dict(l=0, r=0, t=30, b=0),
+                xaxis_title='Score QA (Q1-Q5)', yaxis_title='N articles',
+                paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)',
+                bargap=0.1,
+            )
+            fig_hist.update_xaxes(dtick=0.5, range=[-0.25, 5.75])
+            st.plotly_chart(fig_hist, use_container_width=True)
+
+        # ── Score moyen par critère ───────────────────────────────────────────
+        with col_by_q:
+            st.markdown('**Score moyen par critère**')
+            q_means = []
+            for i, (qid, qinfo) in enumerate(QA_CRITERIA.items()):
+                vals = pd.to_numeric(evaluated_df[QA_COLS[i]], errors='coerce').dropna()
+                mean_val = vals.mean() if len(vals) > 0 else 0
+                q_means.append({
+                    'Critère': f'{qid}',
+                    'Label': qinfo['label'],
+                    'Moyenne': f'{mean_val:.2f}',
+                    'N': len(vals),
+                    'Bonus': '🏷️' if not qinfo['scored'] else '',
+                })
+            st.dataframe(pd.DataFrame(q_means), hide_index=True, use_container_width=True)
+
+        # ── Statistiques résumées ─────────────────────────────────────────────
+        st.markdown('#### Statistiques')
+        s1, s2, s3, s4 = st.columns(4)
+        s1.metric('Score moyen', f'{eval_scores.mean():.2f}/5')
+        s2.metric('Score médian', f'{eval_scores.median():.1f}/5')
+        s3.metric('Taux passage', f'{n_pass/n_evaluated*100:.0f}%' if n_evaluated else '—')
+        s4.metric('Corpus projeté', f'{n_pass} articles')
+
+        # ── Tableau détaillé ──────────────────────────────────────────────────
+        st.markdown('#### Articles évalués')
+        detail_cols = ['rank', 'title', 'qa_total', 'qa_pass'] + QA_COLS
+        avail = [c for c in detail_cols if c in evaluated_df.columns]
+        detail = evaluated_df[avail].copy()
+        detail['title'] = detail['title'].str[:65]
+
+        col_rename = {
+            'rank': '#', 'title': 'Titre', 'qa_total': 'Score',
+            'qa_pass': 'Résultat',
+            'qa_q1': 'Q1', 'qa_q2': 'Q2', 'qa_q3': 'Q3',
+            'qa_q4': 'Q4', 'qa_q5': 'Q5', 'qa_q6': 'Q6',
+        }
+        detail.columns = [col_rename.get(c, c) for c in detail.columns]
+        detail = detail.sort_values('Score', ascending=False)
+        st.dataframe(detail, hide_index=True, use_container_width=True, height=400)
+
+        # ── Export ────────────────────────────────────────────────────────────
+        st.markdown('---')
+        ex1, ex2, ex3 = st.columns(3)
+        with ex1:
+            pass_df = included[included['qa_pass'] == 'oui']
+            st.download_button(
+                f'✅ Passent QA ({len(pass_df)})',
+                pass_df.to_csv(index=False, encoding='utf-8-sig'),
+                'corpus_tri2_pass.csv', 'text/csv', use_container_width=True
+            )
+        with ex2:
+            fail_df = included[included['qa_pass'] == 'non']
+            st.download_button(
+                f'❌ Échouent QA ({len(fail_df)})',
+                fail_df.to_csv(index=False, encoding='utf-8-sig'),
+                'corpus_tri2_fail.csv', 'text/csv', use_container_width=True
+            )
+        with ex3:
+            st.download_button(
+                f'📊 Complet ({n_included})',
+                included.to_csv(index=False, encoding='utf-8-sig'),
+                'corpus_tri2_complet.csv', 'text/csv', use_container_width=True
+            )
+
+
+# ══════════════════════════════════════════════════════════════════════════════
 # RÉSUMÉ FINAL
 # ══════════════════════════════════════════════════════════════════════════════
 
@@ -1131,7 +1560,7 @@ def _show_summary(df):
 # ══════════════════════════════════════════════════════════════════════════════
 
 def main():
-    st.set_page_config(page_title='Screening Tri #1', page_icon='📄', layout='wide')
+    st.set_page_config(page_title='SLR — Screening & QA', page_icon='📄', layout='wide')
     _init_session()
 
     # CSS — compact layout
@@ -1162,11 +1591,11 @@ def main():
     df = load_corpus()
     render_sidebar(df)
 
-    st.title('Screening Tri #1 — Titre & Résumé')
-    st.caption("RSL : Appariement sémantique neuro-symbolique d'indicateurs multilingues hétérogènes")
+    st.title('SLR — Screening & Quality Assessment')
+    st.caption("Appariement sémantique neuro-symbolique d'indicateurs multilingues hétérogènes")
 
-    tab_screen, tab_review, tab_dash = st.tabs([
-        '📝 Screening', '🔍 Révision', '📊 Dashboard'
+    tab_screen, tab_review, tab_dash, tab_qa = st.tabs([
+        '📝 Screening (Tri #1)', '🔍 Révision', '📊 Dashboard', '🔬 Tri #2 / QA'
     ])
 
     with tab_screen:
@@ -1177,6 +1606,9 @@ def main():
 
     with tab_dash:
         render_dashboard_tab(df)
+
+    with tab_qa:
+        render_qa_tab(df)
 
 
 if __name__ == '__main__':

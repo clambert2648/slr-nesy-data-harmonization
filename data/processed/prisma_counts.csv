@@ -31,3 +31,17 @@ query_R1+R2B,9
 query_R2B+R3,5
 query_R2A+R3,1
 query_R1+R2B+R3,1
+tri1_include,105
+tri1_exclude,1748
+tri1_survey,35
+fulltext_exclu_doublon,3
+fulltext_exclu_E1,9
+fulltext_exclu_hors_scope,1
+fulltext_exclu_E6_langue,3
+tri2_total_articles,105
+tri2_inclus,91
+tri2_exclus,14
+tri2_qa_evalues,91
+tri2_qa_pass,76
+tri2_qa_fail,15
+tri2_en_attente,0
