@@ -1238,174 +1238,179 @@ def render_qa_tab(_corpus_df):
             horizontal=True, key='qa_nav_mode'
         )
 
+        _show_eval_form = True
+
         if nav_mode == 'Séquentiel (non évalués)':
             unevaluated = included[included['qa_total'] == ''].sort_values(
                 by='rank', ascending=True
             )
             if unevaluated.empty:
                 st.success('🎉 Tous les articles inclus ont été évalués !')
-                return
-            current_idx = unevaluated.index[0]
-            pos_label = f"#{list(unevaluated.index).index(current_idx)+1}/{len(unevaluated)} restants"
+                _show_eval_form = False
+            else:
+                current_idx = unevaluated.index[0]
+                pos_label = f"#{list(unevaluated.index).index(current_idx)+1}/{len(unevaluated)} restants"
         else:
             rank_options = sorted(included['rank'].astype(int).tolist())
             if not rank_options:
                 st.info('Aucun article inclus.')
-                return
+                _show_eval_form = False
 
-            def _format_qa_rank(r):
-                row_t = df[df['rank'] == r]
-                if row_t.empty:
-                    return f"#{r}"
-                title = row_t['title'].values[0][:55]
-                qa_val = row_t['qa_total'].values[0]
-                status = ''
-                if qa_val != '' and qa_val != '':
+            if _show_eval_form:
+                def _format_qa_rank(r):
+                    row_t = df[df['rank'] == r]
+                    if row_t.empty:
+                        return f"#{r}"
+                    title = row_t['title'].values[0][:55]
+                    qa_val = row_t['qa_total'].values[0]
+                    status = ''
+                    if qa_val != '' and qa_val != '':
+                        try:
+                            status = f' — QA {float(qa_val):.1f}/5'
+                        except (ValueError, TypeError):
+                            pass
+                    else:
+                        status = ' — ⏳'
+                    return f"#{r}{status} — {title}"
+
+                selected_rank = st.selectbox(
+                    'Article', options=rank_options,
+                    format_func=_format_qa_rank, key='qa_select_rank'
+                )
+                current_idx = df[df['rank'] == selected_rank].index[0]
+                pos_label = ''
+
+        if _show_eval_form:
+            row = df.loc[current_idx]
+            rank = int(row.get('rank', current_idx + 1))
+
+            # ── Affichage article ─────────────────────────────────────────────
+            st.markdown(f'### Article #{rank} {pos_label}')
+            st.markdown(f'## {row["title"]}')
+
+            m1, m2, m3, m4 = st.columns(4)
+            m1.metric('Année', str(row.get('year', '—')))
+            m2.metric('Base', str(row.get('database', '—')))
+            m3.metric('Score NLP', f"{int(float(row.get('nlp_score', 0) or 0))}/10")
+            m4.metric('TF-IDF', f"{float(row.get('relevance_score_pct', 0)):.1f}%")
+
+            doi = str(row.get('doi', ''))
+            if doi and doi not in ('', 'nan'):
+                st.caption(f'[Voir article complet →](https://doi.org/{doi})')
+
+            # Lien vers le PDF local
+            pdf_file = _find_pdf(rank)
+            if pdf_file:
+                st.caption(f'📂 PDF local : **{pdf_file}**')
+            else:
+                st.caption('📂 PDF local : _non disponible_')
+
+            with st.expander('📄 Abstract & mots-clés', expanded=False):
+                abstract = str(row.get('abstract', ''))
+                if abstract and abstract not in ('', 'nan'):
+                    st.markdown(abstract)
+                else:
+                    st.warning('Abstract manquant.')
+                keywords = str(row.get('keywords', ''))
+                if keywords and keywords not in ('', 'nan'):
+                    st.caption(f'Mots-clés : {keywords}')
+
+            screener_notes = str(row.get('screener_notes', ''))
+            if screener_notes and screener_notes not in ('', 'nan'):
+                st.caption(f'📝 Notes Tri #1 : {screener_notes}')
+
+            st.divider()
+
+            # ── Grille QA ─────────────────────────────────────────────────────
+            st.markdown('#### Grille Quality Assessment')
+
+            # Charger valeurs existantes
+            existing_scores = []
+            existing_notes = []
+            for i in range(6):
+                val = row.get(QA_COLS[i], '')
+                if val != '' and val is not None:
                     try:
-                        status = f' — QA {float(qa_val):.1f}/5'
+                        existing_scores.append(float(val))
                     except (ValueError, TypeError):
-                        pass
+                        existing_scores.append(None)
                 else:
-                    status = ' — ⏳'
-                return f"#{r}{status} — {title}"
-
-            selected_rank = st.selectbox(
-                'Article', options=rank_options,
-                format_func=_format_qa_rank, key='qa_select_rank'
-            )
-            current_idx = df[df['rank'] == selected_rank].index[0]
-            pos_label = ''
-
-        row = df.loc[current_idx]
-        rank = int(row.get('rank', current_idx + 1))
-
-        # ── Affichage article ─────────────────────────────────────────────────
-        st.markdown(f'### Article #{rank} {pos_label}')
-        st.markdown(f'## {row["title"]}')
-
-        m1, m2, m3, m4 = st.columns(4)
-        m1.metric('Année', str(row.get('year', '—')))
-        m2.metric('Base', str(row.get('database', '—')))
-        m3.metric('Score NLP', f"{int(row.get('nlp_score', 0))}/10")
-        m4.metric('TF-IDF', f"{float(row.get('relevance_score_pct', 0)):.1f}%")
-
-        doi = str(row.get('doi', ''))
-        if doi and doi not in ('', 'nan'):
-            st.caption(f'[Voir article complet →](https://doi.org/{doi})')
-
-        # Lien vers le PDF local
-        pdf_file = _find_pdf(rank)
-        if pdf_file:
-            st.caption(f'📂 PDF local : **{pdf_file}**')
-        else:
-            st.caption('📂 PDF local : _non disponible_')
-
-        with st.expander('📄 Abstract & mots-clés', expanded=False):
-            abstract = str(row.get('abstract', ''))
-            if abstract and abstract not in ('', 'nan'):
-                st.markdown(abstract)
-            else:
-                st.warning('Abstract manquant.')
-            keywords = str(row.get('keywords', ''))
-            if keywords and keywords not in ('', 'nan'):
-                st.caption(f'Mots-clés : {keywords}')
-
-        screener_notes = str(row.get('screener_notes', ''))
-        if screener_notes and screener_notes not in ('', 'nan'):
-            st.caption(f'📝 Notes Tri #1 : {screener_notes}')
-
-        st.divider()
-
-        # ── Grille QA ─────────────────────────────────────────────────────────
-        st.markdown('#### Grille Quality Assessment')
-
-        # Charger valeurs existantes
-        existing_scores = []
-        existing_notes = []
-        for i in range(6):
-            val = row.get(QA_COLS[i], '')
-            if val != '' and val is not None:
-                try:
-                    existing_scores.append(float(val))
-                except (ValueError, TypeError):
                     existing_scores.append(None)
-            else:
-                existing_scores.append(None)
-            existing_notes.append(str(row.get(QA_NOTE_COLS[i], '') or ''))
+                existing_notes.append(str(row.get(QA_NOTE_COLS[i], '') or ''))
 
-        scores = []
-        notes = []
-        running_total = 0.0
+            scores = []
+            notes = []
+            running_total = 0.0
 
-        for i, (qid, qinfo) in enumerate(QA_CRITERIA.items()):
-            bonus_tag = ' 🏷️ *bonus*' if not qinfo['scored'] else ''
-            st.markdown(f"**{qid} — {qinfo['label']}**{bonus_tag}")
-            st.caption(qinfo['question'])
+            for i, (qid, qinfo) in enumerate(QA_CRITERIA.items()):
+                bonus_tag = ' 🏷️ *bonus*' if not qinfo['scored'] else ''
+                st.markdown(f"**{qid} — {qinfo['label']}**{bonus_tag}")
+                st.caption(qinfo['question'])
 
-            col_score, col_note = st.columns([1, 2])
+                col_score, col_note = st.columns([1, 2])
 
-            with col_score:
-                options_list = list(QA_OPTIONS.keys())
-                if existing_scores[i] is not None and existing_scores[i] in options_list:
-                    default_idx = options_list.index(existing_scores[i])
-                else:
-                    default_idx = 0  # Non (0) par défaut
+                with col_score:
+                    options_list = list(QA_OPTIONS.keys())
+                    if existing_scores[i] is not None and existing_scores[i] in options_list:
+                        default_idx = options_list.index(existing_scores[i])
+                    else:
+                        default_idx = 0  # Non (0) par défaut
 
-                score_val = st.radio(
-                    f'{qid}', options=options_list,
-                    format_func=lambda x: QA_OPTIONS[x],
-                    index=default_idx,
-                    horizontal=True, key=f'qa_score_{qid}_{current_idx}',
-                    label_visibility='collapsed'
-                )
-                scores.append(score_val)
-                if qinfo['scored']:
-                    running_total += score_val
+                    score_val = st.radio(
+                        f'{qid}', options=options_list,
+                        format_func=lambda x: QA_OPTIONS[x],
+                        index=default_idx,
+                        horizontal=True, key=f'qa_score_{qid}_{current_idx}',
+                        label_visibility='collapsed'
+                    )
+                    scores.append(score_val)
+                    if qinfo['scored']:
+                        running_total += score_val
 
-            with col_note:
-                note_val = st.text_input(
-                    f'Note {qid}', value=existing_notes[i],
-                    placeholder=f'Justification {qid}...',
-                    key=f'qa_note_{qid}_{current_idx}',
-                    label_visibility='collapsed'
-                )
-                notes.append(note_val)
+                with col_note:
+                    note_val = st.text_input(
+                        f'Note {qid}', value=existing_notes[i],
+                        placeholder=f'Justification {qid}...',
+                        key=f'qa_note_{qid}_{current_idx}',
+                        label_visibility='collapsed'
+                    )
+                    notes.append(note_val)
 
-        # ── Score total temps réel ────────────────────────────────────────────
-        st.divider()
-        color = _qa_score_color(running_total)
-        pass_label = '✅ PASSE' if running_total >= QA_THRESHOLD else '❌ ÉCHOUE'
-        q6_val = scores[5] if len(scores) > 5 else 0
+            # ── Score total temps réel ────────────────────────────────────────
+            st.divider()
+            color = _qa_score_color(running_total)
+            pass_label = '✅ PASSE' if running_total >= QA_THRESHOLD else '❌ ÉCHOUE'
+            q6_val = scores[5] if len(scores) > 5 else 0
 
-        score_html = (
-            f'<div style="background:{color};color:white;padding:16px 20px;'
-            f'border-radius:8px;text-align:center;margin:8px 0;">'
-            f'<span style="font-size:2rem;font-weight:700;">{running_total:.1f} / {QA_MAX_SCORE:.0f}</span>'
-            f'&nbsp;&nbsp;<span style="font-size:1.4rem;">{pass_label}</span>'
-            f'<br/><span style="font-size:0.85rem;opacity:0.9;">Seuil : {QA_THRESHOLD:.0f}/{QA_MAX_SCORE:.0f}'
-            f' &nbsp;|&nbsp; Q6 bonus : {q6_val:.1f}</span>'
-            f'</div>'
-        )
-        st.markdown(score_html, unsafe_allow_html=True)
+            score_html = (
+                f'<div style="background:{color};color:white;padding:16px 20px;'
+                f'border-radius:8px;text-align:center;margin:8px 0;">'
+                f'<span style="font-size:2rem;font-weight:700;">{running_total:.1f} / {QA_MAX_SCORE:.0f}</span>'
+                f'&nbsp;&nbsp;<span style="font-size:1.4rem;">{pass_label}</span>'
+                f'<br/><span style="font-size:0.85rem;opacity:0.9;">Seuil : {QA_THRESHOLD:.0f}/{QA_MAX_SCORE:.0f}'
+                f' &nbsp;|&nbsp; Q6 bonus : {q6_val:.1f}</span>'
+                f'</div>'
+            )
+            st.markdown(score_html, unsafe_allow_html=True)
 
-        # ── Boutons d'action ──────────────────────────────────────────────────
-        btn1, btn2, btn3 = st.columns(3)
-        with btn1:
-            if st.button('💾 Sauvegarder', use_container_width=True, key=f'qa_save_{current_idx}'):
-                df = _save_qa(df, current_idx, scores, notes)
-                st.success(f'Article #{rank} — QA enregistré ({running_total:.1f}/5).')
-                _save_and_reload(df)
+            # ── Boutons d'action ──────────────────────────────────────────────
+            btn1, btn2, btn3 = st.columns(3)
+            with btn1:
+                if st.button('💾 Sauvegarder', use_container_width=True, key=f'qa_save_{current_idx}'):
+                    df = _save_qa(df, current_idx, scores, notes)
+                    st.success(f'Article #{rank} — QA enregistré ({running_total:.1f}/5).')
+                    _save_and_reload(df)
 
-        with btn2:
-            if st.button('💾 Sauvegarder et suivant →', use_container_width=True,
-                        type='primary', key=f'qa_next_{current_idx}'):
-                df = _save_qa(df, current_idx, scores, notes)
-                _record_decision()
-                _save_and_reload(df)
+            with btn2:
+                if st.button('💾 Sauvegarder et suivant →', use_container_width=True,
+                            type='primary', key=f'qa_next_{current_idx}'):
+                    df = _save_qa(df, current_idx, scores, notes)
+                    _record_decision()
+                    _save_and_reload(df)
 
-        with btn3:
-            if st.button('⏭️ Passer', use_container_width=True, key=f'qa_skip_{current_idx}'):
-                _save_and_reload(df)
+            with btn3:
+                if st.button('⏭️ Passer', use_container_width=True, key=f'qa_skip_{current_idx}'):
+                    _save_and_reload(df)
 
     # ══════════════════════════════════════════════════════════════════════════
     # TABLEAU DE BORD QA

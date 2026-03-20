@@ -458,3 +458,151 @@ Le mode « Priorité incertains » ordonne le pool d'articles non screenés selo
 **Justification :** Conformément aux bonnes pratiques PRISMA 2020 (item 6 — critères d'éligibilité), les articles dans une langue non maîtrisée par la chercheuse sont exclus et documentés comme limitation (biais linguistique). Les titres bilingues dans les bases de données masquaient le fait que le contenu intégral est en chinois. Vérification faite par extraction du texte PDF via PyPDF2 et mesure du ratio de sinogrammes.
 **Limite reconnue :** Biais linguistique potentiel — trois études pertinentes sont exclues faute de pouvoir en exploiter le contenu. À mentionner dans la section Limitations du mémoire.
 **Impact PRISMA :** Nouveau compteur `fulltext_exclu_E6_langue` = 3. Inclus Tri #2 passe de 94 à 91. QA PASS passe de 79 à 76. Total exclusions passe de 11 à 14.
+
+
+### DEC-034 — Analyse de sensibilité Tri #1 : correction du benchmark et interprétation
+**Date :** 16 mars 2026
+**Outil :** Python (pandas), analyse rétrospective sur `corpus_scored.csv` et `articles_inclus.csv`
+**Décision :** L'analyse de sensibilité du seuil d'exclusion batch au Tri #1 est corrigée. Le benchmark correct est le corpus d'**extraction finale (n = 54)**, et non les 81 articles du Tri #1. Le cas #840, initialement identifié comme faux négatif potentiel au seuil NLP ≤ 2, n'en est pas un au sens du résultat final.
+
+#### Contexte
+L'analyse initiale testait la robustesse des seuils NLP pour l'exclusion automatique au Tri #1. Le critère de faux négatif (FN) était : « un article exclu automatiquement au Tri #1 qui aurait dû atteindre l'extraction finale ». Au seuil NLP ≤ 2, un seul FN apparent avait été identifié : l'article #840 (Peña-Larena, *Automated KG Approach for Dataset Metadata Harmonisation*).
+
+#### Cas #840 — Pas un faux négatif
+L'investigation a révélé que #840 a été :
+1. **Correctement capté au Tri #1** : `decision = include` dans `corpus_scored.csv` (nlp_score = 2).
+2. **Légitimement éliminé au Tri #2** : `qa_total = 2.0/5.0`, `qa_pass = non` — exclusion pour qualité insuffisante (seuil QA ≥ 3.0), **pas** pour I4.
+
+Le #840 n'est donc pas un cas limite du système de scoring NLP. C'est un cas qui confirme le bon fonctionnement du pipeline à deux étages : sensibilité élevée au Tri #1 (capture inclusive), sélectivité au Tri #2 (filtrage qualité).
+
+#### Résultats corrigés de l'analyse de sensibilité
+
+| Seuil NLP | Exclus batch | FN (Tri #1, n=81) | FN (Extraction, n=54) | Sûr ? |
+|-----------|-------------|--------------------|-----------------------|-------|
+| ≤ 0       | 739         | 0                  | 0                     | ✓     |
+| ≤ 1       | 961         | 0                  | 0                     | ✓     |
+| ≤ 2       | 1 204       | 1 (#840)           | **0**                 | ✓     |
+| ≤ 3       | 1 362       | 2                  | **0**                 | ✓     |
+| ≤ 4       | 1 489       | 7                  | 5                     | ✗     |
+
+**Conclusion :** Au regard du résultat final (extraction), les seuils NLP ≤ 1, ≤ 2 et même ≤ 3 sont tous sûrs — zéro perte effective dans les trois cas. Les 1–2 FN apparents au niveau Tri #1 (dont #840) ont tous été éliminés au Tri #2 pour qualité insuffisante. Le premier vrai risque n'apparaît qu'à NLP ≤ 4 (5 FN extraction). Le seuil effectivement appliqué (NLP ≤ 2 combiné avec `nlp_suggestion = exclude` et `auto_decision = exclude`) n'a entraîné aucune perte d'article dans le corpus final de 54 études.
+
+#### Implication méthodologique
+Ce résultat renforce l'argumentaire PRISMA de la SLR :
+- **Entonnoir propre** : 1 888 → 105 (Tri #1) → 81 (full-text) → 54 (QA). Chaque étape a un rôle distinct et documenté.
+- **Stratégie conservatrice validée** : Les 24 exclusions full-text sont dominées par E1 (12) et I4 (10), confirmant que le Tri #1 a été appropriément conservateur sur des critères ambigus en titre/abstract.
+- **Pipeline à deux étages** : La sensibilité élevée au Tri #1 (capture) combinée à la sélectivité au Tri #2 (QA ≥ 3.0) constitue un filet de sécurité robuste. Même un article de score NLP faible (2) capté au Tri #1 est correctement filtré au Tri #2 si sa qualité est insuffisante.
+
+**Figures :** `results/figures/tri1_seuil_exclusion_batch.png` (mise à jour avec benchmark extraction finale).
+
+---
+
+### DEC-033 — Méthodologie d'exclusion batch au Tri #1 : deux phases avec seuil empirique par saturation
+**Date :** 16 mars 2026
+**Outil :** preclassify.py, screening_app.py, Python (pandas, analyse rétrospective)
+**Décision :** Le processus d'exclusion automatisé au Tri #1 a procédé en deux phases séquentielles, documentées ci-dessous. La justification du seuil de la Phase 2 repose sur un argument empirique de **saturation** : le taux d'inclusion observé tombe à zéro dans la zone ciblée.
+
+#### Phase 1 — Exclusion par triple concordance (n = 264)
+**Critère :** `auto_decision = exclude` ET `nlp_suggestion = exclude` ET `nlp_score ≤ 2`
+**Principe :** Les trois signaux automatiques convergent vers l'exclusion — le module de scoring TF-IDF, le module de règles NLP et le score composite NLP sont tous en accord. Aucun signal d'inclusion (I2, I4, I3) n'est détecté.
+**Validation :** Revue humaine en 5 passes par patterns regex ciblant les faux négatifs potentiels (signaux I2/I4 cachés, vocabulaire matching, termes RQ3, entity linking, ontology work). Résultat : 0 faux négatif identifié (voir DEC-022).
+**Résultat :** 264 articles exclus (E1). Taux d'inclusion : 0 %. FN extraction : 0.
+
+#### Phase 2 — Exclusion par seuil de saturation (n = 811)
+**Critère :** `(NLP ≤ 2 ET TF-IDF ≤ 15 %) OU NLP ≤ 1`
+**Principe :** Après la Phase 1, le screening manuel des articles restants a été conduit par ordre décroissant de TF-IDF. L'analyse de saturation a révélé que :
+
+- **Le taux d'inclusion est strictement nul pour TF-IDF ≤ 15 %** (864 articles, 0 inclusion) : aucun article pertinent n'a été trouvé en dessous de ce seuil, peu importe le score NLP.
+- **Le taux d'inclusion est nul pour NLP ≤ 1** (977 articles, 0 inclusion) : aucun article avec un score NLP aussi faible n'a jamais été inclus.
+- **La dernière inclusion trouvée en screening descendant** se situe au rang TF-IDF #971 (TF-IDF = 15,8 %, NLP = 5). Au-delà, les 917 articles suivants ne produisent plus aucune inclusion — le rendement marginal est tombé à zéro.
+- Parmi les 81 inclusions du Tri #1, les deux avec le NLP le plus bas (NLP = 2 et NLP = 3) ont toutes deux un TF-IDF > 15 % (18,3 % et 17,3 %), et ont **toutes deux échoué au QA** (Tri #2). Aucune n'atteint l'extraction.
+
+La combinaison `(NLP ≤ 2 ET TF-IDF ≤ 15 %) OU NLP ≤ 1` capture **1 075 articles** avec 0 faux négatif (ni au Tri #1, ni à l'extraction), ce qui en fait le seuil sûr le plus large parmi toutes les combinaisons testées.
+
+#### Rendement cumulatif (screening par TF-IDF descendant)
+
+| Articles screenés | Inclusions trouvées | % du total (81) | Marginal |
+|------------------:|--------------------:|-----------------:|---------:|
+| 100               | 5                   | 6,2 %            | +5       |
+| 300               | 31                  | 38,3 %           | +26      |
+| 500               | 57                  | 70,4 %           | +26      |
+| 800               | 75                  | 92,6 %           | +18      |
+| 1 000             | 81                  | 100,0 %          | +6       |
+| 1 200–1 888       | 81                  | 100,0 %          | +0       |
+
+**Point de saturation :** 100 % des inclusions sont trouvées après ~1 000 articles screenés. Les 888 articles restants (rang > 1 000 par TF-IDF) n'ont produit aucune inclusion.
+
+#### Comparaison des seuils sûrs (0 FN)
+
+| Seuil | Exclus batch | FN include | FN extraction | Sûr ? |
+|---|---:|---:|---:|:---:|
+| NLP ≤ 1 seul | 977 | 0 | 0 | ✓ |
+| NLP ≤ 2 ET TF ≤ 15 % | 762 | 0 | 0 | ✓ |
+| NLP ≤ 3 ET TF ≤ 15 % | 807 | 0 | 0 | ✓ |
+| **(NLP ≤ 2 ET TF ≤ 15 %) OU NLP ≤ 1** | **1 075** | **0** | **0** | **✓** |
+| NLP ≤ 2 seul | 1 226 | 1 | 0 | ✗ |
+| NLP ≤ 3 seul | 1 385 | 2 | 0 | ✗ |
+
+#### Total des exclusions batch Tri #1
+- Phase 1 (triple concordance) : 264
+- Phase 2 (seuil saturation) : 811 supplémentaires
+- **Total : 1 075 articles exclus en batch** (57 % du corpus de 1 888)
+- Reste à screener manuellement : 813 articles, contenant les 81 inclusions et les 54 articles d'extraction.
+
+**Justification :** Le seuil se situe exactement à la frontière où le screening manuel cesse de produire des inclusions. C'est un argument de **saturation empirique** : en deçà de (NLP ≤ 2, TF ≤ 15 %) ou NLP ≤ 1, le rendement du screening est nul. L'analyse de sensibilité (DEC-032) confirme que ce seuil ne sacrifie aucun article du corpus final d'extraction (n = 54).
+**Limite reconnue :** Seuil déterminé rétrospectivement à partir des données de screening, pas a priori. Atténué par : (1) le double critère combiné qui réduit le risque de surapprentissage, (2) la Phase 1 avec triple concordance + validation humaine en 5 passes, (3) la marge de sécurité — les 2 inclusions les plus proches du seuil sont des QA fail (pas d'extraction perdue).
+**Impact PRISMA :** « 1 075 articles exclus en batch au Tri #1 (Phase 1 : 264 par triple concordance auto, Phase 2 : 811 par seuil de saturation empirique). Validation rétrospective : 0 faux négatif au niveau extraction finale (n = 54). »
+
+### DEC-035 — Ajout de FLORA par recommandation du directeur (Other methods — PRISMA)
+**Date :** 19 mars 2026
+**Source :** Recommandation du directeur de recherche (Pr Étienne Gaël Tajeuna)
+
+**Décision :** L'article FLORA (Peng et al., 2025) est ajouté au corpus via la colonne PRISMA « Identification via other methods — expert recommendation ». Il entre dans le flux de screening standard (Tri #1 → Tri #2 → extraction) et reçoit l'index #1888.
+
+**Référence complète :**
+
+> Peng, Y., Bonald, T., & Suchanek, F. M. (2025). FLORA: Unsupervised Knowledge Graph Alignment by Fuzzy Logic. *arXiv preprint*, arXiv:2510.20467v1. https://arxiv.org/abs/2510.20467
+
+**Raison de l'absence dans le corpus systématique :**
+
+L'article n'a matché aucune des 4 requêtes (R1, R2A, R2B, R3) dans aucune des 4 bases (Scopus, IEEE, ACM, arXiv). Le plafond arXiv `max_results=200` n'est pas en cause (aucune requête n'a atteint 200 résultats). La cause est **purement terminologique** :
+
+- FLORA se positionne comme « Symbolic Reasoning + Fuzzy Logic » — aucune mention de « neuro-symbolic », « neural-symbolic » ou « hybrid neural » dans le titre, l'abstract ou les keywords.
+- La composante neurale (language model LaBSE/PEARL pour la similarité de littéraux) n'est mentionnée qu'en Section 5.4 (Implementation Details), absente de l'abstract.
+- Les mots-clés de l'article (« Knowledge Graphs, Entity Alignment, Holistic Matching, Symbolic Reasoning, Fuzzy logic ») ne croisent aucun des blocs terminologiques de R1 (harmonisation + NLP/KG), R2A (neuro-symbolic explicite), R2B (hybrid neural+symbolic) ou R3 (M&E + multilingue).
+
+Cette lacune est inhérente à toute recherche par mots-clés et constitue précisément le cas d'usage prévu par PRISMA 2020 pour la colonne « Other methods ». L'article a été identifié par expertise du directeur de recherche, familier avec la littérature en KG alignment et fuzzy logic.
+
+**Décision Tri #1 : include**
+
+| Critère | Évaluation |
+|---------|-----------|
+| I1 | arXiv oct. 2025 — preprint (accepté via DEC-007). À vérifier si version publiée disponible. |
+| I2 | ✅ KG alignment = entity alignment + relation alignment entre KG hétérogènes |
+| I3 | ✅ Explicabilité revendiquée : traces de raisonnement interprétables via fuzzy logic |
+| I4 | ✅ Fort — fuzzy logic avec garanties formelles (symbolique actif) + language model LaBSE/PEARL (neural) |
+| I5 | ✅ 7 datasets (OpenEA, DBP15K, OAEI KG Track), 30+ baselines, P/R/F1/Hit@K/MRR |
+
+**Pertinence pour le mémoire :** Élevée. Couvre les trois RQ — architecture NeSy Type 3 (RQ1), explicabilité par traces symboliques (RQ2), benchmarks multilingues cross-lingual (RQ3). Candidat probable pour le top 10 au Tri #3.
+
+**Entrée corpus (index #1888) :**
+
+```
+title:            FLORA: Unsupervised Knowledge Graph Alignment by Fuzzy Logic
+abstract:         Knowledge graph alignment is the task of matching equivalent entities (that is, instances and classes) and relations across two knowledge graphs. Most existing methods focus on pure entity-level alignment, computing the similarity of entities in some embedding space. They lack interpretable reasoning and need training data to work. In this paper, we propose FLORA, a simple yet effective method that (1) is unsupervised, i.e., does not require training data, (2) provides a holistic alignment for entities and relations iteratively, (3) is based on fuzzy logic and thus delivers interpretable results, (4) provably converges, (5) allows dangling entities, i.e., entities without a counterpart in the other KG, and (6) achieves state-of-the-art results on major benchmarks.
+authors:          Peng, Y.; Bonald, T.; Suchanek, F.M.
+year:             2025
+doi:              10.48550/arXiv.2510.20467
+source:           arXiv preprint
+keywords:         Knowledge Graphs; Entity Alignment; Holistic Matching; Symbolic Reasoning; Fuzzy logic
+doc_type:         Preprint
+citations:        
+database:         expert_recommendation
+query:            DEC-025
+has_abstract:     True
+decision:         include
+exclusion_reason: 
+screener_notes:   Recommandation Pr Tajeuna. KG alignment via fuzzy logic (symbolique actif) + LaBSE/PEARL (neural). I2+I3+I4+I5 satisfaits. Code: github.com/dig-team/FLORA
+```
+
+**Impact PRISMA :** Dans le diagramme de flux PRISMA 2020, cet article apparaît dans la colonne de droite « Identification of studies via other methods » → « Records identified from expert recommendation (n = 1) » → screening → inclus. Documenter dans la section méthodologique : « 1 article identifié par recommandation du directeur de recherche, absent du corpus systématique en raison d'un gap terminologique (l'article ne se décrit pas comme neuro-symbolique malgré une architecture hybride fuzzy logic + language model). »

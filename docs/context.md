@@ -77,6 +77,18 @@ Conséquence méthodologique :
 
 Cette séparation réduit le risque de confusion entre « similarité thématique » et « conformité aux critères d'inclusion/exclusion », ce qui améliore la traçabilité et la validité du protocole.
 
+## Stratégie d'exclusion batch (Tri #1)
+
+Le screening a combiné exclusions automatisées et screening manuel en deux phases :
+
+**Phase 1 — Triple concordance (264 articles) :**
+Critère : `auto_decision = exclude` ET `nlp_suggestion = exclude` ET `nlp_score ≤ 2`. Les trois signaux automatiques convergent vers l'exclusion. Validé par revue humaine en 5 passes regex (DEC-022).
+
+**Phase 2 — Seuil de saturation empirique (811 articles supplémentaires) :**
+Critère : `(NLP ≤ 2 ET TF-IDF ≤ 15 %) OU NLP ≤ 1`. Justification : le screening manuel descendant (par TF-IDF) a atteint la saturation — le taux d'inclusion tombe à zéro dans cette zone. La dernière inclusion se situe au rang TF-IDF #971 (TF = 15,8 %). Au-delà, 0 inclusion sur 917 articles screenés. Validation rétrospective : 0 faux négatif au niveau extraction (n = 54). Voir DEC-033.
+
+**Total : 1 075 exclusions batch** (57 % du corpus). 813 articles screenés manuellement, contenant l'intégralité des 81 inclusions et 54 articles d'extraction.
+
 ## Conventions de code
 
 - Encodage CSV : `utf-8-sig` (BOM pour Excel)

@@ -1,0 +1,88 @@
+index,Title,DOI
+28,Adaptive Semantic Matching in a Multilingual Context,10.1142/s1793351x23500034
+54,Knowledge Graph-Driven Neuro-Symbolic System for Intelligent Document Matching,
+82,Towards Pattern-based Complex Ontology Matching using SPARQL and LLM,
+132,Multi-modal entity alignment based on joint knowledge representation learning; 基于联合知识表示学习的多模态实体对齐,10.13195/j.kzyjc.2019.0331
+137,Iterative Fusion Method Based on Heterogeneous Graph Neural Network for Entity Alignment,10.1109/ijcnn54540.2023.10191734
+199,"Using Wikidata’s Ontology in Practice: A Neuro Symbolic, Community Centred Workflow for Integrating and Reusing Humanities Datasets",10.5334/johd.439
+201,Database Schema Matching Model Based on Multimodal Fusion Analysis,10.1109/acie64499.2025.00012
+210,Human-Friendly Explanation for Ontology-based Concept Similarity: Design and Development,
+216,Creating Embeddings of Heterogeneous Relational Datasets for Data Integration Tasks,10.1145/3318464.3389742
+218,In Situ Neural Relational Schema Matcher,10.1109/icde60146.2024.00018
+225,Entity Alignment of Knowledge Graph by Joint Graph Attention and Translation Representation,10.1007/978-3-030-87571-8_30
+231,Entity alignment method for different knowledge repositories with joint semantic representation,10.11925/infotech.2096-3467.2021.0143
+246,Automated Data Harmonization (ADH) using Artificial Intelligence (AI),10.1007/s12597-020-00467-4
+262,Impact of Agricultural Ontologies Evolution on the Alignment Preservative Adaptation,10.7160/aol.2024.160302
+267,Ontology Alignment Method Based on Self-attention; 基于自注意力模型的本体对齐方法,10.11896/jsjkx.210700190
+268,Entity Alignment Through Joint Utilization of Multiple Pretrained Models for Attribution Relationship,10.1109/cscloud62866.2024.00008
+274,Towards a Benchmark Dataset for the Digital Humanities,
+276,BioLinkerAI: Leveraging LLMs to Improve Biomedical Entity Linking and Knowledge Capture,10.1145/3701551.3708812
+278,ADnEV: Cross-domain schema matching using deep similarity matrix adjustment and evaluation,10.14778/3397230.3397237
+279,Pruning Cycles in UMLS Metathesaurus: A Neuro Symbolic AI Approach,
+280,VerbaNex at TalentCLEF2025: Semantic Matching of Multilingual Job Titles through a Framework Integrating ESCO Taxonomy,
+292,"Semantic-web–Enhanced Hybrid Learning for Career Planning: Ontology-driven Matching, Sequence Forecasting, and Closed-loop Optimization",10.13052/jicts2245-800x.1334
+298,Joint Multilingual Knowledge Graph Completion and Alignment,10.18653/v1/2022.findings-emnlp.443
+318,Corpus Fusion and Text Summarization Extraction for Multi-Feature Enhanced Entity Alignment,10.1145/3744558
+319,Joint Entity Summary and Attribute Embeddings for Entity Alignment Between Knowledge Graphs,10.1007/978-3-030-61705-9_10
+321,A natural language processing approach to support biomedical data harmonization: Leveraging large language models,10.1371/journal.pone.0328262
+334,BioLinkerAI: Capturing Knowledge Using LLMs to Enhance Biomedical Entity Linking,10.1007/978-981-96-0573-6_19
+335,Explicit Link Discovery Scheme Optimized with Ontology Mapping using Improved Machine Learning Approach,10.24846/v30i1y202106
+339,Joint Triple Embedding for Entity Alignment; 联合三元组嵌入的实体对齐,10.3778/j.issn.1002-8331.2302-0087
+364,Heterogeneous Embeddings for Relational Data Integration Tasks,10.1007/978-3-030-87571-8_59
+368,Semantic search helper: A tool based on the use of embeddings in multi-item questionnaires as a harmonization opportunity for merging large datasets - A feasibility study,10.1192/j.eurpsy.2024.1808
+369,Self-supervised Entity Alignment Model Based on Joint Embedding,10.1088/1742-6596/2829/1/012020
+370,Research on Chinese-Korean Entity Alignment Method Combining TransH and GAT,10.1007/978-981-16-6471-7_10
+384,Enhanced Ontology Matching for Big Data Integration,10.1088/1742-6596/1447/1/012028
+390,A Scalable Method for Large-scale Entity Alignment via Multi-Channel Retrieval and Fusion,
+394,Microplastics and Trash Cleaning and Harmonization (MaTCH): Semantic Data Ingestion and Harmonization Using Artificial Intelligence,10.1021/acs.est.4c02406
+399,Entity Alignment Model Based on Multi-Hop Information Fusion,10.19678/j.issn.1000-3428.0068946
+407,Using combinatorial optimization to solve entity alignment: An efficient unsupervised model,10.1016/j.neucom.2023.126802
+412,A Novel Entity and Relation Joint Interaction Learning Approach for Entity Alignment,10.1142/s0218194024500049
+420,A hybrid data harmonization workflow using word embeddings for the interlinking of heterogeneous cross-domain clinical data structures,10.1109/bhi50953.2021.9508484
+450,MEAformer: Multi-modal Entity Alignment Transformer for Meta Modality Hybrid,10.1145/3581783.3611786
+452,An Entity Alignment Method Integrating Dual Entity Classification and Graph Attention Networks in Power Domain,10.1109/powercon58120.2023.10331189
+472,Embedding-Based Data Matching for Disparate Data Sources,10.1007/978-3-031-68323-7_5
+478,Web Open Data to SDG Indicators: Towards an LLM-Augmented Knowledge Graph Solution,10.1007/978-981-96-1483-7_7
+494,Deep graph convolutional network for US birth data harmonization,10.1016/j.jbi.2021.103974
+511,MultiJAF: Multi-modal joint entity alignment framework for multi-modal knowledge graph,10.1016/j.neucom.2022.05.058
+521,JTEA: Implementing Semi-Supervised Entity Alignment Using Joint Teaching Strategies,10.1109/smc54092.2024.10831515
+530,Collective Entity Alignment for Knowledge Fusion of Power Grid Dispatching Knowledge Graphs,10.1109/jas.2022.105947
+536,Domain Vocabulary Alignment using AML and LogMap; Alinhamento de Vocabulário de domínio utilizando os sistemas AML e LogMap,10.20396/rdbci.v20i00.8668437
+552,Data Pattern Matching Method Based on BERT and Attention Mechanism,10.1109/nmitcon62075.2024.10699209
+572,Distribution- ased Similarity Measures Applied to Laboratory Results Matching,10.3233/shti210823
+601,Combining BERT Model with Semi-Supervised Incremental Learning for Heterogeneous Knowledge Fusion of High-Speed Railway On-Board System,10.1155/2022/9948218
+608,KG-ZESHEL: Knowledge Graph-Enhanced Zero-Shot Entity Linking,10.1145/3460210.3493549
+615,Towards the smart use of embedding and instance features for property matching,10.1109/icde51399.2021.00209
+622,Multi-Modal Entity Alignment Based on Enhanced Relationship Learning and Multi-Layer Feature Fusion,10.3390/sym17070990
+623,WDEA: The Structure and Semantic Fusion With Wasserstein Distance for Low-Resource Language Entity Alignment,10.1109/taslp.2024.3419415
+641,Zero-shot Entity Linking with Less Data,10.18653/v1/2022.findings-naacl.127
+647,INDEX: the Intelligent Data Steward Toolbox Utilizing Large Language Model Embeddings for Automated Data Harmonization,
+678,LEAPME: Learning-based Property Matching with Embeddings,10.1016/j.datak.2021.101943
+703,SMUTF: Schema Matching Using Generative Tags and Hybrid Features,10.1016/j.is.2025.102570
+727,Enhancing Trait Thesauri Interoperability Using a Manual and Automated Alignment Approach,10.3390/app152312484
+733,GRAM: Generative Retrieval Augmented Matching of Data Schemas in the Context of Data Security,10.1145/3637528.3671602
+735,Breaking Digital Health Barriers Through a Large Language Model–Based Tool for Automated Observational Medical Outcomes Partnership Mapping: Development and Validation Study,10.2196/69004
+756,MCSFF: Multi-modal Consistency and Specificity Fusion Framework for Entity Alignment,10.1109/swc62898.2024.00381
+789,Multi-Modal Pre-Synergistic Fusion Entity Alignment Based on Mutual Information Strategy Optimization,10.32604/cmc.2025.069690
+799,Annotation of biological samples data to standard ontologies with support from large language models,10.1016/j.csbj.2025.05.020
+835,Unsupervised fuzzy temporal knowledge graph entity alignment via joint fuzzy semantics learning and global structure learning,10.1016/j.neucom.2024.129019
+849,Pretrained language models for semantics-aware data harmonisation of observational clinical studies in the era of big data,10.1186/s12911-025-03055-y
+862,Multi-source Heterogeneous Data Governance Based on Semi-supervised Learning; 基于半监督学习的多源异构数据治理,10.11908/j.issn.0253-374x.22228
+870,Combining FCA-Map with Representation Learning for Aligning Large Biomedical Ontologies,
+872,Multirelational Tensor Graph Attention Networks for Knowledge Fusion in Smart Enterprise Systems,10.1109/tii.2022.3190548
+902,Rpt: Relational pre-trained transformer is almost all you need towards democratizing data preparation,10.14778/3457390.3457391
+909,An automatic ontology construction approach for BIM-IoT semantic integration in intelligent operation and maintenance of high-speed railway stations,10.1088/2631-8695/ae1c92
+943,MAYA: Exploring multiform attributes of node to align YANG data models,10.1016/j.comnet.2022.109538
+963,Development of the InBan_CIDO Ontology by Reusing the Concepts Along with Detecting Overlapping Information,10.1007/978-981-16-6723-7_26
+975,HLMEA: Unsupervised Entity Alignment Based on Hybrid Language Models,10.1609/aaai.v39i11.33294
+987,Intelligent recruitment decision support combining Transformer model and knowledge graph,10.1145/3662739.3672315
+1000,Construction of the CIM hierarchical classification semantic network based on multi-source heterogeneous data,10.16511/j.cnki.qhdxxb.2025.26.033
+1029,CARTE: Pretraining and Transfer for Tabular Learning,
+1033,Semantic enrichment for BIM-based building energy performance simulations using semantic textual similarity and fine-tuning multilingual LLM,10.1016/j.jobe.2024.110312
+1117,Explainable Integration of Knowledge Graphs Using Large Language Models,10.1007/978-3-031-35320-8_9
+1151,CDE-Mapper: Using retrieval-augmented language models for linking clinical data elements to controlled vocabularies,10.1016/j.compbiomed.2025.110745
+1169,PhenoAlign: A Hybrid Data-Knowledge-Driven Approach for Precisely Aligning Phenotype Information in Medical Texts,10.1109/jbhi.2025.3529598
+1219,A semi-automated approach for multilingual terminology matching: Mapping the French version of the ICD-10 to the ICD-10 Cm,10.3233/shti200114
+1263,Catnip for MedCAT: Optimizing the Input for Automated SNOMED CT Mapping of Clinical Variables,10.3233/shti251390
+1346,Mapping Study Variables to Common Data Elements Using GPT for Sheets: Towards Standardized Data Collection and Sharing,10.1109/ichi61247.2024.00048
+1493,Generate Analysis-Ready Data for Real-world Evidence: Tutorial for Harnessing Electronic Health Records With Advanced Informatic Technologies,10.2196/45662
