@@ -606,3 +606,160 @@ screener_notes:   Recommandation Pr Tajeuna. KG alignment via fuzzy logic (symbo
 ```
 
 **Impact PRISMA :** Dans le diagramme de flux PRISMA 2020, cet article apparaît dans la colonne de droite « Identification of studies via other methods » → « Records identified from expert recommendation (n = 1) » → screening → inclus. Documenter dans la section méthodologique : « 1 article identifié par recommandation du directeur de recherche, absent du corpus systématique en raison d'un gap terminologique (l'article ne se décrit pas comme neuro-symbolique malgré une architecture hybride fuzzy logic + language model). »
+
+---
+
+### DEC-036 — Exclusion de 3 articles ArXiv retirés (withdrawn)
+**Date :** 20 mars 2026
+**Source :** Vérification manuelle des PDFs ArXiv lors du téléchargement
+
+**Décision :** Trois articles ArXiv sont retirés du corpus inclus (articles_inclus.csv) car ils portent la mention officielle **« This paper has been withdrawn »** sur ArXiv. Un article retiré par son auteur ne satisfait plus le critère I1 (étude publiée ou preprint accessible) : le contenu n'est plus disponible pour évaluation, et son retrait signale un problème de fiabilité reconnu par l'auteur.
+
+**Articles supprimés :**
+
+| Rang | Auteurs | Année | Titre | ArXiv ID | Motif |
+|---:|---|---:|---|---|---|
+| 192 | Zhaoming Lv | 2024 | An ontology alignment method with user intervention using compact differential evolution with adaptive parameter control | arXiv:2401.06337v2 | Withdrawn by Zhaoming Lv |
+| 373 | Vivek Iyer; Arvind Agarwal; Harshit Kumar | 2020 | Multifaceted Context Representation using Dual Attention for Ontology Alignment | arXiv:2010.11721v2 | Version antérieure de VeeAlign (même auteurs/contenu que #591) |
+| 591 | Vivek Iyer; Arvind Agarwal; Harshit Kumar | 2021 | VeeAlign: Multifaceted Context Representation using Dual Attention for Ontology Alignment | arXiv:2102.04081v3 | Withdrawn by Vivek Iyer |
+
+**Note :** Les rangs 373 et 591 sont deux soumissions ArXiv distinctes du même travail (VeeAlign) par les mêmes auteurs. Le rang 373 (arXiv:2010.11721v2, 2020) est la version initiale ; le rang 591 (arXiv:2102.04081v3, 2021) est la version révisée. Les deux sont retirés.
+
+**Corpus après exclusion : 214 articles** (217 − 3).
+
+**Justification :** Conformément aux bonnes pratiques SLR, un preprint retiré (withdrawn) ne peut pas être évalué au Tri #2 (QA) ni inclus dans l'extraction. Le retrait volontaire par l'auteur indique que le contenu ne doit plus être cité. Aucun de ces trois articles n'avait de version publiée dans un venue avec comité de lecture qui pourrait se substituer au preprint.
+
+**Limite reconnue :** Aucune — l'exclusion d'articles retirés est non controversée.
+**Impact PRISMA :** Documenter dans le flux PRISMA : « 3 articles exclus — preprints retirés (withdrawn) par les auteurs sur ArXiv ». Ajouter au comptage des exclusions post-screening.
+
+---
+
+### DEC-037 — Exclusion de 2 articles World Scientific inaccessibles
+**Date :** 20 mars 2026
+**Source :** Tentative de téléchargement des PDF pour le Tri #2
+
+**Décision :** Deux articles publiés par World Scientific sont exclus du corpus inclus car ils sont inaccessibles : aucun accès institutionnel disponible, aucune version OA trouvée, et l'éditeur n'offre pas de PDF libre. Sans accès au texte intégral, l'évaluation QA (Tri #2) est impossible.
+
+**Articles exclus :**
+
+| Rang | Auteurs | Année | Titre | DOI | Source |
+|---:|---|---:|---|---|---|
+| 29 | Chen, J.; Zheng, H.; et al. | 2023 | Schema Matching Using Interattribute Dependencies | 10.1142/S0218194023500183 | International Journal of Software Engineering and Knowledge Engineering |
+| 413 | Xue, X.; Pan, J.-S.; Lu, H. | 2023 | Similarity Features Fusion for Ontology Matching via Genetic Programming | 10.1142/S0218001423520092 | International Journal of Pattern Recognition and Artificial Intelligence |
+
+**Motif :** E_inaccessible — texte intégral non disponible (paywall World Scientific, pas d'accès institutionnel, pas de version OA).
+
+**Mise à jour :** `decision` → `exclude` dans corpus_scored.csv ; lignes supprimées de articles_inclus.csv.
+
+**Corpus après exclusion : 214 → 212 articles** (DEC-036 avait produit 214 ; DEC-037 retire 2 de plus).
+
+**Limite reconnue :** L'exclusion pour inaccessibilité est un biais potentiel mais inévitable ; documentée conformément à PRISMA 2020.
+**Impact PRISMA :** « 2 articles exclus — texte intégral non accessible (World Scientific, paywall) ».
+
+---
+
+### DEC-038 — Exclusion de 2 articles de revues chinoises inaccessibles
+**Date :** 20 mars 2026
+**Source :** Tentative de téléchargement des PDF pour le Tri #2
+
+**Décision :** Deux articles publiés dans des revues chinoises sont exclus car inaccessibles : les DOI renvoient vers des plateformes chinoises (CNKI/Wanfang) nécessitant un accès institutionnel spécifique non disponible. Aucune version OA ou anglophone n'a été trouvée via Unpaywall, Semantic Scholar, ou EuropePMC.
+
+**Articles exclus :**
+
+| Rang | Auteurs | Année | Titre | DOI | Source |
+|---:|---|---:|---|---|---|
+| 232 | Li, L.; Zhang, Z. | 2021 | Entity alignment method for different knowledge repositories with joint semantic representation | 10.11925/infotech.2096-3467.2021.0143 | Data Analysis and Knowledge Discovery |
+| 268 | Wu, Z.-Y.; Li, S.-M.; et al. | 2022 | Ontology Alignment Method Based on Self-attention (基于自注意力模型的本体对齐方法) | 10.11896/jsjkx.210700190 | Computer Science |
+
+**Motif :** E_inaccessible — texte intégral non disponible (revues chinoises, accès CNKI/Wanfang requis, pas d'accès institutionnel).
+
+**Mise à jour :** `decision` → `exclude` dans corpus_scored.csv ; lignes supprimées de articles_inclus.csv.
+
+**Corpus après exclusion : 212 → 210 articles.**
+
+**Limite reconnue :** L'exclusion pour inaccessibilité introduit un biais géographique potentiel ; documentée conformément à PRISMA 2020.
+**Impact PRISMA :** « 2 articles exclus — texte intégral non accessible (revues chinoises, CNKI/Wanfang) ».
+
+---
+
+### DEC-039 — Exclusion de 2 articles de revues chinoises inaccessibles (lot 2)
+**Date :** 20 mars 2026
+**Source :** Tentative de téléchargement des PDF pour le Tri #2
+
+**Décision :** Deux articles supplémentaires publiés dans des revues chinoises sont exclus pour inaccessibilité (même motif que DEC-038).
+
+**Articles exclus :**
+
+| Rang | Auteurs | Année | Titre | DOI | Source |
+|---:|---|---:|---|---|---|
+| 400 | Zelin, L.; Zhaofeng, L.; et al. | 2024 | Entity Alignment Model Based on Multi-Hop Information Fusion | 10.19678/j.issn.1000-3428.0068946 | Computer Engineering |
+| 863 | Rao, W.; Gao, H.; et al. | 2022 | Multi-source Heterogeneous Data Governance Based on Semi-supervised Learning (基于半监督学习的多源异构数据治理) | 10.11908/j.issn.0253-374x.22228 | Tongji Daxue Xuebao |
+
+**Motif :** E_inaccessible — texte intégral non disponible (revues chinoises, accès CNKI/Wanfang requis, pas d'accès institutionnel).
+
+**Mise à jour :** `decision` → `exclude` dans corpus_scored.csv ; lignes supprimées de articles_inclus.csv.
+
+**Corpus après exclusion : 210 → 208 articles.**
+
+**Limite reconnue :** Même biais géographique que DEC-038.
+**Impact PRISMA :** « 2 articles exclus — texte intégral non accessible (revues chinoises, CNKI/Wanfang) ». Cumulé avec DEC-038 : 4 articles chinois exclus au total.
+
+---
+
+### DEC-040 — Exclusion de 2 articles inaccessibles (lot 3 : IOP + revue chinoise)
+**Date :** 20 mars 2026
+**Source :** Tentative de téléchargement des PDF pour le Tri #2
+
+**Décision :** Deux articles supplémentaires sont exclus pour inaccessibilité.
+
+**Articles exclus :**
+
+| Rang | Auteurs | Année | Titre | DOI | Source | Motif |
+|---:|---|---:|---|---|---|---|
+| 910 | Li, Q.A.; Fang, H. | 2025 | An automatic ontology construction approach for BIM-IoT semantic integration in intelligent operation and maintenance of high-speed railway stations | 10.1088/2631-8695/adbe36 | Engineering Research Express (IOP) | Pas d'accès institutionnel |
+| 1001 | Xu, Z.; Guan, W.; Gan, Z.; Fang, Z.; Cai, W. | 2025 | Construction of the CIM hierarchical classification semantic network based on multi-source heterogeneous data | 10.16511/j.cnki.qhdxxb.2025.26.003 | Qinghua Daxue Xuebao / Journal of Tsinghua University | PDF disponible mais texte intégral en chinois uniquement |
+
+**Motif :** E_inaccessible (910 : paywall IOP, pas d'accès) ; E_langue (1001 : contenu exclusivement en chinois, pas de version anglaise disponible).
+
+**Mise à jour :** `decision` → `exclude` dans corpus_scored.csv ; lignes supprimées de articles_inclus.csv.
+
+**Corpus après exclusion : 208 → 206 articles.**
+
+**Limite reconnue :** Biais géographique et linguistique cumulé avec DEC-038/039 (6 articles chinois/inaccessibles au total).
+**Impact PRISMA :** Cumulé DEC-037 à DEC-040 : 2 World Scientific + 6 inaccessibles/chinois = 8 articles exclus au stade du texte intégral.
+
+---
+
+### DEC-041 — Snowballing arrière : ajout de 11 articles au corpus final
+
+**Date :** 20 mars 2026
+**Base / Outil :** Snowballing (backward) sur surveys et articles inclus
+
+**Décision :** 11 articles issus du snowballing arrière sont ajoutés au corpus final avec qa_pass=oui. Ils sont intégrés dans `articles_inclus.csv` avec des rangs de la forme SV01/BT01–BT24 (code = préfixe du fichier PDF dans `data/fulltext/Snowballing/`). Le fichier `corpus_scored.csv` n'est pas modifié car ces articles sont hors du corpus de recherche initiale et n'ont pas de scores NLP.
+
+**Sources du snowballing :**
+- 13 surveys collectés dans `data/fulltext/Surveys/`
+- 27 articles inclus du corpus principal
+
+**Processus :** Tri 1 (titre + abstract, critères I1–I6) → Tri 2 (full-text, I4 strict) → QA (Q1–Q5, seuil ≥ 3/5).
+
+**Articles ajoutés :**
+
+| Rang | Auteurs | Année | Titre | QA Total |
+|------|---------|-------|-------|----------|
+| SV01 | Chen, Jiménez-Ruiz, Horrocks et al. | 2021 | Augmenting Ontology Alignment by Semantic Embedding and Distant Supervision | 4.5 |
+| BT01 | Chen, Hu, Jiménez-Ruiz et al. | 2021 | OWL2Vec*: Embedding of OWL Ontologies | 4.0 |
+| BT02 | Racharak T. | 2021 | Concept Similarity in DL ELH with Pretrained Word Embedding | 4.5 |
+| BT03 | Qi, Zhang, Chen et al. | 2021 | Unsupervised KG Alignment by Probabilistic Reasoning and Semantic Embedding | 4.5 |
+| BT06 | Ji, Qi, Yang et al. | 2022 | An Embedding-Based Approach to Repairing OWL Ontologies | 4.0 |
+| BT07 | Zhu, Liu, Yao et al. | 2023 | TGR: Neural-Symbolic Ontological Reasoner for Domain Knowledge Graphs | 4.0 |
+| BT10 | Jackermeier, Chen, Horrocks | 2023 | Box²EL: Concept and Role Box Embeddings for the Description Logic EL++ | 4.0 |
+| BT11 | Li, Ji, Zhang et al. | 2022 | A Graph-Based Method for Interactive Mapping Revision in DL-Lite | 4.5 |
+| BT12 | Li Y., Lambrix P. | 2023 | Repairing EL Ontologies Using Weakening and Completing | 3.5 |
+| BT16 | Xu, Cheng, Zhang | 2024 | NALA: An Effective and Interpretable Entity Alignment Method | 5.0 |
+| BT24 | Ciravegna, Barbiero, Giannini et al. | 2023 | Logic Explained Networks | 4.5 |
+
+**Corpus après ajout : 27 (corpus initial) + 11 (snowballing) = 38 articles inclus (qa_pass=oui).**
+
+**Limite reconnue :** Le snowballing a porté sur les références disponibles dans les PDFs collectés. Des articles pertinents dans des références non accessibles peuvent avoir été manqués. Le snowballing avant (forward) n'a pas été effectué.
+**Impact PRISMA :** Documenter les 11 articles dans le flux PRISMA comme issus du snowballing (nœud distinct). Total corpus final = 38 études primaires.
