@@ -45,15 +45,12 @@ tri2_fulltext_exclu_E_inaccessible,8
 tri2_qa_evalues,206
 tri2_qa_pass,27
 tri2_qa_non,179
-tri2_inclus_final,206
+tri2_inclus_corpus,27
 snowball_surveys,13
 snowball_articles_source,27
 snowball_tri1_screen,50
 snowball_tri1_inclus,19
 snowball_tri1_exclu,25
-snowball_tri1_vide_no_abstract,6
 snowball_tri2_evalues,19
 snowball_tri2_inclus,11
-snowball_tri2_exclu,6
-snowball_tri2_pdf_incorrect,2
 corpus_final_apres_snowball,38

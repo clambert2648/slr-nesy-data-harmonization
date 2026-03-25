@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(python decisions_tri1.py)",
-      "Bash(python -c \":*)"
+      "Bash(python -c \":*)",
+      "mcp__notebooklm__list_notebooks",
+      "mcp__notebooklm__search_notebooks"
     ]
   }
 }
