@@ -1,0 +1,57 @@
+filename,type,block,block_label,list_order,rank,short_ref,status
+BT24_Ciravegna_2023.pdf,PS,B1,Fondements NeSy,5,BT-24,Ciravegna et al. 2023 - Logic Explained Networks,retired
+1889_Peng_2025.pdf,PS,B2b,EA NeSy,10,1889,Peng Bonald Suchanek 2025 - FLORA,included
+BT03_Qi_2021.pdf,PS,B2b,EA NeSy,11,BT-03,Qi Zhang Chen 2021 - Unsupervised KG Alignment,standby
+379_Jiang_2022.pdf,PS,B2b,EA NeSy,12,379,Jiang et al. 2022 - Embedding + Symbol EA,included
+330_Xiang_2021.pdf,PS,B2b,EA NeSy,13,330,Xiang et al. 2021 - OntoEA,included
+058_Chen_2024.pdf,PS,B2b,EA NeSy,14,58,Chen et al. 2024 - NeuSymEA,included
+BT16_Xu_2024.pdf,PS,B2b,EA NeSy,15,BT-16,Xu et al. 2024 - NALA,included
+081_Jiang_2023.pdf,PS,B2b,EA NeSy,16,81,Jiang et al. 2023 - Symbol Similarities + KGE,included
+116_Liu_2025.pdf,PS,B2b,EA NeSy,17,116,Liu 2025 - Attribute-Relationship Joint Embedding,included
+131_Obraczka_2025.pdf,PS,B2b,EA NeSy,18,131,Obraczka Rahm 2025 - Symbolic vs Embedding Blocking,included
+286_He_2021.pdf,PS,B3b,OM BERT/embedding+logique,22,286,He et al. 2021 - BERTMap,included
+SV01_Chen_2021.pdf,PS,B3b,OM BERT/embedding+logique,23,SV-01,Chen et al. 2021 - Augmenting OA,included
+BT01_Chen_2021.pdf,PS,B3b,OM BERT/embedding+logique,24,BT-01,Chen et al. 2021 - OWL2Vec*,included
+474_Zhu_2025.pdf,PS,B3b,OM BERT/embedding+logique,25,474,Zhu et al. 2025 - LEAF,included
+311_Dhouib_2021.pdf,PS,B3b,OM BERT/embedding+logique,26,311,Tounsi Dhouib et al. 2021 - Clusters Labels,included
+147_Jimenezruiz_2020.pdf,PS,B3b,OM BERT/embedding+logique,27,147,Jimenez-Ruiz et al. 2020 - Dividing OA Task,included
+315_Wang_2022.pdf,PS,B3c,OM graph/meta-heuristiques,28,315,Wang Hu 2022 - Hybrid GAT Biomedical,included
+079_Wu_2020.pdf,PS,B3c,OM graph/meta-heuristiques,29,79,Wu et al. 2020 - DAEOM,included
+871_Li_2021.pdf,PS,B3c,OM graph/meta-heuristiques,30,871,Li et al. 2021 - FCA-Map + SBERT,retired
+093_Chakraborty_2021.pdf,PS,B3c,OM graph/meta-heuristiques,31,93,Chakraborty et al. 2021 - OntoConnect,included
+455_Xue_2024.pdf,PS,B3c,OM graph/meta-heuristiques,32,455,Xue et al. 2024 - Multitasking GA,included
+263_Atig_2024.pdf,PS,B3c,OM graph/meta-heuristiques,33,263,Atig et al. 2024 - Agricultural Ontologies,included
+665_He_2023.pdf,PS,B3d,OM outils,34,665,He et al. 2023 - DeepOnto,retired
+BT02_Racharak_2021.pdf,PS,B4b,Similarite semantique DL,38,BT-02,Racharak 2021 - Concept Similarity ELH,included
+169_Racharak_2025.pdf,PS,B4b,Similarite semantique DL,39,169,Racharak Jearanaiwongkul 2025 - JSimELHExplainer,included
+211_Jearanaiwongkul_2025.pdf,PS,B4b,Similarite semantique DL,40,211,Jearanaiwongkul Racharak 2025 - Human-Friendly Explanation,included
+673_Ji_2023.pdf,PS,B4c,Revision ontologies,41,673,Ji et al. 2023 - Ontology Revision PLM,included
+BT06_Ji_2022.pdf,PS,B4c,Revision ontologies,42,BT-06,Ji et al. 2022 - Embedding Repairing OWL,retired
+BT12_Li_2023.pdf,PS,B4c,Revision ontologies,43,BT-12,Li Lambrix 2023 - Repairing EL,retired
+BT11_Li_2023.pdf,PS,B4c,Revision ontologies,44,BT-11,Li et al. 2022 - Interactive Mapping Revision DL-Lite,included
+BT10_Jackermeier_2023.pdf,PS,B5,Raisonnement ontologique embeddings,45,BT-10,Jackermeier et al. 2023 - Box2EL,retired
+BT07_Zhu_2023.pdf,PS,B5,Raisonnement ontologique embeddings,46,BT-07,Zhu et al. 2023 - TGR Reasoner,retired
+137_Jeon_2025.pdf,PS,B6b,Schema matching harmonisation,51,137,Jeon et al. 2025 - SMoG,standby
+121_Mehryar_2023.pdf,PS,B6b,Schema matching harmonisation,52,121,Mehryar Celebi 2023 - Semantic Annotation Tabular,retired
+200_Centelles_2025.pdf,PS,B6b,Schema matching harmonisation,53,200,Centelles Ferran-Ferrer 2025 - Wikidata NeSy Workflow,included
+110_Kumar_2025.pdf,PS,B6b,Schema matching harmonisation,54,110,Kumar 2025 - Multilingual KG Alignment,included
+1170_Yang_2025.pdf,PS,B6b,Schema matching harmonisation,55,1170,Yang et al. 2025 - PhenoAlign,retired
+798_Carbonaro_2025.pdf,PS,B6b,Schema matching harmonisation,56,798,Carbonaro et al. 2025 - FHIR Pipeline,included
+459_Breit_2023.pdf,SV,B1,Fondements NeSy,1,459,Breit et al. 2023 - ML + Semantic Web Mapping,included
+368_Belle_2020.pdf,SV,B1,Fondements NeSy,2,368,Belle 2020 - Symbolic Logic + ML,included
+076_Kursuncu_2020.pdf,SV,B1,Fondements NeSy,3,76,Kursuncu Gaur Sheth 2020 - K-IL,included
+030_Keber_2024.pdf,SV,B1,Fondements NeSy,4,30,Keber et al. 2024 - NeSy + NLP,included
+020_Cotovio_2023.pdf,SV,B2a,EA NeSy surveys,6,20,Cotovio Jimenez-Ruiz Pesquita 2023 - KG Alignment + NeSy,included
+007_DeLong_2025.pdf,SV,B2a,EA NeSy surveys,7,7,DeLong Mir Fleuriot 2025 - NeSy + KG Reasoning,included
+011_Cheng_2024.pdf,SV,B2a,EA NeSy surveys,8,11,Cheng et al. 2024 - Neural-Symbolic KG Reasoning,included
+070_Wang_2025.pdf,SV,B2a,EA NeSy surveys,9,70,Wang Li 2025 - Temporal KG Reasoning,included
+056_Portisch_2025.pdf,SV,B3a,OM surveys,19,56,Portisch Hladik Paulheim 2025 - Background Knowledge OM,included
+264_Barlaug_2021.pdf,SV,B3a,OM surveys,20,264,Barlaug Gulla 2021 - Neural Networks EM,included
+265_Li_2021.pdf,SV,B3a,OM surveys,21,265,Li et al. 2021 - Deep Entity Matching,included
+119_Tiddi_2022.pdf,SV,B4a,Explicabilite surveys,35,119,Tiddi Schlobach 2022 - KG + XAI,included
+002_Meziane_2025.pdf,SV,B4a,Explicabilite surveys,36,2,Meziane et al. 2025 - Symbolic XAI,included
+156_Zhang_2024.pdf,SV,B4a,Explicabilite surveys,37,156,Zhang Yilmaz Liu 2024 - ILP + XAI,included
+1483_Peng_2024.pdf,SV,B6a,Harmonisation surveys,47,1483,Peng et al. 2024 - Data Harmonization Medical,included
+466_Diaz-de-Arcaya_2025.pdf,SV,B6a,Harmonisation surveys,48,466,Diaz-de-Arcaya et al. 2025 - Data Harmonization Data Spaces,included
+358_Koutras_2021.pdf,SV,B6a,Harmonisation surveys,49,358,Koutras et al. 2021 - Valentine Benchmark,included
+1079_Hong_2025.pdf,SV,B6a,Harmonisation surveys,50,1079,Hong Park 2025 - LLMs Semantic Join,included

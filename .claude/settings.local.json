@@ -4,7 +4,20 @@
       "Bash(python decisions_tri1.py)",
       "Bash(python -c \":*)",
       "mcp__notebooklm__list_notebooks",
-      "mcp__notebooklm__search_notebooks"
+      "mcp__notebooklm__search_notebooks",
+      "PowerShell(Write-Output \"=== Contenu de block_mapping.csv ===\"; Get-Content \"data\\\\extraction\\\\block_mapping.csv\" -TotalCount 5; Write-Output \"\"; Write-Output \"=== Nombre de lignes block_mapping.csv ===\"; \\(Get-Content \"data\\\\extraction\\\\block_mapping.csv\" | Measure-Object -Line\\).Lines; Write-Output \"\"; Write-Output \"=== Contenu de data\\\\extraction_output ===\"; Get-ChildItem -Path \"data\\\\extraction_output\" | Group-Object Extension | Select-Object Count, Name | Format-Table -AutoSize)",
+      "PowerShell(Import-Csv \"data\\\\extraction\\\\block_mapping.csv\")",
+      "PowerShell(python -c \"import openpyxl; wb = openpyxl.load_workbook\\('results/validation_SLR.xlsx', data_only=True\\); print\\('Sheets:'\\); [print\\(' -', s\\) for s in wb.sheetnames]\")",
+      "PowerShell(.\\\\.venv\\\\Scripts\\\\python.exe -c \"import openpyxl; wb = openpyxl.load_workbook\\('results/validation_SLR.xlsx', data_only=True\\); print\\('Sheets:'\\); [print\\(' -', s\\) for s in wb.sheetnames]\")",
+      "Bash(.venv/Scripts/python.exe -c \"import openpyxl; wb = openpyxl.load_workbook\\('results/validation_SLR.xlsx', data_only=True\\); print\\('Sheets:'\\); [print\\(' -', s\\) for s in wb.sheetnames]\")",
+      "Bash(cmd //c \".venv\\\\Scripts\\\\python.exe -c \\\\\"import openpyxl; wb = openpyxl.load_workbook\\('results/validation_SLR.xlsx', data_only=True\\); print\\('Sheets:'\\); [print\\(' -', s\\) for s in wb.sheetnames]\\\\\"\")",
+      "Bash(py -3 --version)",
+      "Bash(py -3 -c \"import openpyxl; print\\('openpyxl ok'\\)\")",
+      "Bash(py -3 -m pip install openpyxl)",
+      "Bash(py -3 -c \"import openpyxl; wb = openpyxl.load_workbook\\('results/validation_SLR.xlsx', data_only=True\\); print\\('Sheets:'\\); [print\\(' -', s\\) for s in wb.sheetnames]\")",
+      "Bash(py -3)",
+      "Bash(PYTHONIOENCODING=utf-8 py -3)",
+      "Bash(git add *)"
     ]
   }
 }

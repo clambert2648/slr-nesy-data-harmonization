@@ -1,0 +1,2 @@
+2026-03-27 13:45:49,015 [ERROR] Set ANTHROPIC_API_KEY first.  PowerShell: $env:ANTHROPIC_API_KEY='sk-ant-...'
+2026-03-27 13:46:47,667 [ERROR] Set ANTHROPIC_API_KEY first.  PowerShell: $env:ANTHROPIC_API_KEY='sk-ant-...'

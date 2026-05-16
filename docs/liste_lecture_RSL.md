@@ -1,201 +1,215 @@
 # Liste de lecture — RSL NeSy Appariement sémantique
 
 **Constance Lambert-Tremblay | M. Sc. informatique (IA), UQO**
-**Directeur : Pr Étienne Gaël Tajeuna**
-*Générée le 24 mars 2026 — 38 études primaires + 18 surveys pertinents*
+**Directeur : Pr Etienne Gaël Tajeuna**
+*29 études primaires + 18 surveys en lecture*
+
+---
+
+## État au démarrage de l'extraction
+
+**Surveys d'ancrage théorique : COMPLÉTÉS**
+- DeLong, Mir & Fleuriot (2025) — taxonomie NeSy × KG reasoning *(via INF-5183, A.6 à recycler)*
+- Cotovio, Jiménez-Ruiz & Pesquita (2023) — closest existing work *(A.6 complétée)*
+- Portisch, Hladik & Paulheim (2025) — généalogie OM *(A.6 complétée)*
+
+**Glossaire NeSy/KGA v1 disponible** — référence stable pour terminologie pendant l'extraction.
 
 ---
 
 ## Mode d'emploi
 
-La liste est organisée en **7 blocs thématiques**, chacun avec un ordre de lecture interne (surveys de cadrage → études primaires). L'ordre des blocs suit une logique d'entonnoir : fondements NeSy → appariement/alignment (cœur RQ1) → explicabilité/HITL (RQ2) → contextes appliqués (RQ3).
+La liste s'ouvre par un **Bloc 0 de calibration** puis se déploie en blocs thématiques par RQ. Les surveys restants sont **différés à l'écriture** des sections concernées de l'ESWA.
 
-**Légende :** 📚 Survey | 📄 Étude primaire (incluse aux 38)
+**Abréviations Type :**
+- **SUR** — Survey
+- **PRI** — Étude primaire (incluse aux 29)
 
----
-
-## Bloc 1 — Fondements neuro-symboliques
-
-*Cadre théorique NeSy : taxonomies d'intégration, positionnement dans le paysage IA.*
-*Lire en premier pour stabiliser le vocabulaire et la taxonomie NeSy utilisée dans le mémoire.*
-
-| # | Type | Rank | Référence | Pourquoi |
-|---|------|------|-----------|----------|
-| 1 | 📚 | 459 | Breit et al. (2023) — *Combining ML and Semantic Web: A Systematic Mapping Study* | Cartographie NeSy + Semantic Web la plus complète. Fournit la taxonomie des modes d'intégration (pipeline, joint, hybrid). |
-| 2 | 📚 | 368 | Belle (2020) — *Symbolic Logic Meets ML: A Brief Survey in Infinite Domains* | Fondements formels de l'articulation logique symbolique / apprentissage. |
-| 3 | 📚 | 76 | Kursuncu, Gaur & Sheth (2020) — *Knowledge Infused Learning (K-IL)* | Cadre K-IL pour l'injection de connaissances dans le DL — niveaux d'infusion. |
-| 4 | 📚 | 30 | Keber et al. (2024) — *A Review on NeSy AI Improvements to NLP* | NeSy + NLP — utile pour le volet multilingue et traitement du langage. |
-| 5 | 📄 | BT-24 | Ciravegna et al. (2023) — *Logic Explained Networks* | FOL active pour expliquer les réseaux neuronaux. Référence méthodologique transversale. |
+**Statuts complémentaires :**
+- **[LU]** — Lecture complétée
+- **[STBY]** — Cas-frontière I4-strict, standby (rébutals défendus)
+- **[CAL]** — Calibration A.5 (Bloc 0)
+- **[DIFF]** — Différé à l'écriture
 
 ---
 
-## Bloc 2 — NeSy × KG Reasoning et Entity Alignment (cœur RQ1)
+## Bloc 0 — Calibration A.5 (séquence ferme)
 
-*Le noyau dur : surveys spécialisés NeSy+KG puis les études primaires d'entity alignment inter-KG.*
-*C'est le bloc le plus dense — commencer par les 3 surveys pour avoir la vue d'ensemble avant les papiers techniques.*
+| # | Type | Rank | Référence | Rôle |
+|---|------|------|-----------|------|
+| 1 | PRI [CAL] | **1889** | Peng, Bonald & Suchanek (2025) — *FLORA* | Archétype I4-strict + recommandation Étienne (DEC-025). T-normes de Gödel. |
+| 2 | PRI [CAL] | **58** | Chen et al. (2024) — *NeuSymEA* | Variante méthodologique (variationnel vs flou). |
+| 3 | PRI [CAL] [STBY] | **137** | Jeon et al. (2025) — *SMoG* | Stress-test I4-strict #1. |
+| 4 | PRI [CAL] [STBY] | BT-03 | Qi et al. (2021) — *PRASE* | Stress-test I4-strict #2. |
+| 5 | PRI [CAL] | BT-16 | Xu et al. (2024) — *NALA* | Non-Axiomatic Logic active. |
+| 6 | PRI [CAL] | **474** | Zhu et al. (2025) — *LEAF* | Bascule vers OA — features logiques + fusion adaptative. |
 
-### 2a — Surveys de cadrage
+---
 
-| # | Type | Rank | Référence | Pourquoi |
-|---|------|------|-----------|----------|
-| 6 | 📚 | **20** | Cotovio, Jimenez-Ruiz & Pesquita (2023) — *What can KG alignment gain with NeSy learning approaches?* | **Survey-pivot.** Pose exactement ta question RQ1 : que gagne l'alignement KG avec le NeSy? |
-| 7 | 📚 | 7 | DeLong, Mir & Fleuriot (2025) — *Neurosymbolic AI for Reasoning Over KGs: A Survey* | Taxonomie NeSy+KG reasoning complète, GNN + règles logiques. |
-| 8 | 📚 | 11 | Cheng et al. (2024) — *Neural-Symbolic Methods for KG Reasoning: A Survey* | Complémentaire au #7, focus sur les méthodes de raisonnement. |
-| 9 | 📚 | 70 | Wang & Li (2025) — *Temporal KG Reasoning: ...Neural-Symbolic Hybrid Methods* | Utile pour la taxonomie des hybrides rule-based + embedding. |
+## Bloc 1 — Fondements neuro-symboliques (différés à l'écriture)
 
-### 2b — Entity alignment NeSy (études primaires)
+| Type | Rank | Référence | Quand y revenir |
+|------|------|-----------|-----------------|
+| SUR [LU] | 7 | DeLong (2025) | **Déjà digérée.** Recycler synthèse INF-5183 pour A.6. |
+| SUR [DIFF] | 459 | Breit et al. (2023) — *Combining ML and Semantic Web: SLR* | Section **Methodology** ESWA. |
+| SUR [DIFF] | 368 | Belle (2020) — *Symbolic Logic Meets ML* | **Optionnel.** |
+| SUR [DIFF] | 76 | Kursuncu et al. (2020) — *K-IL* | **Optionnel.** |
+| SUR [DIFF] | 30 | Keber et al. (2024) — *NeSy AI for NLP* | **Optionnel.** |
+| SUR [DIFF] | 11 | Cheng et al. (2024) — *NeSy Methods for KG Reasoning* | **Optionnel.** |
+| SUR [DIFF] | 70 | Wang & Li (2025) — *Temporal KG Reasoning* | **Optionnel.** |
 
-*Lire dans cet ordre : non supervisé symbolique → hybride embedding+règles → variationnel.*
+---
+
+## Bloc 2 — NeSy × Entity Alignment (cœur RQ1)
+
+*FLORA, NeuSymEA, NALA, PRASE déjà couverts au Bloc 0.*
 
 | # | Type | Rank | Référence | NeSy | QA |
 |---|------|------|-----------|------|-----|
-| 10 | 📄 | **1889** | Peng, Bonald & Suchanek (2025) — *FLORA: Unsupervised KG Alignment by Fuzzy Logic* | Logique floue formelle (Gödel T-norms) | 5.0 |
-| 11 | 📄 | BT-03 | Qi, Zhang, Chen et al. (2021) — *Unsupervised KG Alignment by Probabilistic Reasoning and Semantic Embedding* | PARIS (prob. symbolique) + KG embeddings itératifs | 4.5 |
-| 12 | 📄 | 379 | Jiang et al. (2022) — *Combining embedding-based and symbol-based methods for EA* | TransE + Horn clauses (AMIE+) + axiomes OWL/RDFS | 4.5 |
-| 13 | 📄 | 330 | Xiang et al. (2021) — *OntoEA: Ontology-guided EA via Joint KG Embedding* | owl:disjointWith → Class Conflict Matrix + TransE | 4.5 |
-| 14 | 📄 | **58** | Chen et al. (2024) — *Neuro-Symbolic EA via Variational Inference (NeuSymEA)* | MRF + règles logiques + EM variationnel | 5.0 |
-| 15 | 📄 | BT-16 | Xu et al. (2024) — *NALA: Effective and Interpretable EA* | Non-Axiomatic Logic (NAL), Hits@1 0.98+ | 5.0 |
-| 16 | 📄 | 81 | Jiang et al. (2023) — *Integrating Symbol Similarities with KGE for EA: Unsupervised* | Similarités symboliques (string, sémantique, path) + KGE | 3.5 |
-| 17 | 📄 | 116 | Liu (2025) — *Attribute-Relationship Joint Embedding for KG EA* | GCN/GAT joint embedding attributs-relations | 4.0 |
-| 18 | 📄 | 131 | Obraczka & Rahm (2025) — *Comparing Symbolic and Embedding-Based Approaches for Relational Blocking* | Comparaison systématique symbolique vs. embedding pour blocking KG | 4.0 |
+| 7 | PRI | 379 | Jiang et al. (2022) — *ESEA* | TransE + Horn clauses (AMIE+) + axiomes OWL/RDFS | 4.5 |
+| 8 | PRI | 330 | Xiang et al. (2021) — *OntoEA* | owl:disjointWith → CCM + TransE | 4.5 |
+| 9 | PRI | 81 | Jiang et al. (2023) — *Symbol Similarities with KGE for EA* | Similarités symboliques + KGE | 3.5 |
+| 10 | PRI | 116 | Liu (2025) — *ARJE* | GCN/GAT joint embedding | 4.0 |
+| 11 | PRI | 131 | Obraczka & Rahm (2025) — *Symbolic vs Embedding-Based Blocking* | Comparaison systématique | 4.0 |
 
 ---
 
 ## Bloc 3 — Ontology Matching / Alignment (cœur RQ1)
 
-*Deuxième pilier de I2 : l'ontology matching. Survey de cadrage puis études par sous-approche.*
+*Portisch (#56) déjà lue. LEAF déjà couvert au Bloc 0.*
 
-### 3a — Surveys de cadrage
+### 3a — Surveys différés
 
-| # | Type | Rank | Référence | Pourquoi |
-|---|------|------|-----------|----------|
-| 19 | 📚 | **56** | Portisch, Hladik & Paulheim (2025) — *Background knowledge in ontology matching: A survey* | Rôle du background knowledge (KG, corpus) dans l'OM. Directement pertinent pour ta composante symbolique. |
-| 20 | 📚 | 264 | Barlaug & Gulla (2021) — *Neural Networks for Entity Matching: A Survey* | Panorama complet des approches neurales pour EM — ta baseline neurale. |
-| 21 | 📚 | 265 | Li et al. (2021) — *Deep Entity Matching: Challenges and Opportunities* | Complémentaire au #20 : deep learning + EM, challenges ouverts. |
+| Type | Rank | Référence | Quand y revenir |
+|------|------|-----------|-----------------|
+| SUR [LU] | **56** | Portisch et al. (2025) | **Déjà lue.** A.6 complétée. |
+| SUR [DIFF] | 264 | Barlaug & Gulla (2021) — *NN for Entity Matching* | Section *Related Work* — baseline neurale. |
+| SUR [DIFF] | 265 | Li et al. (2021) — *Deep Entity Matching* | **Optionnel.** |
 
-### 3b — Approches BERT / embedding + logique (études primaires)
-
-| # | Type | Rank | Référence | NeSy | QA |
-|---|------|------|-----------|------|-----|
-| 22 | 📄 | **286** | He et al. (2021) — *BERTMap: A BERT-based Ontology Alignment System* | BERT + logic-based mapping repair (axiomes propositionnels) | 4.5 |
-| 23 | 📄 | SV-01 | Chen et al. (2021) — *Augmenting OA by Semantic Embedding and Distant Supervision* | LogMap/AML (reasoneurs symboliques) + Siamese NN | 4.5 |
-| 24 | 📄 | BT-01 | Chen et al. (2021) — *OWL2Vec*: Embedding of OWL Ontologies* | HermiT reasoner actif → random walks → embeddings | 4.0 |
-| 25 | 📄 | **474** | Zhu et al. (2025) — *LEAF: Logic-Enhanced Adaptive Fusion for Large-Scale OA* | Features logiques (Qwen2.5) + fusion adaptative | 5.0 |
-| 26 | 📄 | 311 | Tounsi Dhouib et al. (2021) — *Measuring Clusters of Labels in Embedding Space to Refine Relations in OA* | fastText + règles géométriques symboliques | 4.0 |
-| 27 | 📄 | 147 | Jiménez-Ruiz et al. (2020) — *Dividing the OA Task with Semantic Embeddings and Logic-based Modules* | Embedding neural + modules logiques pour diviser la tâche | 4.0 |
-
-### 3c — Approches graph-based et méta-heuristiques (études primaires)
+### 3b — Approches BERT / embedding + logique
 
 | # | Type | Rank | Référence | NeSy | QA |
 |---|------|------|-----------|------|-----|
-| 28 | 📄 | 315 | Wang & Hu (2022) — *Matching Biomedical Ontologies via a Hybrid GAT* | Axiomes OWL transforment le graphe → GAT hyperbolique | 4.0 |
-| 29 | 📄 | 79 | Wu et al. (2020) — *DAEOM: Deep Attentional Embedded OM* | TBERT + SGAT (graph attention) biomédical | 4.0 |
-| 30 | 📄 | 871 | Li et al. (2021) — *Combining FCA-Map with Representation Learning for Aligning Large Biomedical Ontologies* | FCA (raisonnement symbolique) + SBERT | 4.5 |
-| 31 | 📄 | 93 | Chakraborty et al. (2021) — *OntoConnect: Unsupervised OA with Recursive NN* | Pipeline extraction méta-données + RNN | 3.0 |
-| 32 | 📄 | 455 | Xue et al. (2024) — *Compact Multitasking Multichromosome GA for Heuristic Selection in OM* | Algorithme génétique + cohérence locale symbolique | 4.0 |
-| 33 | 📄 | 263 | Atig et al. (2024) — *Impact of Agricultural Ontologies Evolution on Alignment Preservative Adaptation* | OWL-2 + Pellet reasoner, algorithme MCUR | 4.0 |
+| 12 | PRI | **286** | He et al. (2021) — *BERTMap* | BERT + logic-based mapping repair | 4.5 |
+| 13 | PRI | SV-01 | Chen et al. (2021) — *Augmenting OA by Semantic Embedding* | LogMap/AML + Siamese NN | 4.5 |
+| 14 | PRI | BT-01 | Chen et al. (2021) — *OWL2Vec\** | HermiT reasoner → random walks → embeddings | 4.0 |
+| 15 | PRI | 311 | Tounsi Dhouib et al. (2021) — *Clusters of Labels in Embedding Space* | fastText + règles géométriques | 4.0 |
+| 16 | PRI | 147 | Jiménez-Ruiz et al. (2020) — *Dividing OA Task* | Embedding + modules logiques | 4.0 |
 
-### 3d — Outils et infrastructure OM
+### 3c — Approches graph-based et méta-heuristiques
 
 | # | Type | Rank | Référence | NeSy | QA |
 |---|------|------|-----------|------|-----|
-| 34 | 📄 | **665** | He et al. (2023) — *DeepOnto: A Python Package for Ontology Engineering with Deep Learning* | HermiT/ELK reasoners + DL — outil de référence | 4.5 |
+| 17 | PRI | 315 | Wang & Hu (2022) — *Hybrid GAT Biomedical* | Axiomes OWL → GAT hyperbolique | 4.0 |
+| 18 | PRI | 79 | Wu et al. (2020) — *DAEOM* | TBERT + SGAT biomédical | 4.0 |
+| 19 | PRI | 93 | Chakraborty et al. (2021) — *OntoConnect* | RNN + méta-données | 3.0 |
+| 20 | PRI | 455 | Xue et al. (2024) — *GA for Heuristic Selection in OM* | Algorithme génétique + cohérence | 4.0 |
+| 21 | PRI | 263 | Atig et al. (2024) — *Agricultural Ontologies Evolution* | OWL-2 + Pellet, MCUR | 4.0 |
 
 ---
 
-## Bloc 4 — Explicabilité, similarité sémantique et raisonnement formel (RQ2)
+## Bloc 4 — Explicabilité, similarité sémantique et raisonnement formel (cœur RQ2)
 
-*Couvre RQ2 : comment rendre les décisions d'appariement explicables et interprétables.*
+### 4a — Surveys différés (à consulter à l'écriture du gap RQ2)
 
-### 4a — Surveys de cadrage
+| Type | Rank | Référence | Quand y revenir |
+|------|------|-----------|-----------------|
+| SUR [DIFF] | **119** | Tiddi & Schlobach (2022) — *KGs for Explainable ML* | **Section gap RQ2/B4.** |
+| SUR [DIFF] | 2 | Meziane et al. (2025) — *Symbolic Approaches for XAI* | **Optionnel.** |
+| SUR [DIFF] | 156 | Zhang et al. (2024) — *ILP for XAI* | **Optionnel.** |
 
-| # | Type | Rank | Référence | Pourquoi |
-|---|------|------|-----------|----------|
-| 35 | 📚 | **119** | Tiddi & Schlobach (2022) — *KGs as tools for explainable ML: A survey* | KG + XAI — cadre conceptuel pour ta validation interactive. |
-| 36 | 📚 | 2 | Meziane et al. (2025) — *Symbolic Approaches for XAI* | Approches symboliques pour l'explicabilité — fondements. |
-| 37 | 📚 | 156 | Zhang, Yilmaz & Liu (2024) — *ILP Techniques for XAI* | ILP = raisonnement symbolique inductif + explicabilité. |
-
-### 4b — Similarité sémantique explicable en DL (études primaires)
+### 4b — Centralement B4 (focus explicabilité/HITL) — argument-clé RQ2
 
 | # | Type | Rank | Référence | NeSy | QA |
 |---|------|------|-----------|------|-----|
-| 38 | 📄 | BT-02 | Racharak (2021) — *Concept Similarity in DL ELH with Pretrained Word Embedding* | DL ELH reasoner + word embeddings, explication par degré | 4.5 |
-| 39 | 📄 | **169** | Racharak & Jearanaiwongkul (2025) — *JSimELHExplainer: Explainable Semantic Similarity for ELH DL* | Librairie NeSy ELH, explicabilité formelle | 3.0 |
-| 40 | 📄 | **211** | Jearanaiwongkul & Racharak (2025) — *Human-Friendly Explanation for Ontology-based Concept Similarity* | DL similarity + word embeddings + LLM verbalization | 3.5 |
+| 22 | PRI | **211** | Jearanaiwongkul & Racharak (2025) — *Human-Friendly Explanation* | DL similarity + LLM verbalization | 3.5 |
+| 23 | PRI | **169** | Racharak & Jearanaiwongkul (2025) — *JSimELHExplainer* | Librairie NeSy ELH | 3.0 |
+| 24 | PRI | BT-11 | Li et al. (2022) — *Interactive Mapping Revision in DL-Lite* | DL-Lite + HITL interactif | 4.5 |
 
-### 4c — Révision / réparation d'ontologies (études primaires)
+### 4c — Similarité sémantique explicable (Q4=1, focus secondaire)
 
 | # | Type | Rank | Référence | NeSy | QA |
 |---|------|------|-----------|------|-----|
-| 41 | 📄 | 673 | Ji et al. (2023) — *Ontology Revision based on Pre-trained LMs* | DL reasoner (MIPS detection) + BERT/PLM | 4.0 |
-| 42 | 📄 | BT-06 | Ji et al. (2022) — *Embedding-Based Approach to Repairing OWL Ontologies* | Détection conflits OWL + embeddings pour repair | 4.0 |
-| 43 | 📄 | BT-12 | Li & Lambrix (2023) — *Repairing EL Ontologies Using Weakening and Completing* | EL reasoning symbolique (weakening + completing) | 3.5 |
-| 44 | 📄 | BT-11 | Li et al. (2022) — *Graph-Based Interactive Mapping Revision in DL-Lite* | **DL-Lite reasoning + HITL interactif** — le plus pertinent RQ2 | 4.5 |
+| 25 | PRI | BT-02 | Racharak (2021) — *Concept Similarity in DL ELH* | DL ELH reasoner + word embeddings | 4.5 |
+
+### 4d — Révision / réparation d'ontologies
+
+| # | Type | Rank | Référence | NeSy | QA |
+|---|------|------|-----------|------|-----|
+| 26 | PRI | 673 | Ji et al. (2023) — *Ontology Revision via PLMs* | DL reasoner (MIPS) + BERT/PLM | 4.0 |
 
 ---
 
-## Bloc 5 — Raisonnement ontologique et embeddings (RQ1 — fondations formelles)
+## Bloc 6 — Schema Matching, harmonisation (RQ3)
 
-*Papiers plus théoriques sur l'embedding de logiques de description — bases formelles pour ta composante symbolique.*
+*SMoG (#137) déjà couvert au Bloc 0.*
 
-| # | Type | Rank | Référence | NeSy | QA |
-|---|------|------|-----------|------|-----|
-| 45 | 📄 | BT-10 | Jackermeier et al. (2023) — *Box²EL: Concept and Role Box Embeddings for DL EL++* | Axiomes DL EL++ contraignent géométriquement l'espace | 4.0 |
-| 46 | 📄 | BT-07 | Zhu et al. (2023) — *TGR: Neural-Symbolic Ontological Reasoner for Domain KGs* | OWL+SWRL compilés en réseaux neuronaux | 4.0 |
+### 6a — Surveys différés (à consulter à la discussion / contexte applicatif)
 
----
-
-## Bloc 6 — Schema Matching, annotation tabulaire et harmonisation (RQ3)
-
-*Contextes d'application plus proches de ton cas Socodevi : données tabulaires, schémas hétérogènes, harmonisation.*
-
-### 6a — Surveys de cadrage
-
-| # | Type | Rank | Référence | Pourquoi |
-|---|------|------|-----------|----------|
-| 47 | 📚 | **1483** | Peng et al. (2024) — *Metadata-Driven Approaches for Data Harmonization in the Medical Domain* | Le plus proche de ton contexte applicatif : harmonisation ex-post de données hétérogènes multi-sites. |
-| 48 | 📚 | 466 | Diaz-de-Arcaya et al. (2025) — *Data Harmonization as a Keystone for Data Spaces* | Cadrage harmonisation de données — challenges et techniques. |
-| 49 | 📚 | 358 | Koutras et al. (2021) — *Valentine: Evaluating Matching Techniques for Dataset Discovery* | Benchmark de techniques de matching — référence méthodologique. |
-| 50 | 📚 | 1079 | Hong & Park (2025) — *LLMs for Semantic Join: A Comprehensive Survey* | Semantic join ≈ variante de ta tâche; couverture LLM. |
+| Type | Rank | Référence | Quand y revenir |
+|------|------|-----------|-----------------|
+| SUR [DIFF] | **1483** | Peng et al. (2024) — *Metadata-Driven Data Harmonization in Medical Domain* | **Discussion Socodevi** — scoping review FHIR-OMOP. |
+| SUR [DIFF] | 466 | Diaz-de-Arcaya et al. (2025) — *Data Harmonization for Data Spaces* | **Discussion Socodevi.** |
+| SUR [DIFF] | 358 | Koutras et al. (2021) — *Valentine* | **Optionnel.** |
+| SUR [DIFF] | 1079 | Hong & Park (2025) — *LLMs for Semantic Join* | **Optionnel.** |
 
 ### 6b — Études primaires appliquées
 
 | # | Type | Rank | Référence | NeSy | QA |
 |---|------|------|-----------|------|-----|
-| 51 | 📄 | **137** | Jeon et al. (2025) — *SMoG: Schema Matching on Graph — Iterative Graph Exploration for Explainable Data Integration* | KG + SPARQL 1-hop itératif, **explicable** | 4.5 |
-| 52 | 📄 | **121** | Mehryar & Çelebi (2023) — *Semantic Annotation of Tabular Data via Neuro-Symbolic Anchoring* | NeSy anchoring, données tabulaires | 3.5 |
-| 53 | 📄 | **200** | Centelles & Ferran-Ferrer (2025) — *Using Wikidata's Ontology: A NeSy Workflow for Integrating Humanities Datasets* | Pipeline ontologie-first + RAG, intégration de datasets | 4.5 |
-| 54 | 📄 | **110** | Kumar (2025) — *Semantic Alignment of Multilingual KGs via Contextualized Vector Projections* | **Multilingue** — le seul papier cross-lingual explicite | 3.5 |
-| 55 | 📄 | 1170 | Yang et al. (2025) — *PhenoAlign: Hybrid Data-Knowledge-Driven Approach for Aligning Phenotype Information* | BERT + association rules, domaine médical | 4.0 |
-| 56 | 📄 | 798 | Carbonaro et al. (2025) — *From raw data to research-ready: A FHIR-based transformation pipeline* | Pipeline FHIR, validation sémantique en oncologie | 3.5 |
+| 27 | PRI | **200** | Centelles & Ferran-Ferrer (2025) — *Wikidata's Ontology* | Pipeline ontologie-first + RAG | 4.5 |
+| 28 | PRI | **110** | Kumar (2025) — *Multilingual KG Alignment* | Multilingue — seul papier cross-lingual explicite | 3.5 |
+| 29 | PRI | 798 | Carbonaro et al. (2025) — *FHIR-based Pipeline* | FHIR, validation sémantique oncologie | 3.5 |
 
 ---
 
 ## Annexe — Surveys utiles pour snowballing uniquement
 
-*Pas en lecture prioritaire, mais à consulter pour extraire des références supplémentaires si le corpus final est insuffisant.*
-
 | Rank | Référence | Intérêt snowballing |
 |------|-----------|---------------------|
-| 69 | Alam et al. (2024) — *Neurosymbolic Methods for Dynamic KGs* | NeSy + KG dynamiques |
+| 69 | Alam et al. (2024) — *NeSy Methods for Dynamic KGs* | NeSy + KG dynamiques |
 | 547 | Chen et al. (2023) — *LLMs and Knowledge Graphs* | LLM + KG |
-| 552 | Singh & Siwach (2022) — *Handling Heterogeneous Data in KGs* | KG hétérogènes |
-| 745 | Qiang et al. (2024) — *OAEI-LLM: Benchmark for LLM Hallucinations in OM* | Benchmark OAEI + LLM |
-| 762 | Hertling & Paulheim (2020) — *The KG Track at OAEI* | Gold standards OAEI |
-| 799 | Hertling et al. (2024) — *OAEI ML Dataset for Online Model Generation* | Dataset OAEI ML |
-| 919 | Qiang et al. (2025) — *OAEI-LLM-T: TBox Benchmark* | Benchmark TBox OAEI |
+| 552 | Singh & Siwach (2022) — *Heterogeneous Data in KGs* | KG hétérogènes |
+| 745 | Qiang et al. (2024) — *OAEI-LLM Benchmark* | Benchmark OAEI + LLM |
+| 762 | Hertling & Paulheim (2020) — *KG Track at OAEI* | Gold standards OAEI |
+| 799 | Hertling et al. (2024) — *OAEI ML Dataset* | Dataset OAEI ML |
+| 919 | Qiang et al. (2025) — *OAEI-LLM-T TBox* | Benchmark TBox OAEI |
 | 651 | Lambrix (2023) — *Completing and Debugging Ontologies* | Ontology repair |
-| 842 | Pardeshi et al. (2024) — *Metaheuristic Algorithms & Ontology Integration* | Méta-heuristiques + OM |
-| 820 | Zengeya & Fonou-Dombeu (2024) — *DL Models for Ontology Construction* | DL + ontology construction |
+| 842 | Pardeshi et al. (2024) — *Metaheuristic Algorithms & OM* | Méta-heuristiques + OM |
+| 820 | Zengeya & Fonou-Dombeu (2024) — *DL for Ontology Construction* | DL + ontology construction |
 
 ---
 
-## Résumé quantitatif
+## Récapitulatif quantitatif
 
 | Catégorie | N |
 |-----------|---|
-| Études primaires (38) | 38 |
-| Surveys en lecture (Tier 1 + 2) | 18 |
+| Études primaires | **29** |
+| — cas-frontière I4-strict (standby) | 2 (SMoG, PRASE) |
+| Surveys d'ancrage théorique | 3 (tous lus) |
+| Surveys différés à l'écriture | 14 |
+| — dont déjà digérée (DeLong) | 1 |
 | Surveys snowballing seul | 10 |
-| Surveys non pertinents (exclus de la liste) | 31 |
-| **Total liste de lecture** | **56** |
+| **Total liste de lecture** | **47** |
+
+---
+
+## Distribution des 29 primaires par bloc
+
+| Bloc | Description | N |
+|------|-------------|---|
+| Bloc 0 | Calibration A.5 | 6 |
+| Bloc 2 | NeSy × Entity Alignment (hors Bloc 0) | 5 |
+| Bloc 3b | OM — BERT/embedding + logique | 5 |
+| Bloc 3c | OM — graph-based / méta-heuristiques | 5 |
+| Bloc 4b | Explicabilité (centralement B4) | 3 |
+| Bloc 4c | Similarité sémantique explicable | 1 |
+| Bloc 4d | Révision/réparation | 1 |
+| Bloc 6b | Schema matching / harmonisation appliquée | 3 |
+| **Total** | | **29** |
+
+---
+
+## Prochaine action
+
+**FLORA (rang 1889)** — extraction A.5.
