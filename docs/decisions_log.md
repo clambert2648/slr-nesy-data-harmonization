@@ -763,3 +763,9 @@ screener_notes:   Recommandation Pr Tajeuna. KG alignment via fuzzy logic (symbo
 
 **Limite reconnue :** Le snowballing a porté sur les références disponibles dans les PDFs collectés. Des articles pertinents dans des références non accessibles peuvent avoir été manqués. Le snowballing avant (forward) n'a pas été effectué.
 **Impact PRISMA :** Documenter les 11 articles dans le flux PRISMA comme issus du snowballing (nœud distinct). Total corpus final = 38 études primaires.
+
+DEC-026 — Réduction du corpus 38 → 29 primaires : motifs par article (à reconstituer avec Étienne), implications PRISMA (recalcul du funnel B.6), confirmation des 2 standby
+
+DEC-027 — Grille de codage à 7 dimensions : adoption de la grille v2, justification des sources taxonomiques (Gaur + DeLong + Portisch), positionnement de D5 comme contribution propre, articulation avec A.5 papier
+
+DEC-028 — Mise à jour du pipeline d'extraction LLM : ajout de section_8_coding_grid_v2 dans PROMPT_A5, mise à jour block_mapping.csv avec colonne status, croisement xlsx première passe / extraction LLM

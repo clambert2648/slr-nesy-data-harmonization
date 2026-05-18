@@ -1,0 +1,133 @@
+[
+  {
+    "id": "PS-028",
+    "reference": {
+      "authors": "Yiwen Peng, Thomas Bonald, Fabian M. Suchanek",
+      "year": 2025,
+      "title": "FLORA: Unsupervised Knowledge Graph Alignment by Fuzzy Logic",
+      "source": "arXiv preprint arXiv:2510.20467v1"
+    },
+    "section_1_architecture": {
+      "nesy_type_kautz": "Type 1",
+      "neural_component": "Small pre-trained language models used for string/literal similarity: LaBSE (multilingual sentence encoder) for cross-lingual datasets and PEARL (phrase embedding model) for monolingual datasets. These compute cosine similarity between string literals as initialization for the symbolic fuzzy inference system.",
+      "symbolic_component": "A Recursive Fuzzy Inference System (FIS) based on Mamdani-style fuzzy logic rules. Entity alignment and subrelation alignment rules are formulated as fuzzy rules with aggregation functions (min, harmonic mean, α-mean). The system iteratively computes entity equivalence scores and relation subsumption/equivalence scores via fixed-point iteration, proven to converge via the Knaster-Tarski theorem. Exploits relation functionality (global and local) as structural signals.",
+      "knowledge_representation": "Rules/Horn",
+      "symbolic_inference_evidence": "The symbolic component operates throughout the entire inference pipeline. After neural literal similarity initialization, the fuzzy inference system iteratively applies entity alignment rules (Equation 1) and subrelation alignment rules (Equation 2) in alternation. At each iteration, fuzzy rules compute firing strengths using min and harmonic mean aggregation over entity equivalences, relation similarities, and functionality scores. The fixed-point iteration continues until convergence (early stopping threshold ε=0.01). Maximum assignment then selects the highest-scored one-to-one entity alignments. The symbolic rules also generate interpretable explanations: for any aligned entity pair, the rule with the highest firing strength explains the alignment."
+    },
+    "section_2_integration": {
+      "mode": "Sequential pipeline",
+      "component_interaction": "The neural component (LaBSE or PEARL) operates only at initialization to compute pairwise string literal similarities via cosine similarity, retaining pairs above threshold θs=0.7. These similarity scores are then fed as fixed input variables into the symbolic Recursive Fuzzy Inference System. The FIS then iteratively propagates alignment scores through structural fuzzy logic rules for entity and relation alignment, without further neural computation. The neural component provides the initial semantic signal; the symbolic component performs all subsequent reasoning and alignment."
+    },
+    "section_3_task_evaluation": {
+      "task": [
+        "Entity alignment (inter-KG)",
+        "Ontology alignment"
+      ],
+      "datasets": [
+        {
+          "name": "D-W-15K-V1 (OpenEA)",
+          "size": "15K aligned entity pairs",
+          "domain": "general (DBpedia-Wikidata)"
+        },
+        {
+          "name": "D-W-15K-V2 (OpenEA)",
+          "size": "15K aligned entity pairs",
+          "domain": "general (DBpedia-Wikidata)"
+        },
+        {
+          "name": "DBP15K ZH-EN",
+          "size": "15K aligned entity pairs",
+          "domain": "general (cross-lingual DBpedia)"
+        },
+        {
+          "name": "DBP15K JA-EN",
+          "size": "15K aligned entity pairs",
+          "domain": "general (cross-lingual DBpedia)"
+        },
+        {
+          "name": "DBP15K FR-EN",
+          "size": "15K aligned entity pairs",
+          "domain": "general (cross-lingual DBpedia)"
+        },
+        {
+          "name": "OAEI KG Track: memoryalpha-stexpanded (Mem-ST)",
+          "size": "Not specified",
+          "domain": "entertainment (Star Trek)"
+        },
+        {
+          "name": "OAEI KG Track: starwars-swtor (Star-SWT)",
+          "size": "Not specified",
+          "domain": "entertainment (Star Wars)"
+        },
+        {
+          "name": "D-W-100K-V1 (OpenEA)",
+          "size": "100K aligned entity pairs",
+          "domain": "general (DBpedia-Wikidata)"
+        },
+        {
+          "name": "D-W-100K-V2 (OpenEA)",
+          "size": "100K aligned entity pairs",
+          "domain": "general (DBpedia-Wikidata)"
+        }
+      ],
+      "metrics_best_result": "F1 = 0.975 (supervised) and F1 = 0.962 (unsupervised) on D-W-15K-V2; Overall F1 = 0.97 on Star-SWT (OAEI); Overall F1 = 0.95 on Mem-ST (OAEI); Hit@1 = 0.992 on DBPFR-EN (unsupervised)",
+      "best_baseline": {
+        "name": "PRASE (unsupervised, D-W-15K-V2)",
+        "score": "F1 = 0.923",
+        "gap_delta": "+3.9 pp",
+        "type": "NeSy"
+      },
+      "ablation_study": true
+    },
+    "section_4_explainability": {
+      "D6_hitl_explainability": "Native explainability",
+      "explainability_mechanism": "For any pair of aligned entities, the fuzzy logic rule with the highest firing strength (Equation 1) provides a human-interpretable explanation of the alignment. The explanation includes which relations were matched, which head entities were aligned, and the functionality scores that contributed to the alignment. An example is given: Lady Gaga and Q19848 are aligned with score 0.984, explained by the alignment of relations musicalArtist ≅ P175 and birthDate⁻¹ ≅ P569⁻¹, the functionality of the relation set, and the alignment of birth dates and entities 3-Way and Q659417.",
+      "explainability_evaluation": "Qualitative example provided (Lady Gaga case); no formal user study or quantitative evaluation of explainability.",
+      "hitl_details": "N/A"
+    },
+    "section_5_context_D7": {
+      "domain": "general",
+      "multilingual": true,
+      "n_languages": 4,
+      "dataset_scale": "large (>50k)",
+      "heterogeneity_type": [
+        "Terminological",
+        "Structural",
+        "Linguistic"
+      ]
+    },
+    "section_6_knowledge_source_D2": {
+      "D2_knowledge_source_type": "Hybrid",
+      "specific_sources": "LaBSE (multilingual sentence encoder), PEARL (phrase embedding model), knowledge graphs themselves (DBpedia, Wikidata) as structural knowledge sources"
+    },
+    "section_7_reproducibility": {
+      "code_available": true,
+      "code_url": "https://github.com/dig-team/FLORA",
+      "open_data": true,
+      "frameworks_libraries": "Not specified (CPU-based, no GPU required; uses LaBSE and PEARL from HuggingFace)"
+    },
+    "section_8_synthesis": {
+      "main_contribution": "FLORA is an unsupervised, interpretable knowledge graph alignment method based on recursive fuzzy logic inference that holistically aligns entities and relations, provably converges, handles dangling entities, and achieves state-of-the-art results on major EA and KG alignment benchmarks.",
+      "limitations_reported": "Slower runtime on datasets with large amounts of auxiliary information (e.g., DBP15K takes ~2 hours due to attribute values); performance slightly degrades for very large benefit-of-doubt parameter α; does not handle complex taxonomy structures such as cross-KG subclasses or deductive closures.",
+      "relevance_to_thesis": [
+        "Reusable pipeline architecture",
+        "KG/ontology component",
+        "Explainability mechanism",
+        "Multilingual case",
+        "Reusable benchmark",
+        "Evaluation metric/protocol",
+        "NeSy taxonomy/classification"
+      ],
+      "free_notes": "FLORA represents a primarily symbolic system that uses neural components only for initialization (literal similarity). The fuzzy logic framework is the core contribution, providing both the alignment mechanism and native explainability. The convergence proof via Knaster-Tarski fixed-point theorem is a notable theoretical contribution. Competes with and often outperforms supervised neural and LLM-based methods while remaining unsupervised and interpretable. Handles 4 languages (Chinese, Japanese, French, English) via LaBSE."
+    },
+    "_meta": {
+      "model": "claude-opus-4-6",
+      "input_tokens": 21425,
+      "output_tokens": 2110,
+      "cache_read": 0,
+      "cache_creation": 0,
+      "extracted_at": "2026-05-16T11:47:56.472420",
+      "source_file": "1889_Peng_2025.pdf"
+    }
+  }
+]

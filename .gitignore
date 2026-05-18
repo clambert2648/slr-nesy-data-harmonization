@@ -16,3 +16,6 @@ __pycache__/
 
 # PDFs (copyright — stockés localement, pas sur GitHub)
 data/fulltext/
+
+# Batch payloads (texte intégral des PDFs inline — copyright + volumineux, régénérables)
+data/extraction_output/batch_*.jsonl

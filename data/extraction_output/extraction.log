@@ -1,2 +1,161 @@
 2026-03-27 13:45:49,015 [ERROR] Set ANTHROPIC_API_KEY first.  PowerShell: $env:ANTHROPIC_API_KEY='sk-ant-...'
 2026-03-27 13:46:47,667 [ERROR] Set ANTHROPIC_API_KEY first.  PowerShell: $env:ANTHROPIC_API_KEY='sk-ant-...'
+2026-05-16 11:47:04,590 [WARNING] block_mapping.csv not found — status filtering disabled
+2026-05-16 11:47:04,590 [INFO] Found 29 PDFs in C:\Users\ConstanceLambert\Université du Québec en Outaouais\Projet de mémoire - NeSy Harmonisation Sémantique - General\Maitrise\SLR_thesis\data\fulltext\Extraction
+2026-05-16 11:47:04,590 [INFO] Plan: 1 primary (A.5) + 0 surveys (A.6) = 1
+2026-05-16 11:47:04,598 [INFO] ID mapping: C:\Users\ConstanceLambert\Université du Québec en Outaouais\Projet de mémoire - NeSy Harmonisation Sémantique - General\Maitrise\SLR_thesis\data\extraction_output\id_map_PS.csv
+2026-05-16 11:47:04,607 [INFO] -- Extracting primary studies (A.5) --
+2026-05-16 11:47:04,633 [INFO]   PS-001: 1889_Peng_2025.pdf
+2026-05-16 11:47:06,741 [INFO]     91 structural markers inserted
+2026-05-16 11:47:57,497 [INFO] Extracted: 1 primary, 0 surveys
+2026-05-16 11:47:57,578 [INFO] Block mapping loaded: 56 by filename + 55 by author+year from C:\Users\ConstanceLambert\Université du Québec en Outaouais\Projet de mémoire - NeSy Harmonisation Sémantique - General\Maitrise\SLR_thesis\data\extraction\block_mapping.csv
+2026-05-16 11:47:57,580 [INFO]   Block enrichment (PS): 1/1 matched
+2026-05-16 11:47:58,846 [INFO] Saved: C:\Users\ConstanceLambert\Université du Québec en Outaouais\Projet de mémoire - NeSy Harmonisation Sémantique - General\Maitrise\SLR_thesis\data\extraction_output\extraction_SLR_20260516_1147.xlsx
+2026-05-16 11:47:58,846 [INFO] -- Cost: input=21,425 output=2,110 cache=0 ~$0.16 (savings ~$0.00) --
+2026-05-16 12:09:44,983 [INFO] Status index loaded: 56 by filename (45 included, 2 standby, 9 retired)
+2026-05-16 12:09:44,984 [INFO] Found 29 PDFs in C:\Users\ConstanceLambert\Université du Québec en Outaouais\Projet de mémoire - NeSy Harmonisation Sémantique - General\Maitrise\SLR_thesis\data\fulltext\Extraction
+2026-05-16 12:09:44,985 [INFO] Found 18 PDFs in C:\Users\ConstanceLambert\Université du Québec en Outaouais\Projet de mémoire - NeSy Harmonisation Sémantique - General\Maitrise\SLR_thesis\data\fulltext\Surveys
+2026-05-16 12:09:44,985 [INFO] Plan: 29 primary (A.5) + 18 surveys (A.6) = 47
+2026-05-16 12:09:44,986 [INFO] ID mapping: C:\Users\ConstanceLambert\Université du Québec en Outaouais\Projet de mémoire - NeSy Harmonisation Sémantique - General\Maitrise\SLR_thesis\data\extraction_output\id_map_PS.csv
+2026-05-16 12:09:44,987 [INFO] ID mapping: C:\Users\ConstanceLambert\Université du Québec en Outaouais\Projet de mémoire - NeSy Harmonisation Sémantique - General\Maitrise\SLR_thesis\data\extraction_output\id_map_SV.csv
+2026-05-16 12:09:47,399 [INFO]     26 structural markers inserted
+2026-05-16 12:09:48,217 [INFO]     63 structural markers inserted
+2026-05-16 12:09:49,671 [INFO]     46 structural markers inserted
+2026-05-16 12:09:50,349 [INFO]     16 structural markers inserted
+2026-05-16 12:09:50,859 [INFO]     9 structural markers inserted
+2026-05-16 12:09:51,674 [INFO]     7 structural markers inserted
+2026-05-16 12:09:54,495 [INFO]     65 structural markers inserted
+2026-05-16 12:09:55,042 [INFO]     4 structural markers inserted
+2026-05-16 12:09:55,696 [INFO]     31 structural markers inserted
+2026-05-16 12:09:56,079 [INFO]     17 structural markers inserted
+2026-05-16 12:09:56,712 [INFO]     91 structural markers inserted
+2026-05-16 12:09:57,846 [INFO]     5 structural markers inserted
+2026-05-16 12:09:58,162 [INFO]     10 structural markers inserted
+2026-05-16 12:09:59,027 [INFO]     4 structural markers inserted
+2026-05-16 12:09:59,682 [INFO]     2 structural markers inserted
+2026-05-16 12:10:00,362 [INFO]     84 structural markers inserted
+2026-05-16 12:10:01,174 [INFO]     33 structural markers inserted
+2026-05-16 12:10:01,859 [INFO]     25 structural markers inserted
+2026-05-16 12:10:05,259 [INFO]     48 structural markers inserted
+2026-05-16 12:10:06,749 [INFO]     41 structural markers inserted
+2026-05-16 12:10:07,251 [INFO]     15 structural markers inserted
+2026-05-16 12:10:08,159 [INFO]     47 structural markers inserted
+2026-05-16 12:10:10,562 [INFO]     25 structural markers inserted
+2026-05-16 12:10:11,585 [INFO]     90 structural markers inserted
+2026-05-16 12:10:13,547 [INFO]     15 structural markers inserted
+2026-05-16 12:10:14,196 [INFO]     15 structural markers inserted
+2026-05-16 12:10:16,134 [INFO]     69 structural markers inserted
+2026-05-16 12:10:17,726 [INFO]     33 structural markers inserted
+2026-05-16 12:10:18,520 [INFO]     67 structural markers inserted
+2026-05-16 12:12:58,782 [INFO] Status index loaded: 56 by filename (45 included, 2 standby, 9 retired)
+2026-05-16 12:12:58,784 [INFO] Found 29 PDFs in C:\Users\ConstanceLambert\Université du Québec en Outaouais\Projet de mémoire - NeSy Harmonisation Sémantique - General\Maitrise\SLR_thesis\data\fulltext\Extraction
+2026-05-16 12:12:58,785 [INFO] Found 18 PDFs in C:\Users\ConstanceLambert\Université du Québec en Outaouais\Projet de mémoire - NeSy Harmonisation Sémantique - General\Maitrise\SLR_thesis\data\fulltext\Surveys
+2026-05-16 12:12:58,785 [INFO] Plan: 29 primary (A.5) + 18 surveys (A.6) = 47
+2026-05-16 12:12:58,787 [INFO] ID mapping: C:\Users\ConstanceLambert\Université du Québec en Outaouais\Projet de mémoire - NeSy Harmonisation Sémantique - General\Maitrise\SLR_thesis\data\extraction_output\id_map_PS.csv
+2026-05-16 12:12:58,788 [INFO] ID mapping: C:\Users\ConstanceLambert\Université du Québec en Outaouais\Projet de mémoire - NeSy Harmonisation Sémantique - General\Maitrise\SLR_thesis\data\extraction_output\id_map_SV.csv
+2026-05-16 12:13:01,348 [INFO]     26 structural markers inserted
+2026-05-16 12:13:01,968 [INFO]     63 structural markers inserted
+2026-05-16 12:13:03,434 [INFO]     46 structural markers inserted
+2026-05-16 12:13:03,987 [INFO]     16 structural markers inserted
+2026-05-16 12:13:04,325 [INFO]     9 structural markers inserted
+2026-05-16 12:13:04,886 [INFO]     7 structural markers inserted
+2026-05-16 12:13:06,583 [INFO]     65 structural markers inserted
+2026-05-16 12:13:06,889 [INFO]     4 structural markers inserted
+2026-05-16 12:13:07,505 [INFO]     31 structural markers inserted
+2026-05-16 12:13:07,705 [INFO]     17 structural markers inserted
+2026-05-16 12:13:08,694 [INFO]     91 structural markers inserted
+2026-05-16 12:13:09,960 [INFO]     5 structural markers inserted
+2026-05-16 12:13:10,166 [INFO]     10 structural markers inserted
+2026-05-16 12:13:11,140 [INFO]     4 structural markers inserted
+2026-05-16 12:13:11,563 [INFO]     2 structural markers inserted
+2026-05-16 12:13:12,062 [INFO]     84 structural markers inserted
+2026-05-16 12:13:12,814 [INFO]     33 structural markers inserted
+2026-05-16 12:13:13,501 [INFO]     25 structural markers inserted
+2026-05-16 12:13:18,076 [INFO]     48 structural markers inserted
+2026-05-16 12:13:20,139 [INFO]     41 structural markers inserted
+2026-05-16 12:13:20,611 [INFO]     15 structural markers inserted
+2026-05-16 12:13:21,582 [INFO]     47 structural markers inserted
+2026-05-16 12:13:24,150 [INFO]     25 structural markers inserted
+2026-05-16 12:13:25,165 [INFO]     90 structural markers inserted
+2026-05-16 12:13:27,095 [INFO]     15 structural markers inserted
+2026-05-16 12:13:27,827 [INFO]     15 structural markers inserted
+2026-05-16 12:13:30,732 [INFO]     69 structural markers inserted
+2026-05-16 12:13:32,186 [INFO]     33 structural markers inserted
+2026-05-16 12:13:32,778 [INFO]     67 structural markers inserted
+2026-05-16 12:13:33,308 [INFO] Batch submitted: msgbatch_011P8ZSPWqfVkMVJPFMbkoUs (29 requests)
+2026-05-16 12:13:33,390 [INFO]   Batch msgbatch_011P8ZSPWqfVkMVJPFMbkoUs: in_progress
+2026-05-16 12:14:33,622 [INFO]   Batch msgbatch_011P8ZSPWqfVkMVJPFMbkoUs: in_progress
+2026-05-16 12:15:33,829 [INFO]   Batch msgbatch_011P8ZSPWqfVkMVJPFMbkoUs: in_progress
+2026-05-16 12:16:34,006 [INFO]   Batch msgbatch_011P8ZSPWqfVkMVJPFMbkoUs: ended
+2026-05-16 12:16:34,360 [INFO]   PS-023: LLM emitted id='PS-XXX' overridden
+2026-05-16 12:16:34,360 [INFO]   PS-020: LLM emitted id='PS-029' overridden
+2026-05-16 12:16:34,360 [INFO]   PS-007: LLM emitted id='PS-027' overridden
+2026-05-16 12:16:34,360 [INFO]   PS-002: LLM emitted id='PS-021' overridden
+2026-05-16 12:16:34,360 [INFO]   PS-012: LLM emitted id='PS-XXX' overridden
+2026-05-16 12:16:34,360 [INFO]   PS-013: LLM emitted id='PS-XXX' overridden
+2026-05-16 12:16:34,360 [INFO]   PS-026: LLM emitted id='PS-021' overridden
+2026-05-16 12:16:34,360 [INFO]   PS-011: LLM emitted id='PS-028' overridden
+2026-05-16 12:16:34,360 [INFO]   PS-029: LLM emitted id='PS-012' overridden
+2026-05-16 12:16:34,360 [INFO]   PS-008: LLM emitted id='PS-029' overridden
+2026-05-16 12:16:34,360 [INFO]   PS-022: LLM emitted id='PS-027' overridden
+2026-05-16 12:16:34,370 [INFO]   PS-014: LLM emitted id='PS-027' overridden
+2026-05-16 12:16:34,370 [INFO]   PS-021: LLM emitted id='PS-029' overridden
+2026-05-16 12:16:34,370 [INFO]   PS-024: LLM emitted id='PS-021' overridden
+2026-05-16 12:16:34,370 [INFO]   PS-004: LLM emitted id='PS-021' overridden
+2026-05-16 12:16:34,370 [INFO]   PS-001: LLM emitted id='PS-029' overridden
+2026-05-16 12:16:34,373 [INFO]   PS-003: LLM emitted id='PS-024' overridden
+2026-05-16 12:16:34,373 [INFO]   PS-016: LLM emitted id='PS-021' overridden
+2026-05-16 12:16:34,374 [INFO]   PS-006: LLM emitted id='PS-XXX' overridden
+2026-05-16 12:16:34,374 [INFO]   PS-017: LLM emitted id='PS-024' overridden
+2026-05-16 12:16:34,374 [INFO]   PS-019: LLM emitted id='PS-027' overridden
+2026-05-16 12:16:34,375 [INFO]   PS-018: LLM emitted id='PS-021' overridden
+2026-05-16 12:16:34,375 [INFO]   PS-005: LLM emitted id='PS-029' overridden
+2026-05-16 12:16:34,375 [INFO]   PS-009: LLM emitted id='PS-020' overridden
+2026-05-16 12:16:34,375 [INFO]   PS-015: LLM emitted id='PS-017' overridden
+2026-05-16 12:16:34,375 [INFO]   PS-010: LLM emitted id='PS-XXX' overridden
+2026-05-16 12:16:34,915 [INFO]     40 structural markers inserted
+2026-05-16 12:16:37,642 [INFO]     11 structural markers inserted
+2026-05-16 12:16:41,090 [INFO]     44 structural markers inserted
+2026-05-16 12:16:42,408 [INFO]     24 structural markers inserted
+2026-05-16 12:16:42,982 [INFO]     47 structural markers inserted
+2026-05-16 12:16:44,870 [WARNING]   Truncated 056_Portisch_2025.pdf
+2026-05-16 12:16:44,875 [INFO]     59 structural markers inserted
+2026-05-16 12:16:45,810 [INFO]     10 structural markers inserted
+2026-05-16 12:16:46,238 [INFO]     9 structural markers inserted
+2026-05-16 12:16:49,825 [INFO]     20 structural markers inserted
+2026-05-16 12:16:53,212 [INFO]     31 structural markers inserted
+2026-05-16 12:16:54,033 [INFO]     47 structural markers inserted
+2026-05-16 12:16:56,945 [INFO]     18 structural markers inserted
+2026-05-16 12:17:00,934 [INFO]     62 structural markers inserted
+2026-05-16 12:17:02,261 [INFO]     16 structural markers inserted
+2026-05-16 12:17:03,320 [INFO]     23 structural markers inserted
+2026-05-16 12:17:03,922 [INFO]     119 structural markers inserted
+2026-05-16 12:17:12,261 [INFO]     56 structural markers inserted
+2026-05-16 12:17:13,029 [INFO]     8 structural markers inserted
+2026-05-16 12:17:13,518 [INFO] Batch submitted: msgbatch_01Byh5prQ5eq8cKsAXrzhneZ (18 requests)
+2026-05-16 12:17:13,651 [INFO]   Batch msgbatch_01Byh5prQ5eq8cKsAXrzhneZ: in_progress
+2026-05-16 12:18:13,855 [INFO]   Batch msgbatch_01Byh5prQ5eq8cKsAXrzhneZ: in_progress
+2026-05-16 12:19:14,024 [INFO]   Batch msgbatch_01Byh5prQ5eq8cKsAXrzhneZ: ended
+2026-05-16 12:19:14,380 [INFO]   SV-017: LLM emitted id='SV-001' overridden
+2026-05-16 12:19:14,380 [INFO]   SV-002: LLM emitted id='SV-001' overridden
+2026-05-16 12:19:14,381 [INFO]   SV-004: LLM emitted id='SV-001' overridden
+2026-05-16 12:19:14,381 [INFO]   SV-010: LLM emitted id='SV-001' overridden
+2026-05-16 12:19:14,381 [INFO]   SV-006: LLM emitted id='SV-001' overridden
+2026-05-16 12:19:14,387 [INFO]   SV-003: LLM emitted id='SV-001' overridden
+2026-05-16 12:19:14,388 [INFO]   SV-007: LLM emitted id='SV-XXX' overridden
+2026-05-16 12:19:14,389 [INFO]   SV-016: LLM emitted id='SV-001' overridden
+2026-05-16 12:19:14,389 [INFO]   SV-008: LLM emitted id='SV-004' overridden
+2026-05-16 12:19:14,390 [INFO]   SV-011: LLM emitted id='SV-XXX' overridden
+2026-05-16 12:19:14,391 [INFO]   SV-005: LLM emitted id='SV-004' overridden
+2026-05-16 12:19:14,391 [INFO]   SV-014: LLM emitted id='SV-001' overridden
+2026-05-16 12:19:14,392 [INFO]   SV-013: LLM emitted id='SV-001' overridden
+2026-05-16 12:19:14,392 [INFO]   SV-018: LLM emitted id='SV-XXX' overridden
+2026-05-16 12:19:14,393 [INFO]   SV-009: LLM emitted id='SV-XXX' overridden
+2026-05-16 12:19:14,394 [INFO]   SV-015: LLM emitted id='SV-001' overridden
+2026-05-16 12:19:14,394 [INFO]   SV-012: LLM emitted id='SV-XXX' overridden
+2026-05-16 12:19:14,398 [INFO] Extracted: 29 primary, 18 surveys
+2026-05-16 12:19:14,424 [INFO] Block mapping loaded: 56 by filename + 55 by author+year from C:\Users\ConstanceLambert\Université du Québec en Outaouais\Projet de mémoire - NeSy Harmonisation Sémantique - General\Maitrise\SLR_thesis\data\extraction\block_mapping.csv
+2026-05-16 12:19:14,426 [INFO]   Block enrichment (PS): 3/29 matched
+2026-05-16 12:19:14,428 [INFO]   Block enrichment (SV): 9/18 matched
+2026-05-16 12:19:15,145 [INFO] Saved: C:\Users\ConstanceLambert\Université du Québec en Outaouais\Projet de mémoire - NeSy Harmonisation Sémantique - General\Maitrise\SLR_thesis\data\extraction_output\extraction_SLR_20260516_1219.xlsx
+2026-05-16 12:19:15,145 [INFO] -- Cost: input=0 output=0 cache=0 ~$0.00 (savings ~$0.00) --

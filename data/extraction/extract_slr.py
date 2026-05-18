@@ -40,7 +40,7 @@ MAX_RETRIES = 3
 RETRY_BASE_DELAY = 5  # seconds, doubles each retry
 
 # Paths — adjust to your local setup
-BASE_DIR = Path(r"C:\Users\ConstanceLambert\OneDrive - SOCODEVI\Bureau\UQO\Maitrise\SLR_thesis\data\fulltext")
+BASE_DIR = Path(r"C:\Users\ConstanceLambert\Université du Québec en Outaouais\Projet de mémoire - NeSy Harmonisation Sémantique - General\Maitrise\SLR_thesis\data\fulltext")
 PRIMARY_DIR = BASE_DIR / "Extraction"
 SURVEY_DIR = BASE_DIR / "Surveys"
 OUTPUT_DIR = BASE_DIR.parent / "extraction_output"
@@ -344,11 +344,8 @@ def load_status_index():
 
     Returns: (status_by_filename: dict, status_by_authoryear: dict)
     """
-    for path in [OUTPUT_DIR / "block_mapping.csv",
-                 Path(__file__).parent / "block_mapping.csv" if "__file__" in dir() else None]:
-        if path and path.exists():
-            break
-    else:
+    path = _find_block_mapping_path()
+    if path is None:
         log.warning("block_mapping.csv not found — status filtering disabled")
         return {}, {}
 
@@ -501,6 +498,14 @@ def call_claude(client, article_text, prompt, article_id):
         debug_path.write_text(raw_text, encoding="utf-8")
         return None
 
+    # Force the id field to match the runtime sequential id (the LLM tends to
+    # hallucinate the placeholder PS-XXX based on prompt context). We preserve
+    # the LLM-emitted value in _meta.llm_emitted_id for audit purposes.
+    llm_emitted_id = data.get("id", "")
+    if llm_emitted_id and llm_emitted_id != article_id:
+        log.info(f"  {article_id}: LLM emitted id='{llm_emitted_id}' overridden -> '{article_id}'")
+    data["id"] = article_id
+
     data["_meta"] = {
         "model": response.model,
         "input_tokens": response.usage.input_tokens,
@@ -508,7 +513,8 @@ def call_claude(client, article_text, prompt, article_id):
         "cache_read": getattr(response.usage, "cache_read_input_tokens", 0),
         "cache_creation": getattr(response.usage, "cache_creation_input_tokens", 0),
         "extracted_at": datetime.now().isoformat(),
-        "source_file": article_id
+        "source_file": article_id,
+        "llm_emitted_id": llm_emitted_id,
     }
     return data
 
@@ -537,23 +543,48 @@ def submit_batch(client, requests, label):
     jsonl_path = OUTPUT_DIR / f"batch_{label}.jsonl"
     with open(jsonl_path, "w", encoding="utf-8") as f:
         for r in requests: f.write(json.dumps(r) + "\n")
-    batch = client.batches.create(requests=requests, metadata={"label": label})
+    batch = client.messages.batches.create(requests=requests)
     log.info(f"Batch submitted: {batch.id} ({len(requests)} requests)")
     return batch.id
 
-def poll_batch(client, batch_id, interval=60):
+def poll_batch(client, batch_id, interval=60, id_map=None):
+    """Poll a batch until ended and parse results.
+
+    id_map: optional dict {custom_id: pdf_filename} so we can populate _meta.source_file
+            (the batch API does not echo the filename — only custom_id).
+    """
+    id_map = id_map or {}
     while True:
-        b = client.batches.retrieve(batch_id)
+        b = client.messages.batches.retrieve(batch_id)
         log.info(f"  Batch {batch_id}: {b.processing_status}")
         if b.processing_status == "ended": break
         time.sleep(interval)
     results = []
-    for r in client.batches.results(batch_id):
+    for r in client.messages.batches.results(batch_id):
         if r.result.type == "succeeded":
-            data = parse_llm_json(r.result.message.content[0].text.strip())
+            msg = r.result.message
+            data = parse_llm_json(msg.content[0].text.strip())
             if data:
-                data["_meta"] = {"model": MODEL, "batch_id": batch_id,
-                    "custom_id": r.custom_id, "extracted_at": datetime.now().isoformat()}
+                # Force id to match the runtime custom_id (LLM tends to hallucinate it)
+                llm_emitted_id = data.get("id", "")
+                if llm_emitted_id and llm_emitted_id != r.custom_id:
+                    log.info(f"  {r.custom_id}: LLM emitted id='{llm_emitted_id}' overridden")
+                data["id"] = r.custom_id
+
+                # Preserve tokens + source_file in _meta (parity with sequential mode)
+                usage = getattr(msg, "usage", None)
+                data["_meta"] = {
+                    "model": MODEL,
+                    "batch_id": batch_id,
+                    "custom_id": r.custom_id,
+                    "extracted_at": datetime.now().isoformat(),
+                    "llm_emitted_id": llm_emitted_id,
+                    "source_file": id_map.get(r.custom_id, ""),
+                    "input_tokens": getattr(usage, "input_tokens", 0) if usage else 0,
+                    "output_tokens": getattr(usage, "output_tokens", 0) if usage else 0,
+                    "cache_read": getattr(usage, "cache_read_input_tokens", 0) if usage else 0,
+                    "cache_creation": getattr(usage, "cache_creation_input_tokens", 0) if usage else 0,
+                }
                 results.append(data)
         else:
             log.error(f"  Failed: {r.custom_id}")
@@ -597,7 +628,31 @@ def build_id_map(pdfs, prefix):
 # ═══════════════════════════════════════════════════════════════
 
 BLOCK_MAPPING_FILE = OUTPUT_DIR / "block_mapping.csv"
-BLOCK_MAPPING_ALT = Path(__file__).parent / "block_mapping.csv" if "__file__" in dir() else None
+# Path(__file__) works reliably at module top-level (always defined when running as a script).
+BLOCK_MAPPING_ALT = Path(__file__).parent / "block_mapping.csv"
+
+
+def _find_block_mapping_path():
+    """Return the first existing block_mapping.csv path, or None if not found.
+
+    Searches in this order:
+      1. OUTPUT_DIR / block_mapping.csv  (preferred, next to extraction outputs)
+      2. Same directory as the script itself  (convenient for dev)
+      3. Current working directory  (last-resort fallback)
+
+    This helper avoids the `"__file__" in dir()` pattern, which silently fails
+    inside function scopes (dir() returns local names there).
+    """
+    candidates = [
+        BLOCK_MAPPING_FILE,
+        BLOCK_MAPPING_ALT,
+        Path.cwd() / "block_mapping.csv",
+    ]
+    for p in candidates:
+        if p and p.exists():
+            return p
+    return None
+
 
 def load_block_mapping():
     """Load block_mapping.csv → two dicts: by filename (exact) and by author_year (fallback).
@@ -608,10 +663,8 @@ def load_block_mapping():
     Returns: (mapping_by_filename, mapping_by_authoryear)
     Each value is a dict with block / block_label / list_order / rank / status.
     """
-    for path in [BLOCK_MAPPING_FILE, BLOCK_MAPPING_ALT]:
-        if path and path.exists():
-            break
-    else:
+    path = _find_block_mapping_path()
+    if path is None:
         log.warning("block_mapping.csv not found — thematic columns will be empty")
         return {}, {}
 
@@ -934,11 +987,13 @@ def main():
         if primary_pdfs:
             reqs = prepare_batch_requests(primary_pdfs, PROMPT_A5, "PS")
             bid = submit_batch(client, reqs, "A5_primary")
-            res_a5 = poll_batch(client, bid, args.poll_interval)
+            id_map_ps = {aid: pdf.name for aid, pdf in pp}
+            res_a5 = poll_batch(client, bid, args.poll_interval, id_map=id_map_ps)
         if survey_pdfs:
             reqs = prepare_batch_requests(survey_pdfs, PROMPT_A6, "SV")
             bid = submit_batch(client, reqs, "A6_surveys")
-            res_a6 = poll_batch(client, bid, args.poll_interval)
+            id_map_sv = {aid: pdf.name for aid, pdf in sp}
+            res_a6 = poll_batch(client, bid, args.poll_interval, id_map=id_map_sv)
 
     df_a5, df_a6 = flatten_a5(res_a5), flatten_a6(res_a6)
     log.info(f"Extracted: {len(df_a5)} primary, {len(df_a6)} surveys")

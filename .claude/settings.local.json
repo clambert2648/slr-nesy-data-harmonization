@@ -17,7 +17,19 @@
       "Bash(py -3 -c \"import openpyxl; wb = openpyxl.load_workbook\\('results/validation_SLR.xlsx', data_only=True\\); print\\('Sheets:'\\); [print\\(' -', s\\) for s in wb.sheetnames]\")",
       "Bash(py -3)",
       "Bash(PYTHONIOENCODING=utf-8 py -3)",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "PowerShell(if \\($env:ANTHROPIC_API_KEY\\) { \"KEY_PRESENT: \" + $env:ANTHROPIC_API_KEY.Substring\\(0,15\\) + \"...\" } else { \"KEY_MISSING\" })",
+      "PowerShell(\\(Get-Command python -ErrorAction SilentlyContinue\\).Source; \\(Get-Command py -ErrorAction SilentlyContinue\\).Source; py -0 2>&1)",
+      "PowerShell($env:VIRTUAL_ENV = \"\"; Remove-Item -Recurse -Force .venv -ErrorAction Stop; \"OLD_VENV_DELETED\"; & \"C:\\\\Program Files\\\\Python39\\\\python.exe\" -m venv .venv; if \\($?\\) { \"NEW_VENV_CREATED\"; & \".\\\\.venv\\\\Scripts\\\\python.exe\" --version })",
+      "PowerShell(& \".\\\\.venv\\\\Scripts\\\\python.exe\" -m pip install --upgrade pip)",
+      "PowerShell(& \".\\\\.venv\\\\Scripts\\\\python.exe\" -m pip install anthropic pypdf openpyxl pandas tqdm)",
+      "PowerShell(& \".\\\\.venv\\\\Scripts\\\\python.exe\" \"data\\\\extraction\\\\extract_slr.py\" --test 1 --article peng --primary-only)",
+      "PowerShell(& \".\\\\.venv\\\\Scripts\\\\python.exe\" \"data\\\\extraction\\\\extract_slr.py\" --batch)",
+      "PowerShell(& \".\\\\.venv\\\\Scripts\\\\python.exe\" -c \"import anthropic; c = anthropic.Anthropic\\(\\); print\\('client.batches:', hasattr\\(c, 'batches'\\)\\); print\\('client.messages.batches:', hasattr\\(c.messages, 'batches'\\)\\); print\\('messages.batches methods:', [m for m in dir\\(c.messages.batches\\) if not m.startswith\\('_'\\)]\\)\")",
+      "PowerShell(& \".\\\\.venv\\\\Scripts\\\\python.exe\" -c \"import anthropic, inspect; c = anthropic.Anthropic\\(\\); sig = inspect.signature\\(c.messages.batches.create\\); print\\('create signature:', sig\\); print\\(\\); print\\('parameters:', list\\(sig.parameters.keys\\(\\)\\)\\)\")",
+      "PowerShell(& \".\\\\.venv\\\\Scripts\\\\python.exe\" -c \"import pandas as pd; xlsx = r'data\\\\extraction_output\\\\extraction_SLR_20260516_1219.xlsx'; xls = pd.ExcelFile\\(xlsx\\); print\\('Sheets:', xls.sheet_names\\); df_ps = pd.read_excel\\(xlsx, sheet_name='A5_Primary_Studies'\\); df_sv = pd.read_excel\\(xlsx, sheet_name='A6_Surveys'\\); print\\(\\); print\\('A5 rows:', len\\(df_ps\\)\\); print\\('A6 rows:', len\\(df_sv\\)\\); print\\(\\); print\\('A5 ids:', df_ps['id'].tolist\\(\\)\\); print\\(\\); print\\('A6 ids:', df_sv['id'].tolist\\(\\)\\)\")",
+      "PowerShell(& \".\\\\.venv\\\\Scripts\\\\python.exe\" \"data\\\\extraction\\\\postprocess_batch.py\")",
+      "PowerShell(Get-ChildItem data\\\\extraction_output -Recurse -File | Select-Object @{N='Path';E={$_.FullName.Replace\\($PWD.Path + '\\\\',''\\)}}, @{N='KB';E={[math]::Round\\($_.Length/1KB,1\\)}} | Sort-Object KB -Descending)"
     ]
   }
 }
